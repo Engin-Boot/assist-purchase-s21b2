@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PurchaseAssistantWebApp", "PurchaseAssistantWebApp\PurchaseAssistantWebApp.csproj", "{3A957664-5E4B-45F8-A470-747FC15F2EF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModelsLib", "DataModelsLib\DataModelsLib.csproj", "{4C72C380-6AF1-4A6C-9075-E4FA2B0F1DFD}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{3A957664-5E4B-45F8-A470-747FC15F2EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A957664-5E4B-45F8-A470-747FC15F2EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A957664-5E4B-45F8-A470-747FC15F2EF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C72C380-6AF1-4A6C-9075-E4FA2B0F1DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C72C380-6AF1-4A6C-9075-E4FA2B0F1DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C72C380-6AF1-4A6C-9075-E4FA2B0F1DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C72C380-6AF1-4A6C-9075-E4FA2B0F1DFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

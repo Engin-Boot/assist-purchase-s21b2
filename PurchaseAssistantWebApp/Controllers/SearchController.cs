@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace PurchaseAssistantWebApp.Controllers
 {
@@ -14,8 +9,7 @@ namespace PurchaseAssistantWebApp.Controllers
         // Returns list of all monitors
         public string Get()
         {
-            string result = "all monitors";
-            return result;
+            return "all monitors";
         }
 
         // Returns list of monitors based on monitor type(primary or additional)
