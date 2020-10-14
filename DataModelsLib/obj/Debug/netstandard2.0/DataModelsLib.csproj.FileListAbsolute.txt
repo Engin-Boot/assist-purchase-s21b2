@@ -1,0 +1,9 @@
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\DataModelsLib\bin\Debug\netstandard2.0\DataModelsLib.deps.json
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\DataModelsLib\bin\Debug\netstandard2.0\DataModelsLib.dll
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\DataModelsLib\bin\Debug\netstandard2.0\DataModelsLib.pdb
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\DataModelsLib\obj\Debug\netstandard2.0\DataModelsLib.csprojAssemblyReference.cache
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\DataModelsLib\obj\Debug\netstandard2.0\DataModelsLib.AssemblyInfoInputs.cache
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\DataModelsLib\obj\Debug\netstandard2.0\DataModelsLib.AssemblyInfo.cs
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\DataModelsLib\obj\Debug\netstandard2.0\DataModelsLib.csproj.CoreCompileInputs.cache
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\DataModelsLib\obj\Debug\netstandard2.0\DataModelsLib.dll
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\DataModelsLib\obj\Debug\netstandard2.0\DataModelsLib.pdb
