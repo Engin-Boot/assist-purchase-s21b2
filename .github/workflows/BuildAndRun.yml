@@ -23,7 +23,9 @@ jobs:
           dotnet-version: 3.1.100
 
      
+      - name: Go to project solution directory
+        run:  cd PurchaseAssistantWebApp
       - name: Build with dotnet
-        run:  cd PurchaseAssistantWebApp & dotnet build --configuration Release
+        run:  dotnet build --configuration Release
       - name: Run unit tests
         run: dotnet test --no-build --configuration Release
