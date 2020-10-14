@@ -24,7 +24,7 @@ jobs:
 
      
       - name: Go to project solution directory
-        run:  cd PurchaseAssistantWebApp
+        run:  cd PurchaseAssistantWebApp & cd PurchaseAssistantWebApp & dir
       - name: Build with dotnet
         run:  dotnet build --configuration Release
       - name: Run unit tests
