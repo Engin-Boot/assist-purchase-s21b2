@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj": {}
+    "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj": {
+    "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj",
+        "projectUniqueName": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj",
         "projectName": "PurchaseAssistantWebApp",
-        "projectPath": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj",
+        "projectPath": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj",
         "packagesPath": "C:\\Users\\Tripti Saini\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp\\obj\\",
+        "outputPath": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
