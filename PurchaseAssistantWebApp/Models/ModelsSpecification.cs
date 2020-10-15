@@ -1,4 +1,4 @@
-namespace AssistPurchase.Models
+namespace PurchaseAssistantWebApp.Models
 {
     public class ModelsSpecification
     {
