@@ -8,8 +8,6 @@ namespace PurchaseAssistantWebApp.Repository
     {
         IEnumerable<ModelsSpecification> GetAllModelsSpecifications();
 
-        ModelsSpecification GetModelsSpecificationById(long id);
-
         HttpStatusCode AddNewModelsSpecification(ModelsSpecification newModelsSpecification);
 
         HttpStatusCode UpdateModelsSpecification(long id, ModelsSpecification updatedModelsSpecification);

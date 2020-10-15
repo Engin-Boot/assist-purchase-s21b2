@@ -22,13 +22,6 @@ namespace PurchaseAssistantWebApp.Controllers
             return _repository.GetAllModelsSpecifications();
         }
 
-        // GET api/<ModelsSpecificationController>/5
-        [HttpGet("{id}")]
-        public Models.ModelsSpecification Get(long id)
-        {
-            return _repository.GetModelsSpecificationById(id);
-        }
-
         // POST api/<ModelsSpecificationController>
         [HttpPost]
         public void Post([FromBody] Models.ModelsSpecification newModelSpecification)

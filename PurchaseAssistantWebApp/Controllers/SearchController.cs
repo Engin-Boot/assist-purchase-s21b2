@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using PurchaseAssistantWebApp.Models;
+using PurchaseAssistantWebApp.Utilities;
 
 namespace PurchaseAssistantWebApp.Controllers
 {
@@ -6,38 +9,72 @@ namespace PurchaseAssistantWebApp.Controllers
     [ApiController]
     public class SearchController : ControllerBase
     {
+        private readonly Repository.IModelsSpecificationDataRepository _repository;
+
+        public SearchController(Repository.IModelsSpecificationDataRepository repository)
+        {
+            _repository = repository;
+        }
+
         // Returns list of all monitors
-        public string Get()
+        [HttpGet("ContinuousPatientMonitoringSystem")]
+        public IEnumerable<ModelsSpecification> GetAllModels()
         {
-            return "all monitors";
+            return _repository.GetAllModelsSpecifications();
         }
 
-        // Returns list of monitors based on monitor type(primary or additional)
-        [HttpGet("{monitorType}")]
-        public string Get(string monitorType)
+        [HttpGet("ContinuousPatientMonitoringSystem/id/{id}")]
+        public IEnumerable<ModelsSpecification> GetModelsById(long id)
         {
-            return monitorType;
+            return FilterModelsUtility.FilterById(id, _repository.GetAllModelsSpecifications());
         }
 
-        // Returns list of monitors based on monitor type and portability
-        [HttpGet("{monitorType}/{portability}")]
-        public string Get(string monitorType, string portability)
+        [HttpGet("ContinuousPatientMonitoringSystem/productName/{productName}")]
+        public IEnumerable<ModelsSpecification> GetModelsByProductName(string productName)
         {
-            return monitorType + portability;
+            return FilterModelsUtility.FilterByProductName(productName, _repository.GetAllModelsSpecifications());
         }
 
-        // Returns list of monitors based on monitor type, portability and display size
-        [HttpGet("{monitorType}/{portability}/{displaySize}")]
-        public string Get(string monitorType, string portability, string displaySize)
+        [HttpGet("ContinuousPatientMonitoringSystem/productKey/{productKey}")]
+        public IEnumerable<ModelsSpecification> GetModelsByProductKey(string productKey)
         {
-            return monitorType + portability + displaySize;
+            return FilterModelsUtility.FilterByProductKey(productKey, _repository.GetAllModelsSpecifications());
         }
 
-        // Returns list of monitors based on monitor type, portability, series and series name
-        [HttpGet("{monitorType}/{portability}/{series}/{seriesName}")]
-        public string Get(string monitorType, string portability, string series, string seriesName)
+        [HttpGet("ContinuousPatientMonitoringSystem/isPortable/{isPortable}")]
+        public IEnumerable<ModelsSpecification> GetModelsByPortability(bool isPortable)
         {
-            return monitorType + portability + series + seriesName;
+            return FilterModelsUtility.FilterByPortability(isPortable, _repository.GetAllModelsSpecifications());
+        }
+
+        [HttpGet("ContinuousPatientMonitoringSystem/compact/{isCompact}")]
+        public IEnumerable<ModelsSpecification> GetModelsByCompactLevel(bool isCompact)
+        {
+            return FilterModelsUtility.FilterByCompactLevel(isCompact, _repository.GetAllModelsSpecifications());
+        }
+
+        [HttpGet("ContinuousPatientMonitoringSystem/isTouchScreenRequired/{isTouchScreenRequired}")]
+        public IEnumerable<ModelsSpecification> GetModelsByTouchScreenSupport(bool isTouchScreenRequired)
+        {
+            return FilterModelsUtility.FilterByTouchScreenSupport(isTouchScreenRequired, _repository.GetAllModelsSpecifications());
+        }
+
+        [HttpGet("ContinuousPatientMonitoringSystem/resolution/{resolution}")]
+        public IEnumerable<ModelsSpecification> GetModelsByMonitorResolution(string resolution)
+        {
+            return FilterModelsUtility.FilterByMonitorResolution(resolution, _repository.GetAllModelsSpecifications());
+        }
+
+        [HttpGet("ContinuousPatientMonitoringSystem/batterySupport/{batterySupport}")]
+        public IEnumerable<ModelsSpecification> GetModelsByBatterySupport(string batterySupport)
+        {
+            return FilterModelsUtility.FilterByBatterySupport(batterySupport, _repository.GetAllModelsSpecifications());
+        }
+
+        [HttpGet("ContinuousPatientMonitoringSystem/multiPatientSupport/{multiPatientSupport}")]
+        public IEnumerable<ModelsSpecification> GetModelsByMultiPatientSupport(string multiPatientSupport)
+        {
+            return FilterModelsUtility.FilterByMultiPatientSupport(multiPatientSupport, _repository.GetAllModelsSpecifications());
         }
 
     }
