@@ -21,6 +21,8 @@ namespace PurchaseAssistantWebApp
             services.AddControllers();
             
             services.AddSingleton<Repository.IModelsSpecificationDataRepository, Repository.ModelsSpecificationDataRepository>();
+            services.AddSingleton<Repository.ICallSetupRequestDataRepository, Repository.CallSetupRequestDataRepository>();
+            services.AddSingleton<Repository.ISalesRepresentativeDataRepository, Repository.SalesRepresentativeDataRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

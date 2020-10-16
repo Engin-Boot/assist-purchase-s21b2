@@ -10,7 +10,9 @@ namespace PurchaseAssistantWebApp.Repository
 
         HttpStatusCode AddNewCallSetupRequest(CallSetupRequest newRequest);
 
-        HttpStatusCode UpdateCallSetupRequest(long id, CallSetupRequest request);
+        HttpStatusCode UpdateCallSetupRequest(CallSetupRequest request);
+
+        HttpStatusCode UpdateCallSetupRequestStatus(long id, bool isRequestCompleted);
 
         HttpStatusCode DeleteCallSetupRequest(long id);
     }

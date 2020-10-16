@@ -24,9 +24,10 @@ namespace PurchaseAssistantWebApp.Controllers
 
         // POST api/<ModelsSpecificationController>
         [HttpPost]
-        public void Post([FromBody] Models.ModelsSpecification newModelSpecification)
+        public ActionResult Post([FromBody] Models.ModelsSpecification newModelSpecification)
         {
             _repository.AddNewModelsSpecification(newModelSpecification);
+            return Ok();
         }
 
         // PUT api/<ModelsSpecificationController>/5
