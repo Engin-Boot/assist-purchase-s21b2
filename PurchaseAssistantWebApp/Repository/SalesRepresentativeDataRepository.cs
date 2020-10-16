@@ -11,7 +11,7 @@ namespace PurchaseAssistantWebApp.Repository
 
         public SalesRepresentativeDataRepository()
         {
-
+            _salesRepresentativesDb.Add(new SalesRepresentative { Id = 1, Name = "Tripti", Email = "sainitripti5@gmail.com", DepartmentRegion = "India" });
         }
         public HttpStatusCode AddNewSalesRepresentative(SalesRepresentative newSalesRepresentativeInfo)
         {

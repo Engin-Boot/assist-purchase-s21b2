@@ -50,7 +50,7 @@ namespace PurchaseAssistantWebApp.Repository
                     requestsDb[i].Organisation = request.Organisation;
                     requestsDb[i].PointOfContactName = request.PointOfContactName;
                     requestsDb[i].Region = request.Region;
-                    requestsDb[i].SelectedModels = new List<long>(request.SelectedModels);
+                    requestsDb[i].SelectedModels = new List<string>(request.SelectedModels);
                     return HttpStatusCode.OK;
                 }
             }

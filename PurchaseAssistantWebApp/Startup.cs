@@ -23,6 +23,7 @@ namespace PurchaseAssistantWebApp
             services.AddSingleton<Repository.IModelsSpecificationDataRepository, Repository.ModelsSpecificationDataRepository>();
             services.AddSingleton<Repository.ICallSetupRequestDataRepository, Repository.CallSetupRequestDataRepository>();
             services.AddSingleton<Repository.ISalesRepresentativeDataRepository, Repository.SalesRepresentativeDataRepository>();
+            services.AddSingleton<Utilities.IAlerter, Utilities.AlertByEmail>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

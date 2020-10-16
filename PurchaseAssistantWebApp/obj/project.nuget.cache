@@ -1,8 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "w5EADIbtpCVFkvFpoFbBzo2aMxPvEiGIYqCUwV1i4qf1MK6rFmmDKzSEFWgSatDZ68dbs1MkocTiOrsTOaOw1w==",
+  "dgSpecHash": "Flhtnqri9PUviUpjkp3fNXIYPuU04umBc3B+7y9JZDnrwcWep+91QIb5z8DLwMo1+sVSGLbXgx16C7gJ5AVz8A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Tripti Saini\\.nuget\\packages\\mailkit\\2.9.0\\mailkit.2.9.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\Tripti Saini\\.nuget\\packages\\mimekit\\2.9.2\\mimekit.2.9.2.nupkg.sha512",
+    "C:\\Users\\Tripti Saini\\.nuget\\packages\\portable.bouncycastle\\1.8.5\\portable.bouncycastle.1.8.5.nupkg.sha512",
+    "C:\\Users\\Tripti Saini\\.nuget\\packages\\system.reflection.typeextensions\\4.4.0\\system.reflection.typeextensions.4.4.0.nupkg.sha512",
+    "C:\\Users\\Tripti Saini\\.nuget\\packages\\system.security.cryptography.cng\\4.7.0\\system.security.cryptography.cng.4.7.0.nupkg.sha512",
+    "C:\\Users\\Tripti Saini\\.nuget\\packages\\system.security.cryptography.pkcs\\4.7.0\\system.security.cryptography.pkcs.4.7.0.nupkg.sha512",
+    "C:\\Users\\Tripti Saini\\.nuget\\packages\\system.text.encoding.codepages\\4.4.0\\system.text.encoding.codepages.4.4.0.nupkg.sha512"
+  ],
   "logs": []
 }

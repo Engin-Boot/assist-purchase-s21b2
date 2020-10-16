@@ -14,7 +14,8 @@ namespace PurchaseAssistantWebApp.Models
 
         public string Email { get; set; }
 
-        public IEnumerable<long> SelectedModels { get; set; }
+        // This property will store list of strings as "ProductName ProductKey" e.g. "IntelliVue X3"
+        public IEnumerable<string> SelectedModels { get; set; }
 
         public bool isRequestCompleted { get; set; }
     }

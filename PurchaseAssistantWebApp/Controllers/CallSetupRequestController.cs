@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using PurchaseAssistantWebApp.Models;
 
@@ -14,9 +11,15 @@ namespace PurchaseAssistantWebApp.Controllers
     public class CallSetupRequestController : ControllerBase
     {
         private readonly Repository.ICallSetupRequestDataRepository _repository;
-        public CallSetupRequestController(Repository.ICallSetupRequestDataRepository repository)
+        private readonly Repository.ISalesRepresentativeDataRepository _salesRepresentativeRepository;
+        private readonly Utilities.IAlerter _alerter;
+        public CallSetupRequestController(Repository.ICallSetupRequestDataRepository repository, 
+            Repository.ISalesRepresentativeDataRepository salesRepresentativeRepository, 
+            Utilities.IAlerter alerter)
         {
             _repository = repository;
+            _salesRepresentativeRepository = salesRepresentativeRepository;
+            _alerter = alerter;
         }
 
         // GET: api/<CallSetupRequestController>
@@ -31,6 +34,7 @@ namespace PurchaseAssistantWebApp.Controllers
         public void Post([FromBody] CallSetupRequest newRequest)
         {
             _repository.AddNewCallSetupRequest(newRequest);
+            _alerter.SendAlert(newRequest, _salesRepresentativeRepository.GetAllSalesRepresentativeByRegion(newRequest.Region));
         }
 
         // PUT api/<CallSetupRequestController>

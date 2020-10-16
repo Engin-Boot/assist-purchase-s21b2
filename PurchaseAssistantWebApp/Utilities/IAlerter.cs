@@ -1,7 +1,10 @@
-﻿namespace PurchaseAssistantWebApp.Utilities
+﻿using PurchaseAssistantWebApp.Models;
+using System.Collections.Generic;
+
+namespace PurchaseAssistantWebApp.Utilities
 {
-    interface IAlerter
+    public interface IAlerter
     {
-        public void SendAlert(Models.CallSetupRequest requestInfo);
+        public void SendAlert(Models.CallSetupRequest requestInfo, IEnumerable<SalesRepresentative> salesRepresentativesInCustomerRegion);
     }
 }
