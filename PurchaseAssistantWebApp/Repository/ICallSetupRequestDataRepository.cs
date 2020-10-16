@@ -4,7 +4,7 @@ using System.Net;
 
 namespace PurchaseAssistantWebApp.Repository
 {
-    interface ICallSetupRequestDataRepository
+    public interface ICallSetupRequestDataRepository
     {
         IEnumerable<CallSetupRequest> GetAllCallSetupRequest();
 

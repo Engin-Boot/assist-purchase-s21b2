@@ -10,7 +10,7 @@ namespace PurchaseAssistantWebApp.Repository
 
         HttpStatusCode AddNewModelsSpecification(ModelsSpecification newModelsSpecification);
 
-        HttpStatusCode UpdateModelsSpecification(long id, ModelsSpecification updatedModelsSpecification);
+        HttpStatusCode UpdateModelsSpecification(ModelsSpecification updatedModelsSpecification);
 
         HttpStatusCode DeleteModelsSpecification(long id);
 

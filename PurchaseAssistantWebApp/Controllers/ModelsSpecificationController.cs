@@ -30,11 +30,11 @@ namespace PurchaseAssistantWebApp.Controllers
             return Ok();
         }
 
-        // PUT api/<ModelsSpecificationController>/5
-        [HttpPut("{id}")]
-        public void Put(long id, [FromBody] Models.ModelsSpecification updatedModelSpecification)
+        // PUT api/<ModelsSpecificationController>
+        [HttpPut]
+        public void Put([FromBody] Models.ModelsSpecification updatedModelSpecification)
         {
-            _repository.UpdateModelsSpecification(id, updatedModelSpecification);
+            _repository.UpdateModelsSpecification(updatedModelSpecification);
         }
 
         // DELETE api/<ModelsSpecificationController>/5

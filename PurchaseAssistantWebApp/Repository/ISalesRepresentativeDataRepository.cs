@@ -4,7 +4,7 @@ using System.Net;
 
 namespace PurchaseAssistantWebApp.Repository
 {
-    interface ISalesRepresentativeDataRepository
+    public interface ISalesRepresentativeDataRepository
     {
         IEnumerable<SalesRepresentative> GetAllSalesRepresentative();
 
