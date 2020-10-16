@@ -7,11 +7,11 @@ namespace PurchaseAssistantWebApp.Repository
 {
     public class ModelsSpecificationDataRepository : IModelsSpecificationDataRepository
     {
-        List<ModelsSpecification> models = new List<ModelsSpecification>();
+        List<ModelsSpecification> modelsDb = new List<ModelsSpecification>();
         public ModelsSpecificationDataRepository()
         {
             // Temporary model for sample test run
-            models.Add(new ModelsSpecification { 
+            modelsDb.Add(new ModelsSpecification { 
                 Id = 00001, 
                 BatterySupport = "5hr", 
                 Description = "description", 
@@ -27,7 +27,7 @@ namespace PurchaseAssistantWebApp.Repository
         }
         public IEnumerable<ModelsSpecification> GetAllModelsSpecifications()
         {
-            return models;
+            return modelsDb;
         }
 
         public HttpStatusCode AddNewModelsSpecification(ModelsSpecification newModelsSpecification)
