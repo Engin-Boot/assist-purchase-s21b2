@@ -10,12 +10,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+           dotnet-version: 3.1.101
       
       - name: Install resharper
         run: dotnet tool install -g JetBrains.ReSharper.GlobalTools
-      
-      - name: Install MailKit
-        run: dotnet add package MailKit --version 2.9.0
         
       - name: Run resharper inspection
         run: jb inspectcode PurchaseAssistantWebApp.sln /output=insreport.xml
