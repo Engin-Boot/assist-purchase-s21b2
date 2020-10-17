@@ -3,7 +3,6 @@ using MailKit.Security;
 using MimeKit;
 using MimeKit.Text;
 using PurchaseAssistantWebApp.Models;
-using System;
 using System.Collections.Generic;
 using System.Text;
 
