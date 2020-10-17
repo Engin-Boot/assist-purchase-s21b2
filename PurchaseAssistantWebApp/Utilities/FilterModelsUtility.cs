@@ -7,7 +7,7 @@ namespace PurchaseAssistantWebApp.Utilities
 {
     public static class FilterModelsUtility
     {
-        public static IEnumerable<ModelsSpecification> ApplyAllFilters(IEnumerable<ModelsSpecification> allModels, SearchFilter searchRequest)
+        public static IEnumerable<ModelsSpecification> ApplyAllFilters(IEnumerable<ModelsSpecification> allModels, SearchQuery searchRequest)
         {
             var filteredModels = FilterById(searchRequest.Id, allModels);
             filteredModels = FilterByProductName(searchRequest.ProductName, filteredModels);
@@ -23,9 +23,14 @@ namespace PurchaseAssistantWebApp.Utilities
         {
             if (string.IsNullOrEmpty(id)) return models;
 
-            var modelId = long.Parse(id);
-
-            return models.Where(model => model.Id == modelId);
+            if (long.TryParse(id, out var modelId))
+            {
+                return models.Where(model => model.Id == modelId);
+            }
+            else
+            {
+                throw new ArgumentException("Query Argument 'id' is invalid. Id must be a long number.","id");
+            }
         }
 
         public static IEnumerable<ModelsSpecification> FilterByProductName(string productName, IEnumerable<ModelsSpecification> models)
@@ -46,9 +51,14 @@ namespace PurchaseAssistantWebApp.Utilities
         {
             if (string.IsNullOrEmpty(portability)) return models;
             
-            var isPortable = bool.Parse(portability);
-
-            return models.Where(model => model.Portable == isPortable);
+            if(bool.TryParse(portability, out var isPortable))
+            {
+                return models.Where(model => model.Portable == isPortable);
+            }
+            else
+            {
+                throw new ArgumentException("Query Argument 'portability' is invalid. It must be a boolean value (either true or false).", "portability");
+            }    
         }
         public static IEnumerable<ModelsSpecification> FilterByBatterySupport(string batterySupport, IEnumerable<ModelsSpecification> models)
         {
@@ -67,9 +77,14 @@ namespace PurchaseAssistantWebApp.Utilities
         {
             if (string.IsNullOrEmpty(touchScreenSupport)) return models;
 
-            var isTouchScreenRequired = bool.Parse(touchScreenSupport);
-
-            return models.Where(model => model.TouchScreenSupport == isTouchScreenRequired);
+            if (bool.TryParse(touchScreenSupport, out var isTouchScreenRequired))
+            {
+                return models.Where(model => model.TouchScreenSupport == isTouchScreenRequired);
+            }
+            else
+            {
+                throw new ArgumentException("Query Argument 'touchScreenSupport' is invalid. It must be a valid boolean value (either true or false).", "touchScreenSupport");
+            }
         }
     }
 }

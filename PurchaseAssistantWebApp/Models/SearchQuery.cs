@@ -1,6 +1,6 @@
 ﻿namespace PurchaseAssistantWebApp.Models
 {
-    public class SearchFilter
+    public class SearchQuery
     {
         public string Id { get; set; }
         public string ProductName { get; set; }

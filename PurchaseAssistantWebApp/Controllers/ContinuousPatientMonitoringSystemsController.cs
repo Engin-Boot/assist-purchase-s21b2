@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,9 +19,17 @@ namespace PurchaseAssistantWebApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult Get([FromQuery] SearchFilter request)
+        public ActionResult Get([FromQuery] SearchQuery request)
         {
-            return Ok(Utilities.FilterModelsUtility.ApplyAllFilters(_repository.GetAllModelsSpecifications(), request));
+            try
+            {
+                IEnumerable<ModelsSpecification> filteredModelResult = Utilities.FilterModelsUtility.ApplyAllFilters(_repository.GetAllModelsSpecifications(), request);
+                return Ok(filteredModelResult);
+            }
+            catch(ArgumentException exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
 
     }
