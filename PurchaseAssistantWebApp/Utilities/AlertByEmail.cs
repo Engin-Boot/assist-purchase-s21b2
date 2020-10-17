@@ -34,7 +34,7 @@ namespace PurchaseAssistantWebApp.Utilities
             // send email
             using var smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("s21b2team@gmail.com", "s21b2@philips");
+            smtp.Authenticate("s21b2team@gmail.com", "");
 
             foreach(SalesRepresentative salesRepresentative in salesRepresentativesInCustomerRegion)
             {
