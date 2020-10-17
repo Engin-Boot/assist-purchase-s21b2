@@ -8,12 +8,10 @@ namespace PurchaseAssistantWebApp.Repository
     {
         IEnumerable<CallSetupRequest> GetAllCallSetupRequest();
 
-        HttpStatusCode AddNewCallSetupRequest(CallSetupRequest newRequest);
+        void AddNewCallSetupRequest(CallSetupRequest newRequest);
 
-        HttpStatusCode UpdateCallSetupRequest(CallSetupRequest request);
+        void UpdateCallSetupRequest(CallSetupRequest request);
 
-        HttpStatusCode UpdateCallSetupRequestStatus(long id, bool isRequestCompleted);
-
-        HttpStatusCode DeleteCallSetupRequest(long id);
+        void DeleteCallSetupRequest(string id);
     }
 }

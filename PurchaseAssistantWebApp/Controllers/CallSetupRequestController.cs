@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using PurchaseAssistantWebApp.Models;
 
@@ -31,24 +32,52 @@ namespace PurchaseAssistantWebApp.Controllers
 
         // POST api/<CallSetupRequestController>
         [HttpPost]
-        public void Post([FromBody] CallSetupRequest newRequest)
+        public ActionResult Post([FromBody] CallSetupRequest newRequest)
         {
-            _repository.AddNewCallSetupRequest(newRequest);
-            _alerter.SendAlert(newRequest, _salesRepresentativeRepository.GetAllSalesRepresentativeByRegion(newRequest.Region));
+            try
+            {
+                _repository.AddNewCallSetupRequest(newRequest);
+                _alerter.SendAlert(newRequest, _salesRepresentativeRepository.GetAllSalesRepresentativeByRegion(newRequest.Region));
+                return Ok();
+            }
+            catch(ArgumentException exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
 
         // PUT api/<CallSetupRequestController>
         [HttpPut]
-        public void Put([FromBody] CallSetupRequest request)
+        public ActionResult Put([FromBody] CallSetupRequest request)
         {
-            _repository.UpdateCallSetupRequest(request);
+            try
+            {
+                _repository.UpdateCallSetupRequest(request);
+                return Ok();
+            }
+            catch(ArgumentException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+            catch(KeyNotFoundException exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
 
         // DELETE api/<CallSetupRequestController>/5
         [HttpDelete("{id}")]
-        public void Delete(long id)
+        public ActionResult Delete(string id)
         {
-            _repository.DeleteCallSetupRequest(id);
+            try
+            {
+                _repository.DeleteCallSetupRequest(id);
+                return Ok();
+            }
+            catch(KeyNotFoundException exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
     }
 }

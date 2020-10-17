@@ -1,7 +1,7 @@
 ﻿using PurchaseAssistantWebApp.Models;
 using System;
 using System.Collections.Generic;
-using System.Net;
+using System.Linq;
 
 namespace PurchaseAssistantWebApp.Repository
 {
@@ -13,63 +13,73 @@ namespace PurchaseAssistantWebApp.Repository
             return requestsDb;
         }
 
-        public HttpStatusCode AddNewCallSetupRequest(CallSetupRequest newRequest)
+        private void ValidateField(string name, string value)
         {
+            if (String.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException(name, "Customer detail required: " + name + " cannot be null or empty.");
+            }
+        }
+
+        private void ValidateCallSetupRequestData(CallSetupRequest request)
+        {
+            ValidateField("serviceRequestId", request.ServiceRequestId);
+            ValidateField("email", request.Email);
+            ValidateField("organisation", request.Organisation);
+            ValidateField("pointOfContactName", request.PointOfContactName);
+            ValidateField("region", request.Region);
+
+            if (request.SelectedModels==null || !request.SelectedModels.Any())
+            {
+                throw new ArgumentNullException("selectedModels", "Selected models cannot be null or empty. Please select atleast one model to make a request.");
+            }
+        }
+
+        public void AddNewCallSetupRequest(CallSetupRequest newRequest)
+        {
+            ValidateCallSetupRequestData(newRequest);
+
             for (var i = 0; i < requestsDb.Count; i++)
             {
-                if (requestsDb[i].Id == newRequest.Id)
+                if (requestsDb[i].ServiceRequestId.Equals(newRequest.ServiceRequestId))
                 {
-                    return HttpStatusCode.BadRequest;
+                    throw new ArgumentException("A Call Setup Request with " + newRequest.ServiceRequestId + " key already exists.","id");
                 }
             }
             requestsDb.Add(newRequest);
-            return HttpStatusCode.OK;
         }
 
-        public HttpStatusCode DeleteCallSetupRequest(long id)
+        public void DeleteCallSetupRequest(string id)
         {
             int totalRequests = requestsDb.Count;
             for (var i = 0; i < totalRequests; i++)
             {
-                if (requestsDb[i].Id == id)
+                if (requestsDb[i].ServiceRequestId.Equals(id))
                 {
                     requestsDb.RemoveAt(i);
-                    return HttpStatusCode.OK;
+                    return;
                 }
             }
-            return HttpStatusCode.NotFound;
+            throw new KeyNotFoundException("Delete operation failed. Call Setup Request with " + id + " key does not exist.");
         }
 
-        public HttpStatusCode UpdateCallSetupRequest(CallSetupRequest request)
+        public void UpdateCallSetupRequest(CallSetupRequest request)
         {
+            ValidateCallSetupRequestData(request);
+
             for (var i = 0; i < requestsDb.Count; i++)
             {
-                if (requestsDb[i].Id == request.Id)
+                if (requestsDb[i].ServiceRequestId.Equals(request.ServiceRequestId))
                 {
                     requestsDb[i].Email = request.Email;
                     requestsDb[i].Organisation = request.Organisation;
                     requestsDb[i].PointOfContactName = request.PointOfContactName;
                     requestsDb[i].Region = request.Region;
                     requestsDb[i].SelectedModels = new List<string>(request.SelectedModels);
-                    return HttpStatusCode.OK;
+                    return;
                 }
             }
-
-            return HttpStatusCode.NotFound;
-        }
-
-        public HttpStatusCode UpdateCallSetupRequestStatus(long id, bool isRequestCompleted)
-        {
-            for (var i = 0; i < requestsDb.Count; i++)
-            {
-                if (requestsDb[i].Id == id)
-                {
-                    requestsDb[i].isRequestCompleted = isRequestCompleted;
-                    return HttpStatusCode.OK;
-                }
-            }
-
-            return HttpStatusCode.NotFound;
+            throw new KeyNotFoundException("Update operation failed. Call Setup Request with " + request.ServiceRequestId + " key does not exist.");
         }
     }
 }

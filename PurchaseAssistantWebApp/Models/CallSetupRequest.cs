@@ -4,7 +4,7 @@ namespace PurchaseAssistantWebApp.Models
 {
     public class CallSetupRequest
     {
-        public long Id { get; set; }
+        public string ServiceRequestId { get; set; }
 
         public string PointOfContactName { get; set; }
 
@@ -16,7 +16,5 @@ namespace PurchaseAssistantWebApp.Models
 
         // This property will store list of strings as "ProductName ProductKey" e.g. "IntelliVue X3"
         public IEnumerable<string> SelectedModels { get; set; }
-
-        public bool isRequestCompleted { get; set; }
     }
 }
