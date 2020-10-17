@@ -41,3 +41,4 @@ C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\Purcha
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\bin\Debug\netcoreapp3.1\MimeKit.dll
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.csproj.CopyComplete
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.csprojAssemblyReference.cache

@@ -7,50 +7,69 @@ namespace PurchaseAssistantWebApp.Utilities
 {
     public static class FilterModelsUtility
     {
-        public static IEnumerable<ModelsSpecification> FilterById(long id, IEnumerable<ModelsSpecification> models)
+        public static IEnumerable<ModelsSpecification> ApplyAllFilters(IEnumerable<ModelsSpecification> allModels, SearchFilter searchRequest)
         {
-            return models.Where(model => model.Id == id);
+            var filteredModels = FilterById(searchRequest.Id, allModels);
+            filteredModels = FilterByProductName(searchRequest.ProductName, filteredModels);
+            filteredModels = FilterByProductKey(searchRequest.ProductKey, filteredModels);
+            filteredModels = FilterByPortability(searchRequest.Portability, filteredModels);
+            filteredModels = FilterByBatterySupport(searchRequest.BatterySupport, filteredModels);
+            filteredModels = FilterByMultiPatientSupport(searchRequest.MultiPatientSupport, filteredModels);
+            filteredModels = FilterByTouchScreenSupport(searchRequest.TouchScreenSupport, filteredModels);
+
+            return filteredModels;
+        }
+        public static IEnumerable<ModelsSpecification> FilterById(string id, IEnumerable<ModelsSpecification> models)
+        {
+            if (string.IsNullOrEmpty(id)) return models;
+
+            var modelId = long.Parse(id);
+
+            return models.Where(model => model.Id == modelId);
         }
 
         public static IEnumerable<ModelsSpecification> FilterByProductName(string productName, IEnumerable<ModelsSpecification> models)
         {
+            if (string.IsNullOrEmpty(productName)) return models;
+
             return models.Where(model => model.ProductName.Equals(productName));
         }
 
         public static IEnumerable<ModelsSpecification> FilterByProductKey(string productKey, IEnumerable<ModelsSpecification> models)
         {
+            if (string.IsNullOrEmpty(productKey)) return models;
+
             return models.Where(model => model.ProductKey.Equals(productKey));
         }
 
-        public static IEnumerable<ModelsSpecification> FilterByPortability(bool isPortable, IEnumerable<ModelsSpecification> models)
+        public static IEnumerable<ModelsSpecification> FilterByPortability(string portability, IEnumerable<ModelsSpecification> models)
         {
+            if (string.IsNullOrEmpty(portability)) return models;
+            
+            var isPortable = bool.Parse(portability);
+
             return models.Where(model => model.Portable == isPortable);
         }
-
-        public static IEnumerable<ModelsSpecification> FilterByCompactLevel(bool isCompact, IEnumerable<ModelsSpecification> models)
-        {
-            double maxScreenSize = isCompact ? 10.0 : Double.MaxValue;
-            return models.Where(model => model.ScreenSize < maxScreenSize);
-        }
-
-        public static IEnumerable<ModelsSpecification> FilterByTouchScreenSupport(bool isTouchScreenRequired, IEnumerable<ModelsSpecification> models)
-        {
-            return models.Where(model => model.TouchScreenSupport == isTouchScreenRequired);
-        }
-
-        public static IEnumerable<ModelsSpecification> FilterByMonitorResolution(string resolution, IEnumerable<ModelsSpecification> models)
-        {
-            return models.Where(model => model.MonitorResolution.Equals(resolution));
-        }
-
         public static IEnumerable<ModelsSpecification> FilterByBatterySupport(string batterySupport, IEnumerable<ModelsSpecification> models)
         {
+            if (string.IsNullOrEmpty(batterySupport)) return models;
+
             return models.Where(model => model.BatterySupport.Equals(batterySupport));
         }
 
         public static IEnumerable<ModelsSpecification> FilterByMultiPatientSupport(string multiPatientSupport, IEnumerable<ModelsSpecification> models)
         {
+            if (string.IsNullOrEmpty(multiPatientSupport)) return models;
+
             return models.Where(model => model.MultiPatientSupport.Equals(multiPatientSupport));
+        }
+        public static IEnumerable<ModelsSpecification> FilterByTouchScreenSupport(string touchScreenSupport, IEnumerable<ModelsSpecification> models)
+        {
+            if (string.IsNullOrEmpty(touchScreenSupport)) return models;
+
+            var isTouchScreenRequired = bool.Parse(touchScreenSupport);
+
+            return models.Where(model => model.TouchScreenSupport == isTouchScreenRequired);
         }
     }
 }
