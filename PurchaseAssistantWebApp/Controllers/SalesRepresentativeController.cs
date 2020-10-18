@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using PurchaseAssistantWebApp.Models;
 
@@ -25,23 +26,51 @@ namespace PurchaseAssistantWebApp.Controllers
 
         // POST api/<SalesRepresentativeController>
         [HttpPost]
-        public void Post([FromBody] SalesRepresentative newSalesRepresentative)
+        public ActionResult Post([FromBody] SalesRepresentative newSalesRepresentative)
         {
-            _repository.AddNewSalesRepresentative(newSalesRepresentative);
+            try
+            {
+                _repository.AddNewSalesRepresentative(newSalesRepresentative);
+                return Ok();
+            }
+            catch(ArgumentException exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
 
         // PUT api/<SalesRepresentativeController>
         [HttpPut]
-        public void Put([FromBody] SalesRepresentative salesRepresentative)
+        public ActionResult Put([FromBody] SalesRepresentative salesRepresentative)
         {
-            _repository.UpdateSalesRepresentative(salesRepresentative);
+            try
+            {
+                _repository.UpdateSalesRepresentative(salesRepresentative);
+                return Ok();
+            }
+            catch(ArgumentException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+            catch(KeyNotFoundException exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
 
-        // DELETE api/<SalesRepresentativeController>/5
+        // DELETE api/<SalesRepresentativeController>/SR001
         [HttpDelete("{id}")]
-        public void Delete(long id)
+        public ActionResult Delete(string id)
         {
-            _repository.DeleteSalesRepresentative(id);
+            try
+            {
+                _repository.DeleteSalesRepresentative(id);
+                return Ok();
+            }
+            catch(KeyNotFoundException exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
     }
 }
