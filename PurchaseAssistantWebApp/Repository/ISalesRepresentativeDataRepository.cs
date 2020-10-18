@@ -10,11 +10,11 @@ namespace PurchaseAssistantWebApp.Repository
 
         IEnumerable<SalesRepresentative> GetAllSalesRepresentativeByRegion(string region);
 
-        void AddNewSalesRepresentative(SalesRepresentative newSalesRepresentativeInfo);
+        string AddNewSalesRepresentative(SalesRepresentative newSalesRepresentativeInfo);
 
-        void UpdateSalesRepresentative(SalesRepresentative salesRepresentativeInfo);
+        string UpdateSalesRepresentative(SalesRepresentative salesRepresentativeInfo);
 
-        void DeleteSalesRepresentative(string id);
+        string DeleteSalesRepresentative(string id);
 
     }
 }
