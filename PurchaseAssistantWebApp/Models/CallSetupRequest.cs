@@ -4,7 +4,7 @@ namespace PurchaseAssistantWebApp.Models
 {
     public class CallSetupRequest
     {
-        public string ServiceRequestId { get; set; }
+        public string RequestId { get; set; }
 
         public string PointOfContactName { get; set; }
 

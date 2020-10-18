@@ -8,6 +8,19 @@ namespace PurchaseAssistantWebApp.Repository
     public class CallSetupRequestDataRepository : ICallSetupRequestDataRepository
     {
         List<CallSetupRequest> requestsDb = new List<CallSetupRequest>();
+
+        public CallSetupRequestDataRepository()
+        {
+
+        }
+
+        public CallSetupRequestDataRepository(List<CallSetupRequest> initialRequestDb)
+        {
+            foreach (CallSetupRequest requestInfo in initialRequestDb)
+            {
+                requestsDb.Add(requestInfo);
+            }
+        }
         public IEnumerable<CallSetupRequest> GetAllCallSetupRequest()
         {
             return requestsDb;
@@ -23,7 +36,7 @@ namespace PurchaseAssistantWebApp.Repository
 
         private void ValidateCallSetupRequestData(CallSetupRequest request)
         {
-            ValidateField("serviceRequestId", request.ServiceRequestId);
+            ValidateField("requestId", request.RequestId);
             ValidateField("email", request.Email);
             ValidateField("organisation", request.Organisation);
             ValidateField("pointOfContactName", request.PointOfContactName);
@@ -35,51 +48,52 @@ namespace PurchaseAssistantWebApp.Repository
             }
         }
 
-        public void AddNewCallSetupRequest(CallSetupRequest newRequest)
+        public string AddNewCallSetupRequest(CallSetupRequest newRequest)
         {
             ValidateCallSetupRequestData(newRequest);
 
             for (var i = 0; i < requestsDb.Count; i++)
             {
-                if (requestsDb[i].ServiceRequestId.Equals(newRequest.ServiceRequestId))
+                if (requestsDb[i].RequestId.Equals(newRequest.RequestId))
                 {
-                    throw new ArgumentException("A Call Setup Request with " + newRequest.ServiceRequestId + " key already exists.","id");
+                    throw new ArgumentException("A Call Setup Request with " + newRequest.RequestId + " key already exists.","requestId");
                 }
             }
             requestsDb.Add(newRequest);
+            return String.Format("Call Setup Request with id {0} added successfully!", newRequest.RequestId);
         }
 
-        public void DeleteCallSetupRequest(string id)
+        public string DeleteCallSetupRequest(string id)
         {
             int totalRequests = requestsDb.Count;
             for (var i = 0; i < totalRequests; i++)
             {
-                if (requestsDb[i].ServiceRequestId.Equals(id))
+                if (requestsDb[i].RequestId.Equals(id))
                 {
                     requestsDb.RemoveAt(i);
-                    return;
+                    return String.Format("Call Setup Request with id {0} deleted successfully!", id);
                 }
             }
             throw new KeyNotFoundException("Delete operation failed. Call Setup Request with " + id + " key does not exist.");
         }
 
-        public void UpdateCallSetupRequest(CallSetupRequest request)
+        public string UpdateCallSetupRequest(CallSetupRequest request)
         {
             ValidateCallSetupRequestData(request);
 
             for (var i = 0; i < requestsDb.Count; i++)
             {
-                if (requestsDb[i].ServiceRequestId.Equals(request.ServiceRequestId))
+                if (requestsDb[i].RequestId.Equals(request.RequestId))
                 {
                     requestsDb[i].Email = request.Email;
                     requestsDb[i].Organisation = request.Organisation;
                     requestsDb[i].PointOfContactName = request.PointOfContactName;
                     requestsDb[i].Region = request.Region;
                     requestsDb[i].SelectedModels = new List<string>(request.SelectedModels);
-                    return;
+                    return String.Format("Call Setup Request with id {0} updated successfully!", request.RequestId);
                 }
             }
-            throw new KeyNotFoundException("Update operation failed. Call Setup Request with " + request.ServiceRequestId + " key does not exist.");
+            throw new KeyNotFoundException("Update operation failed. Call Setup Request with " + request.RequestId + " key does not exist.");
         }
     }
 }

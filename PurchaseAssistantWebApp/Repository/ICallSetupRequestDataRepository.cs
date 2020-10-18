@@ -8,10 +8,10 @@ namespace PurchaseAssistantWebApp.Repository
     {
         IEnumerable<CallSetupRequest> GetAllCallSetupRequest();
 
-        void AddNewCallSetupRequest(CallSetupRequest newRequest);
+        string AddNewCallSetupRequest(CallSetupRequest newRequest);
 
-        void UpdateCallSetupRequest(CallSetupRequest request);
+        string UpdateCallSetupRequest(CallSetupRequest request);
 
-        void DeleteCallSetupRequest(string id);
+        string DeleteCallSetupRequest(string id);
     }
 }
