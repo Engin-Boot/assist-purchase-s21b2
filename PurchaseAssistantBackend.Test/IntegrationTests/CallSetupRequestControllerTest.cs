@@ -117,7 +117,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         [Fact]
         public async Task Put_WhenInvalidCallSetupRequestWithMissingRegionSentThenReturnHttpsStatusBadRequest()
         {
-            CallSetupRequest request = new CallSetupRequest
+            CallSetupRequest requestWithMissingRegion = new CallSetupRequest
             {
                 RequestId = "REQ015",
                 PointOfContactName = "James",
@@ -125,7 +125,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
                 Email = "james@xyz.com",
                 SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
             };
-            var response = await program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json"));
+            var response = await program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(requestWithMissingRegion), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
@@ -141,8 +141,8 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
                 PointOfContactName = "James",
                 Organisation = "XYZ Hospital",
                 Email = "james@xyz.com",
-                Region = "Italy",
-                SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
+                Region = "Malasia",
+                SelectedModels = new List<string> { "IntelliVue X3" }
             };
             var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newCallSetupRequest), Encoding.UTF8, "application/json"));
 

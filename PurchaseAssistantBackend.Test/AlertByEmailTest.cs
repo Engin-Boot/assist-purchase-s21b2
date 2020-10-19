@@ -52,7 +52,7 @@ namespace PurchaseAssistantBackend.Test
                 SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue MX40" }
             };
             IEnumerable<SalesRepresentative> testDb = new List<SalesRepresentative> {
-                new SalesRepresentative { Id = "SR001", Name = "Tripti", Email = "sainitripti5@gmail.com", DepartmentRegion = "India" } };
+                new SalesRepresentative { Id = "SR005", Name = "Tripti", Email = "sainitripti5@gmail.com", DepartmentRegion = "India" } };
             
             var IsEmailSent = alerter.SendAlert(request, testDb);
 

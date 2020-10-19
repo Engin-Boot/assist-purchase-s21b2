@@ -51,6 +51,37 @@ namespace PurchaseAssistantBackend.Test
             };
         }
 
+        private void TestModelInfoWithFirstModel(ModelsSpecification model)
+        {
+            Assert.Equal("IntelliVue", model.ProductName);
+            Assert.Equal("X3", model.ProductKey);
+            Assert.Equal("The Philips IntelliVue X3 is a compact, dual-purpose, transport patient monitor featuring intuitive smartphone-style operation and offering a scalable set of clinical measurements.", model.Description);
+            Assert.Equal("14500", model.Price);
+            Assert.Equal(65, model.Weight);
+            Assert.True(model.Portable);
+            Assert.Equal(6.1, model.ScreenSize);
+            Assert.True(model.TouchScreenSupport);
+            Assert.Equal("10*11", model.MonitorResolution);
+            Assert.Equal("NO", model.BatterySupport);
+            Assert.Equal("NO", model.MultiPatientSupport);
+        }
+
+        private void TestModelInfoWithSecondModel(ModelsSpecification model)
+        {
+            Assert.Equal("Intelli", model.ProductName);
+            Assert.Equal("MX40", model.ProductKey);
+            Assert.Equal("The IntelliVue MX40 patient wearable monitor gives you technology, intelligent design, and innovative features you expect from Philips – in a device light enough and small enough to be comfortably worn by ambulatory patients.",
+                model.Description);
+            Assert.Equal("37000", model.Price);
+            Assert.Equal(65, model.Weight);
+            Assert.True(model.Portable);
+            Assert.Equal(2.8, model.ScreenSize);
+            Assert.True(model.TouchScreenSupport);
+            Assert.Equal("10*11", model.MonitorResolution);
+            Assert.Equal("YES", model.BatterySupport);
+            Assert.Equal("NO", model.MultiPatientSupport);
+        }
+
         [Fact]
         public void WhenApplyFilterByIdWithNullOrEmptyIdThenReturnAllModels()
         {
@@ -82,17 +113,7 @@ namespace PurchaseAssistantBackend.Test
             Assert.Single(filteredModelsById);
 
             var model = filteredModelsById.First();
-            Assert.Equal("IntelliVue", model.ProductName);
-            Assert.Equal("X3", model.ProductKey);
-            Assert.Equal("The Philips IntelliVue X3 is a compact, dual-purpose, transport patient monitor featuring intuitive smartphone-style operation and offering a scalable set of clinical measurements.", model.Description);
-            Assert.Equal("14500", model.Price);
-            Assert.Equal(65, model.Weight);
-            Assert.True(model.Portable);
-            Assert.Equal(6.1, model.ScreenSize);
-            Assert.True(model.TouchScreenSupport);
-            Assert.Equal("10*11", model.MonitorResolution);
-            Assert.Equal("NO", model.BatterySupport);
-            Assert.Equal("NO", model.MultiPatientSupport);
+            TestModelInfoWithFirstModel(model);
         }
 
         [Fact]
@@ -112,17 +133,7 @@ namespace PurchaseAssistantBackend.Test
             Assert.Single(filteredModelsByProductName);
 
             var model = filteredModelsByProductName.First();
-            Assert.Equal("IntelliVue", model.ProductName);
-            Assert.Equal("X3", model.ProductKey);
-            Assert.Equal("The Philips IntelliVue X3 is a compact, dual-purpose, transport patient monitor featuring intuitive smartphone-style operation and offering a scalable set of clinical measurements.", model.Description);
-            Assert.Equal("14500", model.Price);
-            Assert.Equal(65, model.Weight);
-            Assert.True(model.Portable);
-            Assert.Equal(6.1, model.ScreenSize);
-            Assert.True(model.TouchScreenSupport);
-            Assert.Equal("10*11", model.MonitorResolution);
-            Assert.Equal("NO", model.BatterySupport);
-            Assert.Equal("NO", model.MultiPatientSupport);
+            TestModelInfoWithFirstModel(model);
         }
 
         [Fact]
@@ -142,17 +153,7 @@ namespace PurchaseAssistantBackend.Test
             Assert.Single(filteredModelsByProductKey);
 
             var model = filteredModelsByProductKey.First();
-            Assert.Equal("IntelliVue", model.ProductName);
-            Assert.Equal("X3", model.ProductKey);
-            Assert.Equal("The Philips IntelliVue X3 is a compact, dual-purpose, transport patient monitor featuring intuitive smartphone-style operation and offering a scalable set of clinical measurements.", model.Description);
-            Assert.Equal("14500", model.Price);
-            Assert.Equal(65, model.Weight);
-            Assert.True(model.Portable);
-            Assert.Equal(6.1, model.ScreenSize);
-            Assert.True(model.TouchScreenSupport);
-            Assert.Equal("10*11", model.MonitorResolution);
-            Assert.Equal("NO", model.BatterySupport);
-            Assert.Equal("NO", model.MultiPatientSupport);
+            TestModelInfoWithFirstModel(model);
         }
 
         [Fact]
@@ -187,31 +188,8 @@ namespace PurchaseAssistantBackend.Test
 
             var modelList = filteredModelsByPortability.ToList();
 
-            Assert.Equal("IntelliVue", modelList[0].ProductName);
-            Assert.Equal("X3", modelList[0].ProductKey);
-            Assert.Equal("The Philips IntelliVue X3 is a compact, dual-purpose, transport patient monitor featuring intuitive smartphone-style operation and offering a scalable set of clinical measurements.", 
-                modelList[0].Description);
-            Assert.Equal("14500", modelList[0].Price);
-            Assert.Equal(65, modelList[0].Weight);
-            Assert.True(modelList[0].Portable);
-            Assert.Equal(6.1, modelList[0].ScreenSize);
-            Assert.True(modelList[0].TouchScreenSupport);
-            Assert.Equal("10*11", modelList[0].MonitorResolution);
-            Assert.Equal("NO", modelList[0].BatterySupport);
-            Assert.Equal("NO", modelList[0].MultiPatientSupport);
-
-            Assert.Equal("Intelli", modelList[1].ProductName);
-            Assert.Equal("MX40", modelList[1].ProductKey);
-            Assert.Equal("The IntelliVue MX40 patient wearable monitor gives you technology, intelligent design, and innovative features you expect from Philips – in a device light enough and small enough to be comfortably worn by ambulatory patients.", 
-                modelList[1].Description);
-            Assert.Equal("37000", modelList[1].Price);
-            Assert.Equal(65, modelList[1].Weight);
-            Assert.True(modelList[1].Portable);
-            Assert.Equal(2.8, modelList[1].ScreenSize);
-            Assert.True(modelList[1].TouchScreenSupport);
-            Assert.Equal("10*11", modelList[1].MonitorResolution);
-            Assert.Equal("YES", modelList[1].BatterySupport);
-            Assert.Equal("NO", modelList[1].MultiPatientSupport);
+            TestModelInfoWithFirstModel(modelList[0]);
+            TestModelInfoWithSecondModel(modelList[1]);
         }
         [Fact]
         public void WhenApplyFilterByBatterySupportWithNullOrEmptyValueThenReturnAllModels()
@@ -294,31 +272,8 @@ namespace PurchaseAssistantBackend.Test
 
             var modelList = filteredModelsByTouchScreenSupport.ToList();
 
-            Assert.Equal("IntelliVue", modelList[0].ProductName);
-            Assert.Equal("X3", modelList[0].ProductKey);
-            Assert.Equal("The Philips IntelliVue X3 is a compact, dual-purpose, transport patient monitor featuring intuitive smartphone-style operation and offering a scalable set of clinical measurements.",
-                modelList[0].Description);
-            Assert.Equal("14500", modelList[0].Price);
-            Assert.Equal(65, modelList[0].Weight);
-            Assert.True(modelList[0].Portable);
-            Assert.Equal(6.1, modelList[0].ScreenSize);
-            Assert.True(modelList[0].TouchScreenSupport);
-            Assert.Equal("10*11", modelList[0].MonitorResolution);
-            Assert.Equal("NO", modelList[0].BatterySupport);
-            Assert.Equal("NO", modelList[0].MultiPatientSupport);
-
-            Assert.Equal("Intelli", modelList[1].ProductName);
-            Assert.Equal("MX40", modelList[1].ProductKey);
-            Assert.Equal("The IntelliVue MX40 patient wearable monitor gives you technology, intelligent design, and innovative features you expect from Philips – in a device light enough and small enough to be comfortably worn by ambulatory patients.",
-                modelList[1].Description);
-            Assert.Equal("37000", modelList[1].Price);
-            Assert.Equal(65, modelList[1].Weight);
-            Assert.True(modelList[1].Portable);
-            Assert.Equal(2.8, modelList[1].ScreenSize);
-            Assert.True(modelList[1].TouchScreenSupport);
-            Assert.Equal("10*11", modelList[1].MonitorResolution);
-            Assert.Equal("YES", modelList[1].BatterySupport);
-            Assert.Equal("NO", modelList[1].MultiPatientSupport);
+            TestModelInfoWithFirstModel(modelList[0]);
+            TestModelInfoWithSecondModel(modelList[1]);
         }
 
         [Fact]
@@ -330,18 +285,7 @@ namespace PurchaseAssistantBackend.Test
 
             Assert.Single(filteredModelsList);
 
-            Assert.Equal("Intelli", filteredModelsList[0].ProductName);
-            Assert.Equal("MX40", filteredModelsList[0].ProductKey);
-            Assert.Equal("The IntelliVue MX40 patient wearable monitor gives you technology, intelligent design, and innovative features you expect from Philips – in a device light enough and small enough to be comfortably worn by ambulatory patients.",
-                filteredModelsList[0].Description);
-            Assert.Equal("37000", filteredModelsList[0].Price);
-            Assert.Equal(65, filteredModelsList[0].Weight);
-            Assert.True(filteredModelsList[0].Portable);
-            Assert.Equal(2.8, filteredModelsList[0].ScreenSize);
-            Assert.True(filteredModelsList[0].TouchScreenSupport);
-            Assert.Equal("10*11", filteredModelsList[0].MonitorResolution);
-            Assert.Equal("YES", filteredModelsList[0].BatterySupport);
-            Assert.Equal("NO", filteredModelsList[0].MultiPatientSupport);
+            TestModelInfoWithSecondModel(filteredModelsList[0]);
 
             query = new SearchQuery { ProductName = "IntelliVue", ProductKey = "X3" };
             filteredModels = FilterModelsUtility.ApplyAllFilters(models, query);

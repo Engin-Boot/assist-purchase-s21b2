@@ -64,7 +64,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
                 Portable = true,
                 ScreenSize = 6.1,
                 TouchScreenSupport = true,
-                MonitorResolution = "10*11",
+                MonitorResolution = "10*14",
                 BatterySupport = "NO",
                 MultiPatientSupport = "NO",
             };
@@ -85,7 +85,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
                 Portable = true,
                 ScreenSize = 6.1,
                 TouchScreenSupport = true,
-                MonitorResolution = "10*11",
+                MonitorResolution = "10*16",
                 BatterySupport = "YES",
                 MultiPatientSupport = "NO",
             };
@@ -109,7 +109,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
                 Portable = true,
                 ScreenSize = 6.1,
                 TouchScreenSupport = true,
-                MonitorResolution = "10*11",
+                MonitorResolution = "10*15",
                 BatterySupport = "NO",
                 MultiPatientSupport = "NO",
             };

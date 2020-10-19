@@ -77,9 +77,9 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         [Fact]
         public async Task Put_WhenInvalidRequestWithMissingEmailSentThenReturnHttpsStatusBadRequest()
         {
-            SalesRepresentative salesRepresentative = new SalesRepresentative { Id = "SR0042", Name = "Ellie", DepartmentRegion = "Germany" };
+            SalesRepresentative salesRepresentativeWithoutEmail = new SalesRepresentative { Id = "SR0042", Name = "Ellie", DepartmentRegion = "Germany" };
 
-            var response = await program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(salesRepresentative), Encoding.UTF8, "application/json"));
+            var response = await program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(salesRepresentativeWithoutEmail), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
@@ -88,7 +88,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         public async Task Delete_WhenValidIdSentThenDeleteSuccessfullyAndReturnHttpsStatusOk()
         {
             // First add a new sales representative
-            SalesRepresentative newSalesRepresentative = new SalesRepresentative { Id = "SR0042", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "France" };
+            SalesRepresentative newSalesRepresentative = new SalesRepresentative { Id = "SR0042", Name = "jack", Email = "jack@gmail.com", DepartmentRegion = "France" };
 
             var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newSalesRepresentative), Encoding.UTF8, "application/json"));
 
