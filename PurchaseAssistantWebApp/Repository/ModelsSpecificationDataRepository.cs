@@ -8,7 +8,7 @@ namespace PurchaseAssistantWebApp.Repository
     public class ModelsSpecificationDataRepository : IModelsSpecificationDataRepository
     {
     
-        protected readonly List<ModelsSpecification> MonitoringItems = new List<ModelsSpecification>();
+        private readonly List<ModelsSpecification> _monitoringItems = new List<ModelsSpecification>();
 
         public ModelsSpecificationDataRepository()
         {
@@ -19,23 +19,23 @@ namespace PurchaseAssistantWebApp.Repository
         
         public IEnumerable<ModelsSpecification> GetAllModelsSpecifications()
         {
-            return MonitoringItems;
+            return _monitoringItems;
         }
 
         public HttpStatusCode AddNewModelsSpecification(ModelsSpecification newModelsSpecification)
         {
-            MonitoringItems.Add(newModelsSpecification);
+            _monitoringItems.Add(newModelsSpecification);
             return HttpStatusCode.OK;
         }
 
         public HttpStatusCode UpdateModelsSpecification(ModelsSpecification updatedModelsSpecification)
         {
             var currentProductId = updatedModelsSpecification.Id;
-            for (var i = 0; i < MonitoringItems.Count; i++)
-                if (MonitoringItems[i].Id == currentProductId)
+            for (var i = 0; i < _monitoringItems.Count; i++)
+                if (_monitoringItems[i].Id == currentProductId)
                 {
-                    MonitoringItems.RemoveAt(i);
-                    MonitoringItems.Add(updatedModelsSpecification);
+                    _monitoringItems.RemoveAt(i);
+                    _monitoringItems.Add(updatedModelsSpecification);
                     var message = HttpStatusCode.Accepted;
                     return message;
                 }
@@ -45,11 +45,10 @@ namespace PurchaseAssistantWebApp.Repository
 
         public HttpStatusCode DeleteModelsSpecification(long id)
         {
-            for (var i = 0; i < MonitoringItems.Count; i++)
-                if (MonitoringItems[i].Id == id)
+            for (var i = 0; i < _monitoringItems.Count; i++)
+                if (_monitoringItems[i].Id == id)
                 {
-                    var currentProduct = MonitoringItems[i];
-                    MonitoringItems.RemoveAt(i);
+                    _monitoringItems.RemoveAt(i);
                     var message = HttpStatusCode.Accepted;
                     return message;
                 }

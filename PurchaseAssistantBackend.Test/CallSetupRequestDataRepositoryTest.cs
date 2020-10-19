@@ -9,37 +9,41 @@ namespace PurchaseAssistantBackend.Test
 {
     public class CallSetupRequestDataRepositoryTest
     {
-        private ICallSetupRequestDataRepository repository;
+        private readonly ICallSetupRequestDataRepository _repository;
         public CallSetupRequestDataRepositoryTest()
         {
-            var requestsTestDb = new List<CallSetupRequest>();
-            
-            requestsTestDb.Add(new CallSetupRequest { 
-                RequestId = "REQ001", 
-                PointOfContactName = "James", 
-                Organisation = "XYZ Hospital", 
-                Email = "james@xyz.com", 
-                Region = "Italy", 
-                SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" } 
-            });
-
-            requestsTestDb.Add(new CallSetupRequest
+            var requestsTestDb = new List<CallSetupRequest>
             {
-                RequestId = "REQ002",
-                PointOfContactName = "Sara",
-                Organisation = "ABC Hospital",
-                Email = "sara@abc.com",
-                Region = "India",
-                SelectedModels = new List<string> { "IntelliVue X3" }
-            });
+                new CallSetupRequest
+                {
+                    RequestId = "REQ001",
+                    PointOfContactName = "James",
+                    Organisation = "XYZ Hospital",
+                    Email = "james@xyz.com",
+                    Region = "Italy",
+                    SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
+                },
 
-            repository = new CallSetupRequestDataRepository(requestsTestDb);
+                new CallSetupRequest
+                {
+                    RequestId = "REQ002",
+                    PointOfContactName = "Sara",
+                    Organisation = "ABC Hospital",
+                    Email = "sara@abc.com",
+                    Region = "India",
+                    SelectedModels = new List<string> { "IntelliVue X3" }
+                }
+            };
+
+            _repository = new CallSetupRequestDataRepository(requestsTestDb);
         }
 
         [Fact]
         public void WhenGetAllCallSetupRequestThenReturnAllRequests()
         {
-            var requests = repository.GetAllCallSetupRequest() as List<CallSetupRequest>;
+            var requests = _repository.GetAllCallSetupRequest() as List<CallSetupRequest>;
+
+            Assert.NotNull(requests);
 
             Assert.Equal(2, requests.Count);
 
@@ -61,7 +65,7 @@ namespace PurchaseAssistantBackend.Test
         [Fact]
         public void WhenAddCallSetupRequestWithValidFieldsAndUniqueIdThenReturnSuccessMessage()
         {
-            var message = repository.AddNewCallSetupRequest(
+            var message = _repository.AddNewCallSetupRequest(
                 new CallSetupRequest {
                     RequestId = "REQ003",
                     PointOfContactName = "George",
@@ -79,7 +83,7 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var message = repository.AddNewCallSetupRequest(
+                _ = _repository.AddNewCallSetupRequest(
                     new CallSetupRequest
                     {
                         RequestId = "REQ001",
@@ -92,8 +96,8 @@ namespace PurchaseAssistantBackend.Test
             }
             catch (ArgumentException exception)
             {
-                Assert.Equal("requestId", exception.ParamName);
-                Assert.Equal("A Call Setup Request with REQ001 key already exists. (Parameter 'requestId')", exception.Message);
+                Assert.Equal("RequestId", exception.ParamName);
+                Assert.Equal("A Call Setup Request with REQ001 key already exists. (Parameter 'RequestId')", exception.Message);
             }
         }
 
@@ -102,7 +106,7 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var message = repository.AddNewCallSetupRequest(
+                _ = _repository.AddNewCallSetupRequest(
                     new CallSetupRequest
                     {
                         RequestId = "REQ003",
@@ -110,13 +114,13 @@ namespace PurchaseAssistantBackend.Test
                         Organisation = "PQRS Hospital",
                         Email = "george@pqrs.com",
                         Region = "USA",
-                        SelectedModels = new List<string> { }
+                        SelectedModels = new List<string>()
                     });
             }
             catch (ArgumentNullException exception)
             {
-                Assert.Equal("selectedModels", exception.ParamName);
-                Assert.Equal("Selected models cannot be null or empty. Please select atleast one model to make a request. (Parameter 'selectedModels')", exception.Message);
+                Assert.Equal("SelectedModels", exception.ParamName);
+                Assert.Equal("Selected models cannot be null or empty. Please select atleast one model to make a request. (Parameter 'SelectedModels')", exception.Message);
             }
         }
 
@@ -124,7 +128,7 @@ namespace PurchaseAssistantBackend.Test
         [Fact]
         public void WhenUpdateCallSetupRequestWithValidFieldsAndExistingIdThenReturnSuccessMessage()
         {
-            var message = repository.UpdateCallSetupRequest(
+            var message = _repository.UpdateCallSetupRequest(
                 new CallSetupRequest
                 {
                     RequestId = "REQ001",
@@ -143,7 +147,7 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var message = repository.UpdateCallSetupRequest(
+                _ = _repository.UpdateCallSetupRequest(
                 new CallSetupRequest
                 {
                     RequestId = "REQ005",
@@ -166,7 +170,7 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var message = repository.UpdateCallSetupRequest(
+                _ = _repository.UpdateCallSetupRequest(
                 new CallSetupRequest
                 {
                     RequestId = "REQ001",
@@ -187,7 +191,7 @@ namespace PurchaseAssistantBackend.Test
         [Fact]
         public void WhenDeleteCallSetupRequestWithExistingIdThenReturnSuccessMessage()
         {
-            var message = repository.DeleteCallSetupRequest("REQ001");
+            var message = _repository.DeleteCallSetupRequest("REQ001");
 
             Assert.Equal("Call Setup Request with id REQ001 deleted successfully!", message);
         }
@@ -197,7 +201,7 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var message = repository.DeleteCallSetupRequest("REQ010");
+                _ = _repository.DeleteCallSetupRequest("REQ010");
             }
             catch (KeyNotFoundException exception)
             {
@@ -208,8 +212,8 @@ namespace PurchaseAssistantBackend.Test
         [Fact]
         public void WhenCallSetupRequestDataRepositoryCreatedWithDefaultConstructorThenNonEmptyRepository()
         {
-            ICallSetupRequestDataRepository repository = new CallSetupRequestDataRepository();
-            Assert.NotNull(repository);
+            ICallSetupRequestDataRepository defaultRepository = new CallSetupRequestDataRepository();
+            Assert.NotNull(defaultRepository);
         }
 
         [Fact]
@@ -217,7 +221,7 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var message = repository.AddNewCallSetupRequest(
+                _ = _repository.AddNewCallSetupRequest(
                     new CallSetupRequest
                     {
                         RequestId = "REQ003",
@@ -229,8 +233,8 @@ namespace PurchaseAssistantBackend.Test
             }
             catch (ArgumentNullException exception)
             {
-                Assert.Equal("selectedModels", exception.ParamName);
-                Assert.Equal("Selected models cannot be null or empty. Please select atleast one model to make a request. (Parameter 'selectedModels')", exception.Message);
+                Assert.Equal("SelectedModels", exception.ParamName);
+                Assert.Equal("Selected models cannot be null or empty. Please select atleast one model to make a request. (Parameter 'SelectedModels')", exception.Message);
             }
         }
     }

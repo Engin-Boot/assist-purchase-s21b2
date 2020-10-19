@@ -10,27 +10,32 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
 {
     public class SalesRepresentativeControllerTest
     {
-        private readonly TestProgram program;
+        private readonly TestProgram _program;
         private static string url = "http://localhost:5000/api/SalesRepresentative";
 
         public SalesRepresentativeControllerTest()
         {
-            program = new TestProgram();
+            _program = new TestProgram();
         }
 
         [Fact]
         public async Task Get_ShouldReturnAllSalesRepresentativesWithHttpStatusOk()
         {
-            var response = await program.Client.GetAsync(url);
+            var response = await _program.Client.GetAsync(url);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        private SalesRepresentative HelperMethodToCreateNewSalesRepresentative()
+        {
+            return new SalesRepresentative { Id = "SR002", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "France" };
         }
 
         [Fact]
         public async Task Post_WhenValidRequestSentThenAddSuccessfullyAndReturnHttpsStatusOk()
         {
-            SalesRepresentative newSalesRepresentative = new SalesRepresentative { Id = "SR002", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "France" };
+            SalesRepresentative newSalesRepresentative = HelperMethodToCreateNewSalesRepresentative();
 
-            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newSalesRepresentative), Encoding.UTF8, "application/json"));
+            var response = await _program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newSalesRepresentative), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
@@ -40,7 +45,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         {
             SalesRepresentative newSalesRepresentative = new SalesRepresentative { Id = "SR002", Name = "Ellie", Email = "ellie@gmail.com"};
 
-            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newSalesRepresentative), Encoding.UTF8, "application/json"));
+            var response = await _program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newSalesRepresentative), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
@@ -49,16 +54,13 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         public async Task Put_WhenValidRequestSentThenUpdateSuccessfullyAndReturnHttpsStatusOk()
         {
             // First add a new sales representative
-            SalesRepresentative newSalesRepresentativeInfo = new SalesRepresentative { Id = "SR0042", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "France" };
-
-            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newSalesRepresentativeInfo), Encoding.UTF8, "application/json"));
-            
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            SalesRepresentative salesRepresentativeToBeUpdated = HelperMethodToCreateNewSalesRepresentative();
+            _ = await _program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(salesRepresentativeToBeUpdated), Encoding.UTF8, "application/json"));
 
             // Then update and check result
-            SalesRepresentative salesRepresentative = new SalesRepresentative { Id = "SR0042", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "Germany" };
+            SalesRepresentative updatedSalesRepresentative = new SalesRepresentative { Id = "SR002", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "Germany" };
 
-            response = await program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(salesRepresentative), Encoding.UTF8, "application/json"));
+            HttpResponseMessage response = await _program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(updatedSalesRepresentative), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -67,9 +69,9 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         [Fact]
         public async Task Put_WhenInvalidRequestWithNonExistentKeySentThenReturnHttpsStatusBadRequest()
         {
-            SalesRepresentative salesRepresentative = new SalesRepresentative { Id = "SR0099", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "Germany" };
+            SalesRepresentative salesRepresentativeWithNonExistentKey = new SalesRepresentative { Id = "SR0099", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "Germany" };
 
-            var response = await program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(salesRepresentative), Encoding.UTF8, "application/json"));
+            var response = await _program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(salesRepresentativeWithNonExistentKey), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
@@ -77,9 +79,9 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         [Fact]
         public async Task Put_WhenInvalidRequestWithMissingEmailSentThenReturnHttpsStatusBadRequest()
         {
-            SalesRepresentative salesRepresentativeWithoutEmail = new SalesRepresentative { Id = "SR0042", Name = "Ellie", DepartmentRegion = "Germany" };
+            SalesRepresentative salesRepresentativeWithMissingEmail = new SalesRepresentative { Id = "SR0042", Name = "Ellie", DepartmentRegion = "Germany" };
 
-            var response = await program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(salesRepresentativeWithoutEmail), Encoding.UTF8, "application/json"));
+            var response = await _program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(salesRepresentativeWithMissingEmail), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
@@ -88,15 +90,11 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         public async Task Delete_WhenValidIdSentThenDeleteSuccessfullyAndReturnHttpsStatusOk()
         {
             // First add a new sales representative
-            SalesRepresentative newSalesRepresentativeData = new SalesRepresentative { Id = "SR0042", Name = "jack", Email = "jack@gmail.com", DepartmentRegion = "France" };
-
-            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newSalesRepresentativeData), Encoding.UTF8, "application/json"));
-
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            SalesRepresentative salesRepresentativeToBeDeleted = HelperMethodToCreateNewSalesRepresentative();
+            _ = await _program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(salesRepresentativeToBeDeleted), Encoding.UTF8, "application/json"));
 
             // Then delete and check result
-
-            response = await program.Client.DeleteAsync(url + "/SR0042");
+            HttpResponseMessage response = await _program.Client.DeleteAsync(url + "/SR002");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -105,8 +103,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         [Fact]
         public async Task Delete_WhenInvalidRequestWithNonExistentKeySentThenReturnHttpsStatusBadRequest()
         {
-
-            var response = await program.Client.DeleteAsync(url + "/SR0097");
+            var response = await _program.Client.DeleteAsync(url + "/SR0097");
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }

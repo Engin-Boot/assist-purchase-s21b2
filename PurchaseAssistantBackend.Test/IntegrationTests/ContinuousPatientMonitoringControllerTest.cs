@@ -6,12 +6,12 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
 {
     public class ContinuousPatientMonitoringControllerTest
     {
-        private readonly TestProgram program;
+        private readonly TestProgram _program;
         private static string url = "http://localhost:5000/api/ContinuousPatientMonitoringSystems";
 
         public ContinuousPatientMonitoringControllerTest()
         {
-            program = new TestProgram();
+            _program = new TestProgram();
         }
 
         [Fact]
@@ -19,7 +19,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         {
             string query = "Portability=true";
 
-            var response = await program.Client.GetAsync(url + "?" + query);
+            var response = await _program.Client.GetAsync(url + "?" + query);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
@@ -28,7 +28,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         {
             string query = "Portability=any";
 
-            var response = await program.Client.GetAsync(url + "?" + query);
+            var response = await _program.Client.GetAsync(url + "?" + query);
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
     }

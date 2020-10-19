@@ -29,7 +29,7 @@ namespace PurchaseAssistantWebApp.Utilities
             }
             else
             {
-                throw new ArgumentException("Query Argument 'id' is invalid. Id must be a long number.","id");
+                throw new ArgumentException("Query Argument 'id' is invalid. Id must be a long number.");
             }
         }
 
@@ -57,7 +57,7 @@ namespace PurchaseAssistantWebApp.Utilities
             }
             else
             {
-                throw new ArgumentException("Query Argument 'portability' is invalid. It must be a boolean value (either true or false).", "portability");
+                throw new ArgumentException("Query Argument 'portability' is invalid. It must be a boolean value (either true or false).");
             }    
         }
         public static IEnumerable<ModelsSpecification> FilterByBatterySupport(string batterySupport, IEnumerable<ModelsSpecification> models)
@@ -83,7 +83,7 @@ namespace PurchaseAssistantWebApp.Utilities
             }
             else
             {
-                throw new ArgumentException("Query Argument 'touchScreenSupport' is invalid. It must be a valid boolean value (either true or false).", "touchScreenSupport");
+                throw new ArgumentException("Query Argument 'touchScreenSupport' is invalid. It must be a valid boolean value (either true or false).");
             }
         }
     }

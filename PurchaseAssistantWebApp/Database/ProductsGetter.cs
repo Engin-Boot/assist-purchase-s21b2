@@ -8,7 +8,6 @@ namespace PurchaseAssistantWebApp.Database
     public class ProductsGetter
     {
         public List<ModelsSpecification> Products { get; private set; }
-        public bool True { get; private set; }
 
         public ProductsGetter()
         {
@@ -19,7 +18,7 @@ namespace PurchaseAssistantWebApp.Database
         }
         private void GetAllItems()
         {
-            List<ModelsSpecification> MonitoringItems = new List<ModelsSpecification>
+            List<ModelsSpecification> monitoringItems = new List<ModelsSpecification>
             {
                 new ModelsSpecification
                 {
@@ -30,9 +29,9 @@ namespace PurchaseAssistantWebApp.Database
                         "The Philips IntelliVue X3 is a compact, dual-purpose, transport patient monitor featuring intuitive smartphone-style operation and offering a scalable set of clinical measurements.",
                     Price = "14500",
                     Weight = 65,
-                    Portable = True,
+                    Portable = true,
                     ScreenSize = 6.1,
-                    TouchScreenSupport = True,
+                    TouchScreenSupport = true,
                     MonitorResolution = "10*11",
                     BatterySupport = "NO",
                     MultiPatientSupport = "NO",
@@ -47,9 +46,9 @@ namespace PurchaseAssistantWebApp.Database
                         "The IntelliVue MX40 patient wearable monitor gives you technology, intelligent design, and innovative features you expect from Philips – in a device light enough and small enough to be comfortably worn by ambulatory patients.",
                     Price = "37000",
                     Weight = 65,
-                    Portable = True,
+                    Portable = true,
                     ScreenSize = 2.8,
-                    TouchScreenSupport = True,
+                    TouchScreenSupport = true,
                     MonitorResolution = "10*11",
                     BatterySupport = "YES",
                     MultiPatientSupport = "NO",
@@ -57,7 +56,7 @@ namespace PurchaseAssistantWebApp.Database
                 },
            
             };
-            this.Products = MonitoringItems;
+            this.Products = monitoringItems;
         }
     }
 }

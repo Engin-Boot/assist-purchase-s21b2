@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "tgk4CDWZgc9BIgpaTVQcd6YgXo7o74QiJdlkHExrzT80uzc9HpSUBT6cJ3gNcgBOJEcxnjUSN3JHrDL1YcElDQ==",
+  "dgSpecHash": "cB8a+WOh0UV7FF0P0QMoHHb36ENSehrbGm3UN+TuwRpOcNdqbhSYEpA0kS+iPYI7Qs2YBC19usJBYy91azTjhA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantBackend.Test\\PurchaseAssistantBackend.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
+    "C:\\Users\\Tripti Saini\\.nuget\\packages\\jetbrains.annotations\\2020.1.0\\jetbrains.annotations.2020.1.0.nupkg.sha512",
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\mailkit\\2.9.0\\mailkit.2.9.0.nupkg.sha512",
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\microsoft.aspnetcore.testhost\\3.1.9\\microsoft.aspnetcore.testhost.3.1.9.nupkg.sha512",
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",

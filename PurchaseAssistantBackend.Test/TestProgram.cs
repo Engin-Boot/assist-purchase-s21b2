@@ -7,12 +7,11 @@ namespace PurchaseAssistantBackend.Test
 {
     public class TestProgram
     {
-        public HttpClient Client { get; private set; }
-        private TestServer _server;
+        public HttpClient Client { get; }
         public TestProgram()
         {
-            _server = new TestServer(new WebHostBuilder().UseStartup<Startup>());
-            Client = _server.CreateClient();
+            TestServer server = new TestServer(new WebHostBuilder().UseStartup<Startup>());
+            Client = server.CreateClient();
         }
   
     }

@@ -9,20 +9,23 @@ namespace PurchaseAssistantBackend.Test
 {
     public class SalesRepresentativeDataRepositoryTest
     {
-        private ISalesRepresentativeDataRepository repository;
+        private readonly ISalesRepresentativeDataRepository _repository;
         public SalesRepresentativeDataRepositoryTest()
         {
-            var salesRepresentativeTestDb = new List<SalesRepresentative>();
-            salesRepresentativeTestDb.Add(new SalesRepresentative { Id = "SR001", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "India" });
-            salesRepresentativeTestDb.Add(new SalesRepresentative { Id = "SR002", Name = "Sam", Email = "samuel@gmail.com", DepartmentRegion = "Switzerland" });
+            var salesRepresentativeTestDb = new List<SalesRepresentative>
+            {
+                new SalesRepresentative { Id = "SR001", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "India" },
+                new SalesRepresentative { Id = "SR002", Name = "Sam", Email = "samuel@gmail.com", DepartmentRegion = "Switzerland" }
+            };
 
-            repository = new SalesRepresentativeDataRepository(salesRepresentativeTestDb);
+            _repository = new SalesRepresentativeDataRepository(salesRepresentativeTestDb);
         }
         [Fact]
         public void WhenGetAllSalesRepresentativeThenReturnAllRecords()
         {
-            var salesRepresentatives = repository.GetAllSalesRepresentative() as List<SalesRepresentative>;
+            var salesRepresentatives = _repository.GetAllSalesRepresentative().ToList();
 
+            Assert.NotNull(salesRepresentatives);
             Assert.Equal(2, salesRepresentatives.Count);
 
             Assert.Equal("SR001", salesRepresentatives[0].Id);
@@ -39,11 +42,11 @@ namespace PurchaseAssistantBackend.Test
         [Fact]
         public void WhenGetAllSalesRepresentativeByRegionWithExistingRegionThenReturnRecordsWithMatchingRegion()
         {
-            var salesRepresentatives = repository.GetAllSalesRepresentativeByRegion("India");
+            var salesRepresentatives = _repository.GetAllSalesRepresentativeByRegion("India").ToList();
             
             Assert.Single(salesRepresentatives);
 
-            SalesRepresentative salesRepresentativeInRegion = salesRepresentatives.First();
+            SalesRepresentative salesRepresentativeInRegion = salesRepresentatives[0];
 
             Assert.Equal("SR001", salesRepresentativeInRegion.Id);
             Assert.Equal("Ellie", salesRepresentativeInRegion.Name);
@@ -54,7 +57,7 @@ namespace PurchaseAssistantBackend.Test
         [Fact]
         public void WhenGetAllSalesRepresentativeByRegionWithNonExistingRegionThenReturnZeroRecords()
         {
-            var salesRepresentatives = repository.GetAllSalesRepresentativeByRegion("abc");
+            var salesRepresentatives = _repository.GetAllSalesRepresentativeByRegion("abc");
 
             Assert.Empty(salesRepresentatives);
         }
@@ -62,7 +65,7 @@ namespace PurchaseAssistantBackend.Test
         [Fact]
         public void WhenAddNewSalesRepresentativeWithValidFieldsAndUniqueIdThenReturnSuccessMessage()
         {
-            var message = repository.AddNewSalesRepresentative(
+            var message = _repository.AddNewSalesRepresentative(
                 new SalesRepresentative { Id = "SR003", Name = "Adam", Email = "adam@ymail.com", DepartmentRegion = "USA" });
 
             Assert.Equal("Sales representative with id SR003 added successfully!", message);
@@ -73,13 +76,13 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var message = repository.AddNewSalesRepresentative(
+                _ = _repository.AddNewSalesRepresentative(
                     new SalesRepresentative { Id = "SR001", Name = "Adam", Email = "adam@ymail.com", DepartmentRegion = "USA" });
             }
             catch(ArgumentException exception)
             {
-                Assert.Equal("id", exception.ParamName);
-                Assert.Equal("A Sales Representative with SR001 id already exists. (Parameter 'id')", exception.Message);
+                Assert.Equal("Id", exception.ParamName);
+                Assert.Equal("A Sales Representative with SR001 id already exists. (Parameter 'Id')", exception.Message);
             } 
         }
         
@@ -88,7 +91,7 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var message = repository.AddNewSalesRepresentative(
+                _ = _repository.AddNewSalesRepresentative(
                     new SalesRepresentative { Id = "SR003", Name = "Adam", Email = "", DepartmentRegion = "USA" });
             }
             catch (ArgumentNullException exception)
@@ -101,7 +104,7 @@ namespace PurchaseAssistantBackend.Test
         [Fact]
         public void WhenUpdateSalesRepresentativeWithValidFieldsAndExistingIdThenReturnSuccessMessage()
         {
-            var message = repository.UpdateSalesRepresentative(
+            var message = _repository.UpdateSalesRepresentative(
                 new SalesRepresentative { Id = "SR001", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "USA" });
 
             Assert.Equal("Sales representative with id SR001 updated successfully!", message);
@@ -112,7 +115,7 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var message = repository.UpdateSalesRepresentative(
+                _ = _repository.UpdateSalesRepresentative(
                     new SalesRepresentative { Id = "SR005", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "USA" });
             }
             catch (KeyNotFoundException exception)
@@ -126,7 +129,7 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var message = repository.UpdateSalesRepresentative(
+                _ = _repository.UpdateSalesRepresentative(
                     new SalesRepresentative { Id = "SR002", Name = "Samuel", Email = "samuel@gmail.com" });
             }
             catch (ArgumentNullException exception)
@@ -139,7 +142,7 @@ namespace PurchaseAssistantBackend.Test
         [Fact]
         public void WhenDeleteSalesRepresentativeWithExistingIdThenReturnSuccessMessage()
         {
-            var message = repository.DeleteSalesRepresentative("SR001");
+            var message = _repository.DeleteSalesRepresentative("SR001");
 
             Assert.Equal("Sales representative with id SR001 deleted successfully!", message);
         }
@@ -149,7 +152,7 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var message = repository.DeleteSalesRepresentative("SR004");
+                _ = _repository.DeleteSalesRepresentative("SR004");
             }
             catch (KeyNotFoundException exception)
             {
@@ -160,8 +163,8 @@ namespace PurchaseAssistantBackend.Test
         [Fact]
         public void WhenRepositoryCreatedWithDefaultConstructorThenNonEmptyRepository()
         {
-            ISalesRepresentativeDataRepository repository = new SalesRepresentativeDataRepository();
-            Assert.NotNull(repository);
+            ISalesRepresentativeDataRepository defaultRepository = new SalesRepresentativeDataRepository();
+            Assert.NotNull(defaultRepository);
         }
     }
 }

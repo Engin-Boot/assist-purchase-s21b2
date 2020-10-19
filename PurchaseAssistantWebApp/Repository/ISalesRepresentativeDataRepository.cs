@@ -1,6 +1,5 @@
 ﻿using PurchaseAssistantWebApp.Models;
 using System.Collections.Generic;
-using System.Net;
 
 namespace PurchaseAssistantWebApp.Repository
 {

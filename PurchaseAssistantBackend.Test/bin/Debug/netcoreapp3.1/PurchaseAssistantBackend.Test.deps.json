@@ -20,6 +20,14 @@
         }
       },
       "coverlet.collector/1.2.0": {},
+      "JetBrains.Annotations/2020.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {
+            "assemblyVersion": "2020.1.0.0",
+            "fileVersion": "2020.1.0.0"
+          }
+        }
+      },
       "MailKit/2.9.0": {
         "dependencies": {
           "MimeKit": "2.9.2"
@@ -750,6 +758,7 @@
       },
       "PurchaseAssistantWebApp/1.0.0": {
         "dependencies": {
+          "JetBrains.Annotations": "2020.1.0",
           "MailKit": "2.9.0"
         },
         "runtime": {
@@ -770,6 +779,13 @@
       "sha512": "sha512-ZB+EGXsVBIn8cew7D3S2c+rgIlokKv1dSwsXEoiFQaNXF/BSxp9Rlfz/jV1ehSWH5XpLitfRxFNW3ok7uPDOXA==",
       "path": "coverlet.collector/1.2.0",
       "hashPath": "coverlet.collector.1.2.0.nupkg.sha512"
+    },
+    "JetBrains.Annotations/2020.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kD9D2ey3DGeLbfIzS8PkwLFkcF5vCOLk2rdjgfSxTfpoyovl7gAyoS6yq6T77zo9QgJGaVJ7PO/cSgLopnKlzg==",
+      "path": "jetbrains.annotations/2020.1.0",
+      "hashPath": "jetbrains.annotations.2020.1.0.nupkg.sha512"
     },
     "MailKit/2.9.0": {
       "type": "package",

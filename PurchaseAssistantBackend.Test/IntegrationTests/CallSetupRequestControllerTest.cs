@@ -11,23 +11,22 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
 {
     public class CallSetupRequestControllerTest
     {
-        private readonly TestProgram program;
+        private readonly TestProgram _program;
         private static string url = "http://localhost:5000/api/CallSetupRequest";
 
         public CallSetupRequestControllerTest()
         {
-            program = new TestProgram();
+            _program = new TestProgram();
         }
 
         [Fact]
         public async Task Get_ShouldReturnAllRequestsWithHttpStatusOk()
         {
-            var response = await program.Client.GetAsync(url);
+            var response = await _program.Client.GetAsync(url);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
-        [Fact]
-        public async Task Post_WhenValidCallSetupRequestSentThenAddSuccessfullyAndReturnHttpsStatusOk()
+        private CallSetupRequest HelperMethodToCreateNewCallSetupRequest()
         {
             CallSetupRequest newCallSetupRequest = new CallSetupRequest
             {
@@ -39,7 +38,15 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
                 SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
             };
 
-            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newCallSetupRequest), Encoding.UTF8, "application/json"));
+            return newCallSetupRequest;
+        }
+
+        [Fact]
+        public async Task Post_WhenValidCallSetupRequestSentThenAddSuccessfullyAndReturnHttpsStatusOk()
+        {
+            var newCallSetupRequest = HelperMethodToCreateNewCallSetupRequest();
+
+            var response = await _program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newCallSetupRequest), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
@@ -47,7 +54,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         [Fact]
         public async Task Post_WhenInvalidCallSetupRequestWithoutEmailSentThenReturnHttpsStatusBadRequest()
         {
-            CallSetupRequest newCallSetupRequest = new CallSetupRequest
+            CallSetupRequest newCallSetupRequestWithoutEmail = new CallSetupRequest
             {
                 RequestId = "REQ011",
                 PointOfContactName = "James",
@@ -56,7 +63,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
                 SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
             };
 
-            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newCallSetupRequest), Encoding.UTF8, "application/json"));
+            var response = await _program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newCallSetupRequestWithoutEmail), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
@@ -66,23 +73,13 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         public async Task Put_WhenValidCallSetupRequestSentThenUpdateSuccessfullyAndReturnHttpsStatusOk()
         {
             // First add a new request
-            CallSetupRequest newCallSetupRequest = new CallSetupRequest
-            {
-                RequestId = "REQ011",
-                PointOfContactName = "James",
-                Organisation = "XYZ Hospital",
-                Email = "james@xyz.com",
-                Region = "Italy",
-                SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
-            };
-            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newCallSetupRequest), Encoding.UTF8, "application/json"));
-
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            CallSetupRequest callSetupRequestToUpdate = HelperMethodToCreateNewCallSetupRequest();
+            _ = await _program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(callSetupRequestToUpdate), Encoding.UTF8, "application/json"));
 
             // Then update and check result
-            CallSetupRequest request = new CallSetupRequest
+            CallSetupRequest updatedCallSetupRequest = new CallSetupRequest
             {
-                RequestId = "REQ011",
+                RequestId = "REQ013",
                 PointOfContactName = "James Mathew",
                 Organisation = "XYZ Hospital",
                 Email = "james@xyz.com",
@@ -90,7 +87,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
                 SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
             };
 
-            response = await program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json"));
+            HttpResponseMessage response = await _program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(updatedCallSetupRequest), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -109,7 +106,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
                 SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
             };
 
-            var response = await program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json"));
+            var response = await _program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
@@ -125,7 +122,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
                 Email = "james@xyz.com",
                 SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
             };
-            var response = await program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(requestWithMissingRegion), Encoding.UTF8, "application/json"));
+            var response = await _program.Client.PutAsync(url, new StringContent(JsonConvert.SerializeObject(requestWithMissingRegion), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
@@ -133,24 +130,11 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         [Fact]
         public async Task Delete_WhenValidRequestIdSentThenDeleteSuccessfullyAndReturnHttpsStatusOk()
         {
-            // First add a new sales representative
-            // First add a new request
-            CallSetupRequest newCallSetupRequest = new CallSetupRequest
-            {
-                RequestId = "REQ011",
-                PointOfContactName = "James",
-                Organisation = "XYZ Hospital",
-                Email = "james@xyz.com",
-                Region = "Malasia",
-                SelectedModels = new List<string> { "IntelliVue X3" }
-            };
-            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newCallSetupRequest), Encoding.UTF8, "application/json"));
+            CallSetupRequest newCallSetupRequestToBeDeleted = HelperMethodToCreateNewCallSetupRequest();
+            
+            _ = await _program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newCallSetupRequestToBeDeleted), Encoding.UTF8, "application/json"));
 
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-
-            // Then delete and check result
-
-            response = await program.Client.DeleteAsync(url + "/REQ011");
+            HttpResponseMessage response = await _program.Client.DeleteAsync(url + "/REQ013");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -159,8 +143,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         [Fact]
         public async Task Delete_WhenInvalidRequestWithNonExistentRequestIdSentThenReturnHttpsStatusBadRequest()
         {
-
-            var response = await program.Client.DeleteAsync(url + "/REQ0097");
+            var response = await _program.Client.DeleteAsync(url + "/REQ0097");
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }

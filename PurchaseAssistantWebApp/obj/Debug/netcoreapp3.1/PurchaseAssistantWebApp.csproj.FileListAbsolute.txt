@@ -29,8 +29,6 @@ C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\Purcha
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\bin\Debug\netcoreapp3.1\PurchaseAssistantWebApp.pdb
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.AssemblyInfoInputs.cache
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.AssemblyInfo.cs
-C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.csproj.CoreCompileInputs.cache
-C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.RazorTargetAssemblyInfo.cache
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\staticwebassets\PurchaseAssistantWebApp.StaticWebAssets.Manifest.cache
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\staticwebassets\PurchaseAssistantWebApp.StaticWebAssets.xml
@@ -42,3 +40,6 @@ C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\Purcha
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.csproj.CopyComplete
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.csprojAssemblyReference.cache
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\bin\Debug\netcoreapp3.1\JetBrains.Annotations.dll
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.csproj.CoreCompileInputs.cache
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.MvcApplicationPartsAssemblyInfo.cache

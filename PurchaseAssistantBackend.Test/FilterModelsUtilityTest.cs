@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using JetBrains.Annotations;
 using PurchaseAssistantWebApp.Models;
 using PurchaseAssistantWebApp.Utilities;
 using Xunit;
@@ -10,10 +10,10 @@ namespace PurchaseAssistantBackend.Test
 {
     public class FilterModelsUtilityTest
     {
-        List<ModelsSpecification> models;
+        private readonly List<ModelsSpecification> _models;
         public FilterModelsUtilityTest()
         {
-            models = new List<ModelsSpecification> {
+            _models = new List<ModelsSpecification> {
                 new ModelsSpecification
                 {
                     Id = 1,
@@ -51,6 +51,7 @@ namespace PurchaseAssistantBackend.Test
             };
         }
 
+        [AssertionMethod]
         private void TestModelInfoWithFirstModel(ModelsSpecification model)
         {
             Assert.Equal("IntelliVue", model.ProductName);
@@ -66,6 +67,7 @@ namespace PurchaseAssistantBackend.Test
             Assert.Equal("NO", model.MultiPatientSupport);
         }
 
+        [AssertionMethod]
         private void TestModelInfoWithSecondModel(ModelsSpecification model)
         {
             Assert.Equal("Intelli", model.ProductName);
@@ -85,10 +87,10 @@ namespace PurchaseAssistantBackend.Test
         [Fact]
         public void WhenApplyFilterByIdWithNullOrEmptyIdThenReturnAllModels()
         {
-            var filteredModelsById = FilterModelsUtility.FilterById("", models);
+            var filteredModelsById = FilterModelsUtility.FilterById("", _models);
             Assert.Equal(2, filteredModelsById.Count());
 
-            filteredModelsById = FilterModelsUtility.FilterById(null, models);
+            filteredModelsById = FilterModelsUtility.FilterById(null, _models);
             Assert.Equal(2, filteredModelsById.Count());
         }
 
@@ -97,72 +99,71 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var filteredModelsById = FilterModelsUtility.FilterById("abc", models);
+                _ = FilterModelsUtility.FilterById("abc", _models);
             }
             catch(ArgumentException exception)
             {
-                Assert.Equal("id", exception.ParamName);
-                Assert.Equal("Query Argument 'id' is invalid. Id must be a long number. (Parameter 'id')", exception.Message);
+                Assert.Equal("Query Argument 'id' is invalid. Id must be a long number.", exception.Message);
             }
         }
 
         [Fact]
         public void WhenApplyFilterByIdWithValidIdThenReturnModelsWithMatchingId()
         {
-            var filteredModelsById = FilterModelsUtility.FilterById("1", models);
+            var filteredModelsById = FilterModelsUtility.FilterById("1", _models).ToList();
             Assert.Single(filteredModelsById);
 
-            var model = filteredModelsById.First();
+            var model = filteredModelsById[0];
             TestModelInfoWithFirstModel(model);
         }
 
         [Fact]
         public void WhenApplyFilterByProductNameWithNullOrEmptyProductNameValueThenReturnAllModels()
         {
-            var filteredModelsByProductName = FilterModelsUtility.FilterByProductName("", models);
+            var filteredModelsByProductName = FilterModelsUtility.FilterByProductName("", _models);
             Assert.Equal(2, filteredModelsByProductName.Count());
 
-            filteredModelsByProductName = FilterModelsUtility.FilterByProductName(null, models);
+            filteredModelsByProductName = FilterModelsUtility.FilterByProductName(null, _models);
             Assert.Equal(2, filteredModelsByProductName.Count());
         }
 
         [Fact]
         public void WhenApplyFilterByProductNameWithValidProductNameThenReturnModelsWithMatchingProductName()
         {
-            var filteredModelsByProductName = FilterModelsUtility.FilterByProductName("IntelliVue", models);
+            var filteredModelsByProductName = FilterModelsUtility.FilterByProductName("IntelliVue", _models).ToList();
             Assert.Single(filteredModelsByProductName);
 
-            var model = filteredModelsByProductName.First();
+            var model = filteredModelsByProductName[0];
             TestModelInfoWithFirstModel(model);
         }
 
         [Fact]
         public void WhenApplyFilterByProductKeyWithNullOrEmptyProductKeyValueThenReturnAllModels()
         {
-            var filteredModelsByProductKey = FilterModelsUtility.FilterByProductKey("", models);
+            var filteredModelsByProductKey = FilterModelsUtility.FilterByProductKey("", _models);
             Assert.Equal(2, filteredModelsByProductKey.Count());
 
-            filteredModelsByProductKey = FilterModelsUtility.FilterByProductKey(null, models);
+            filteredModelsByProductKey = FilterModelsUtility.FilterByProductKey(null, _models);
             Assert.Equal(2, filteredModelsByProductKey.Count());
         }
 
         [Fact]
         public void WhenApplyFilterByProductKeyWithValidProductKeyThenReturnModelsWithMatchingProductKey()
         {
-            var filteredModelsByProductKey = FilterModelsUtility.FilterByProductKey("X3", models);
+            var filteredModelsByProductKey = FilterModelsUtility.FilterByProductKey("X3", _models).ToList();
             Assert.Single(filteredModelsByProductKey);
 
-            var model = filteredModelsByProductKey.First();
+            var model = filteredModelsByProductKey[0];
             TestModelInfoWithFirstModel(model);
         }
 
         [Fact]
         public void WhenApplyFilterByPortabilityWithNullOrEmptyPortabilityThenReturnAllModels()
         {
-            var filteredModelsByPortability = FilterModelsUtility.FilterByPortability("", models);
+            var filteredModelsByPortability = FilterModelsUtility.FilterByPortability("", _models);
             Assert.Equal(2, filteredModelsByPortability.Count());
 
-            filteredModelsByPortability = FilterModelsUtility.FilterByPortability(null, models);
+            filteredModelsByPortability = FilterModelsUtility.FilterByPortability(null, _models);
             Assert.Equal(2, filteredModelsByPortability.Count());
         }
 
@@ -171,71 +172,66 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var filteredModelsByPortability = FilterModelsUtility.FilterByPortability("required", models);
+                _ = FilterModelsUtility.FilterByPortability("required", _models);
             }
             catch (ArgumentException exception)
             {
-                Assert.Equal("portability", exception.ParamName);
-                Assert.Equal("Query Argument 'portability' is invalid. It must be a boolean value (either true or false). (Parameter 'portability')", exception.Message);
+                Assert.Equal("Query Argument 'portability' is invalid. It must be a boolean value (either true or false).", exception.Message);
             }
         }
 
         [Fact]
         public void WhenApplyFilterByPortabilityWithValidBooleanValueThenReturnModelsWithMatchingPortability()
         {
-            var filteredModelsByPortability = FilterModelsUtility.FilterByPortability("true", models);
-            Assert.Equal(2, filteredModelsByPortability.Count());
+            var filteredModelsByPortability = FilterModelsUtility.FilterByPortability("true", _models).ToList();
+            Assert.Equal(2, filteredModelsByPortability.Count);
 
-            var modelList = filteredModelsByPortability.ToList();
-
-            TestModelInfoWithFirstModel(modelList[0]);
-            TestModelInfoWithSecondModel(modelList[1]);
+            TestModelInfoWithFirstModel(filteredModelsByPortability[0]);
+            TestModelInfoWithSecondModel(filteredModelsByPortability[1]);
         }
         [Fact]
         public void WhenApplyFilterByBatterySupportWithNullOrEmptyValueThenReturnAllModels()
         {
-            var filteredModelsByBatterySupport = FilterModelsUtility.FilterByBatterySupport("", models);
+            var filteredModelsByBatterySupport = FilterModelsUtility.FilterByBatterySupport("", _models);
             Assert.Equal(2, filteredModelsByBatterySupport.Count());
 
-            filteredModelsByBatterySupport = FilterModelsUtility.FilterByBatterySupport(null, models);
+            filteredModelsByBatterySupport = FilterModelsUtility.FilterByBatterySupport(null, _models);
             Assert.Equal(2, filteredModelsByBatterySupport.Count());
         }
 
         [Fact]
         public void WhenApplyFilterByBatterySupportWithValidValueThenReturnModelsWithMatchingBatterySupport()
         {
-            var filteredModelsByBatterySupport = FilterModelsUtility.FilterByBatterySupport("YES", models);
+            var filteredModelsByBatterySupport = FilterModelsUtility.FilterByBatterySupport("YES", _models).ToList();
             Assert.Single(filteredModelsByBatterySupport);
 
-            var model = filteredModelsByBatterySupport.First();
-
-            TestModelInfoWithSecondModel(model);
+            TestModelInfoWithSecondModel(filteredModelsByBatterySupport[0]);
         }
 
         [Fact]
         public void WhenApplyFilterByMultiPatientSupportWithNullOrEmptyValueThenReturnAllModels()
         {
-            var filteredModelsByMultiPatientSupport = FilterModelsUtility.FilterByMultiPatientSupport("", models);
+            var filteredModelsByMultiPatientSupport = FilterModelsUtility.FilterByMultiPatientSupport("", _models);
             Assert.Equal(2, filteredModelsByMultiPatientSupport.Count());
 
-            filteredModelsByMultiPatientSupport = FilterModelsUtility.FilterByMultiPatientSupport(null, models);
+            filteredModelsByMultiPatientSupport = FilterModelsUtility.FilterByMultiPatientSupport(null, _models);
             Assert.Equal(2, filteredModelsByMultiPatientSupport.Count());
         }
 
         [Fact]
         public void WhenApplyFilterByMultiPatientSupportWithValidValueThenReturnModelsWithMatchingMultiPatientSupport()
         {
-            var filteredModelsByMultiPatientSupport = FilterModelsUtility.FilterByMultiPatientSupport("YES", models);
+            var filteredModelsByMultiPatientSupport = FilterModelsUtility.FilterByMultiPatientSupport("YES", _models);
             Assert.Empty(filteredModelsByMultiPatientSupport);
         }
 
         [Fact]
         public void WhenApplyFilterByTouchScreenSupportWithNullOrEmptyValueThenReturnAllModels()
         {
-            var filteredModelsByTouchScreenSupport = FilterModelsUtility.FilterByTouchScreenSupport("", models);
+            var filteredModelsByTouchScreenSupport = FilterModelsUtility.FilterByTouchScreenSupport("", _models);
             Assert.Equal(2, filteredModelsByTouchScreenSupport.Count());
 
-            filteredModelsByTouchScreenSupport = FilterModelsUtility.FilterByTouchScreenSupport(null, models);
+            filteredModelsByTouchScreenSupport = FilterModelsUtility.FilterByTouchScreenSupport(null, _models);
             Assert.Equal(2, filteredModelsByTouchScreenSupport.Count());
         }
 
@@ -244,45 +240,41 @@ namespace PurchaseAssistantBackend.Test
         {
             try
             {
-                var filteredModelsByTouchScreenSupport = FilterModelsUtility.FilterByTouchScreenSupport("required", models);
+                _ = FilterModelsUtility.FilterByTouchScreenSupport("required", _models);
             }
             catch (ArgumentException exception)
             {
-                Assert.Equal("touchScreenSupport", exception.ParamName);
-                Assert.Equal("Query Argument 'touchScreenSupport' is invalid. It must be a valid boolean value (either true or false). (Parameter 'touchScreenSupport')", exception.Message);
+                Assert.Equal("Query Argument 'touchScreenSupport' is invalid. It must be a valid boolean value (either true or false).", exception.Message);
             }
         }
 
         [Fact]
         public void WhenApplyFilterByTouchScreenSupportWithValidBooleanValueThenReturnModelsWithMatchingTouchScreenSupportValue()
         {
-            var filteredModelsByTouchScreenSupport = FilterModelsUtility.FilterByTouchScreenSupport("true", models);
-            Assert.Equal(2, filteredModelsByTouchScreenSupport.Count());
+            var filteredModelsByTouchScreenSupport = FilterModelsUtility.FilterByTouchScreenSupport("true", _models).ToList();
+            Assert.Equal(2, filteredModelsByTouchScreenSupport.Count);
 
-            var modelList = filteredModelsByTouchScreenSupport.ToList();
-
-            TestModelInfoWithFirstModel(modelList[0]);
-            TestModelInfoWithSecondModel(modelList[1]);
+            TestModelInfoWithFirstModel(filteredModelsByTouchScreenSupport[0]);
+            TestModelInfoWithSecondModel(filteredModelsByTouchScreenSupport[1]);
         }
 
         [Fact]
         public void WhenApplyAllFiltersThenReturnFilteredModelsResult()
         {
             SearchQuery query = new SearchQuery { Portability = "true", BatterySupport = "YES", MultiPatientSupport="NO", TouchScreenSupport="true"};
-            var filteredModels = FilterModelsUtility.ApplyAllFilters(models, query);
-            var filteredModelsList = filteredModels.ToList();
-
+            var filteredModelsList = FilterModelsUtility.ApplyAllFilters(_models, query).ToList();
+            
             Assert.Single(filteredModelsList);
 
             TestModelInfoWithSecondModel(filteredModelsList[0]);
 
             query = new SearchQuery { ProductName = "IntelliVue", ProductKey = "X3" };
-            filteredModels = FilterModelsUtility.ApplyAllFilters(models, query);
-            Assert.Single(filteredModels);
+            filteredModelsList = FilterModelsUtility.ApplyAllFilters(_models, query).ToList();
+            Assert.Single(filteredModelsList);
 
             query = new SearchQuery { Id = "1" };
-            filteredModels = FilterModelsUtility.ApplyAllFilters(models, query);
-            Assert.Single(filteredModels);
+            filteredModelsList = FilterModelsUtility.ApplyAllFilters(_models, query).ToList();
+            Assert.Single(filteredModelsList);
         }
     }
 }

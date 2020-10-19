@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Flhtnqri9PUviUpjkp3fNXIYPuU04umBc3B+7y9JZDnrwcWep+91QIb5z8DLwMo1+sVSGLbXgx16C7gJ5AVz8A==",
+  "dgSpecHash": "AMB2yBf5SmLrizCwuzTc5OadQPvetGeel9FTKUL7g94iU9UG3CsvFChssnQ0wovLDbPHXpucm0jLunr2+55Tsg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Tripti Saini\\.nuget\\packages\\jetbrains.annotations\\2020.1.0\\jetbrains.annotations.2020.1.0.nupkg.sha512",
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\mailkit\\2.9.0\\mailkit.2.9.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\mimekit\\2.9.2\\mimekit.2.9.2.nupkg.sha512",

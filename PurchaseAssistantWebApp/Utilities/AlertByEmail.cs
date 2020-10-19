@@ -35,17 +35,18 @@ namespace PurchaseAssistantWebApp.Utilities
         public MimeMessage ComposeEmail(string senderAddress, List<string> receiverAddresses, string subject, string message)
         {
             // create email message
-            var email = new MimeMessage();
-
-            email.Sender = MailboxAddress.Parse(senderAddress);
+            var email = new MimeMessage
+            {
+                Sender = MailboxAddress.Parse(senderAddress),
+                Subject = subject,
+                Body = new TextPart(TextFormat.Plain) { Text = message }
+            };
 
             foreach (string receiverAddress in receiverAddresses)
             {
                 email.To.Add(MailboxAddress.Parse(receiverAddress));
             }
             
-            email.Subject = subject;
-            email.Body = new TextPart(TextFormat.Plain) { Text = message };
             return email;
         }
         public bool SendAlert(CallSetupRequest requestInfo, IEnumerable<SalesRepresentative> salesRepresentativesInCustomerRegion)
@@ -71,6 +72,8 @@ namespace PurchaseAssistantWebApp.Utilities
             //smtp.Authenticate("s21b2team@gmail.com", "");
             //smtp.Send(email);
             smtp.Disconnect(true);
+
+            Console.WriteLine(email.MessageId);
             
             return true;
         }

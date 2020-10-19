@@ -1,7 +1,6 @@
 ﻿using MimeKit;
 using PurchaseAssistantWebApp.Models;
 using PurchaseAssistantWebApp.Utilities;
-using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -9,10 +8,10 @@ namespace PurchaseAssistantBackend.Test
 {
     public class AlertByEmailTest
     {
-        private AlertByEmail alerter;
+        private readonly AlertByEmail _alerter;
         public AlertByEmailTest()
         {
-            alerter = new AlertByEmail();
+            _alerter = new AlertByEmail();
         }
         [Fact]
         public void CreateEmailMessageBody_ShouldReturnMessageString()
@@ -26,7 +25,7 @@ namespace PurchaseAssistantBackend.Test
                 SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue MX40" }
             };
 
-            var message = alerter.CreateEmailMessageBody(request);
+            var message = _alerter.CreateEmailMessageBody(request);
 
             Assert.NotNull(message);
         }
@@ -34,7 +33,7 @@ namespace PurchaseAssistantBackend.Test
         [Fact]
         public void ComposeEmail_WhenValidEmailIdAreGivenThenReturnMimeMesage()
         {
-            MimeMessage email = alerter.ComposeEmail("s21b2team@gmail.com", new List<string> { "sainitripti5@gmail.com" }, "Test Request", "Test Message");
+            MimeMessage email = _alerter.ComposeEmail("s21b2team@gmail.com", new List<string> { "sainitripti5@gmail.com" }, "Test Request", "Test Message");
 
             Assert.NotNull(email);
         }
@@ -54,9 +53,9 @@ namespace PurchaseAssistantBackend.Test
             IEnumerable<SalesRepresentative> testDb = new List<SalesRepresentative> {
                 new SalesRepresentative { Id = "SR005", Name = "Tripti", Email = "sainitripti5@gmail.com", DepartmentRegion = "India" } };
             
-            var IsEmailSent = alerter.SendAlert(request, testDb);
+            var isEmailSent = _alerter.SendAlert(request, testDb);
 
-            Assert.True(IsEmailSent);
+            Assert.True(isEmailSent);
         }
 
         [Fact]
@@ -74,9 +73,9 @@ namespace PurchaseAssistantBackend.Test
             IEnumerable<SalesRepresentative> testDb = new List<SalesRepresentative> {
                 new SalesRepresentative { Id = "SR001", Name = "Tripti", Email = "sainitripti5@gmail.com", DepartmentRegion = "India" } };
 
-            var IsEmailSent = alerter.SendAlert(request, testDb);
+            var isEmailSent = _alerter.SendAlert(request, testDb);
 
-            Assert.True(IsEmailSent);
+            Assert.True(isEmailSent);
         }
     }
 }
