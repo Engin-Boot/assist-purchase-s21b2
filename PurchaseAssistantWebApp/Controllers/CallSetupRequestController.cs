@@ -37,7 +37,7 @@ namespace PurchaseAssistantWebApp.Controllers
             try
             {
                 _repository.AddNewCallSetupRequest(newRequest);
-                //_alerter.SendAlert(newRequest, _salesRepresentativeRepository.GetAllSalesRepresentativeByRegion(newRequest.Region));
+                _alerter.SendAlert(newRequest, _salesRepresentativeRepository.GetAllSalesRepresentativeByRegion(newRequest.Region));
                 return Ok();
             }
             catch(ArgumentException exception)

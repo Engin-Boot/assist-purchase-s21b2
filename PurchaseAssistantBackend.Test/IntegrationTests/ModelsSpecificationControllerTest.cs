@@ -10,12 +10,12 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
 {
     public class ModelsSpecificationControllerTest
     {
-        private readonly DummyProgram program;
+        private readonly TestProgram program;
         private static string url = "http://localhost:5000/api/ModelsSpecification";
 
         public ModelsSpecificationControllerTest()
         {
-            program = new DummyProgram();
+            program = new TestProgram();
         }
 
         [Fact]

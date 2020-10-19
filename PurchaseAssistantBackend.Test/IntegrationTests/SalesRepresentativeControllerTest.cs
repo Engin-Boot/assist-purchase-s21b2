@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using System.Net;
@@ -12,12 +10,12 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
 {
     public class SalesRepresentativeControllerTest
     {
-        private readonly DummyProgram program;
+        private readonly TestProgram program;
         private static string url = "http://localhost:5000/api/SalesRepresentative";
 
         public SalesRepresentativeControllerTest()
         {
-            program = new DummyProgram();
+            program = new TestProgram();
         }
 
         [Fact]
@@ -54,6 +52,8 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
             SalesRepresentative newSalesRepresentative = new SalesRepresentative { Id = "SR0042", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "France" };
 
             var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newSalesRepresentative), Encoding.UTF8, "application/json"));
+            
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
             // Then update and check result
             SalesRepresentative salesRepresentative = new SalesRepresentative { Id = "SR0042", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "Germany" };

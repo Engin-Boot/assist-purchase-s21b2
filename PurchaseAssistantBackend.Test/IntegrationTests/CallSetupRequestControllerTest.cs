@@ -11,12 +11,12 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
 {
     public class CallSetupRequestControllerTest
     {
-        private readonly DummyProgram program;
+        private readonly TestProgram program;
         private static string url = "http://localhost:5000/api/CallSetupRequest";
 
         public CallSetupRequestControllerTest()
         {
-            program = new DummyProgram();
+            program = new TestProgram();
         }
 
         [Fact]

@@ -6,12 +6,12 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
 {
     public class ContinuousPatientMonitoringControllerTest
     {
-        private readonly DummyProgram program;
+        private readonly TestProgram program;
         private static string url = "http://localhost:5000/api/ContinuousPatientMonitoringSystems";
 
         public ContinuousPatientMonitoringControllerTest()
         {
-            program = new DummyProgram();
+            program = new TestProgram();
         }
 
         [Fact]

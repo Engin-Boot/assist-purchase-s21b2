@@ -5,6 +5,6 @@ namespace PurchaseAssistantWebApp.Utilities
 {
     public interface IAlerter
     {
-        public void SendAlert(Models.CallSetupRequest requestInfo, IEnumerable<SalesRepresentative> salesRepresentativesInCustomerRegion);
+        public bool SendAlert(Models.CallSetupRequest requestInfo, IEnumerable<SalesRepresentative> salesRepresentativesInCustomerRegion);
     }
 }
