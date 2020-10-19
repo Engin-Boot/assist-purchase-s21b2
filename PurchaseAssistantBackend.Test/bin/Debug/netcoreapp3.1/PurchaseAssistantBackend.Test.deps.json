@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "PurchaseAssistantBackend.Test/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.TestHost": "3.1.9",
           "Microsoft.NET.Test.Sdk": "16.5.0",
           "PurchaseAssistantWebApp": "1.0.0",
           "coverlet.collector": "1.2.0",
@@ -27,6 +28,17 @@
           "lib/netstandard2.0/MailKit.dll": {
             "assemblyVersion": "2.9.0.0",
             "fileVersion": "2.9.0.0"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.TestHost/3.1.9": {
+        "dependencies": {
+          "System.IO.Pipelines": "4.7.3"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.TestHost.dll": {
+            "assemblyVersion": "3.1.9.0",
+            "fileVersion": "3.100.920.47309"
           }
         }
       },
@@ -447,6 +459,14 @@
           "System.Runtime": "4.1.0"
         }
       },
+      "System.IO.Pipelines/4.7.3": {
+        "runtime": {
+          "lib/netcoreapp3.0/System.IO.Pipelines.dll": {
+            "assemblyVersion": "4.0.2.2",
+            "fileVersion": "4.700.20.47203"
+          }
+        }
+      },
       "System.Linq/4.1.0": {
         "dependencies": {
           "System.Collections": "4.0.11",
@@ -758,6 +778,13 @@
       "path": "mailkit/2.9.0",
       "hashPath": "mailkit.2.9.0.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.TestHost/3.1.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0DBtfgmM2yS4h0v+gS4JHRX4nuyQmW7Yi5/G4yB5KelA2dDXPsAiipw9z47B1jVEs9QZdOwSqPQm2R/owl2TnA==",
+      "path": "microsoft.aspnetcore.testhost/3.1.9",
+      "hashPath": "microsoft.aspnetcore.testhost.3.1.9.nupkg.sha512"
+    },
     "Microsoft.CodeCoverage/16.5.0": {
       "type": "package",
       "serviceable": true,
@@ -890,6 +917,13 @@
       "sha512": "sha512-kWkKD203JJKxJeE74p8aF8y4Qc9r9WQx4C0cHzHPrY3fv/L/IhWnyCHaFJ3H1QPOH6A93whlQ2vG5nHlBDvzWQ==",
       "path": "system.io.filesystem.primitives/4.0.1",
       "hashPath": "system.io.filesystem.primitives.4.0.1.nupkg.sha512"
+    },
+    "System.IO.Pipelines/4.7.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zykThu9scJyg2Yeg27GMZCbjzniIsmjtNP5x6kQCd/8rEeKXRy20fP2NOMS7xQ+0pS/E85LZQA+K1aoQLxiUdw==",
+      "path": "system.io.pipelines/4.7.3",
+      "hashPath": "system.io.pipelines.4.7.3.nupkg.sha512"
     },
     "System.Linq/4.1.0": {
       "type": "package",

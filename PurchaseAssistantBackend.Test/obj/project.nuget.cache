@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "rlhaX4gJsAmLYamNylxyF68uXeZgQIf2iNiXvjQM4Q3D6nceaiqldt2/E2w2o+bW1gjUt9/JPRMFxAZU6RJkUw==",
+  "dgSpecHash": "6Kh3no8bn1I4boNUQH0oNR61IP7rZRghxLz2SGtQf0MukAlVSQ73q1BZEILibYu9WT291TgbD1eQiAk+4p3D0A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantBackend.Test\\PurchaseAssistantBackend.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\mailkit\\2.9.0\\mailkit.2.9.0.nupkg.sha512",
+    "C:\\Users\\Tripti Saini\\.nuget\\packages\\microsoft.aspnetcore.testhost\\3.1.9\\microsoft.aspnetcore.testhost.3.1.9.nupkg.sha512",
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\microsoft.net.test.sdk\\16.5.0\\microsoft.net.test.sdk.16.5.0.nupkg.sha512",
@@ -25,6 +26,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io\\4.1.0\\system.io.4.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io.filesystem\\4.0.1\\system.io.filesystem.4.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.io.filesystem.primitives\\4.0.1\\system.io.filesystem.primitives.4.0.1.nupkg.sha512",
+    "C:\\Users\\Tripti Saini\\.nuget\\packages\\system.io.pipelines\\4.7.3\\system.io.pipelines.4.7.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.linq\\4.1.0\\system.linq.4.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.linq.expressions\\4.1.0\\system.linq.expressions.4.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.objectmodel\\4.0.12\\system.objectmodel.4.0.12.nupkg.sha512",

@@ -98,8 +98,10 @@ C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\Purcha
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\obj\Debug\netcoreapp3.1\PurchaseAssistantBackend.Test.csprojAssemblyReference.cache
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\obj\Debug\netcoreapp3.1\PurchaseAssistantBackend.Test.AssemblyInfoInputs.cache
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\obj\Debug\netcoreapp3.1\PurchaseAssistantBackend.Test.AssemblyInfo.cs
-C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\obj\Debug\netcoreapp3.1\PurchaseAssistantBackend.Test.csproj.CoreCompileInputs.cache
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\obj\Debug\netcoreapp3.1\PurchaseAssistantBackend.Test.csproj.CopyComplete
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\obj\Debug\netcoreapp3.1\PurchaseAssistantBackend.Test.dll
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\obj\Debug\netcoreapp3.1\PurchaseAssistantBackend.Test.pdb
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\obj\Debug\netcoreapp3.1\PurchaseAssistantBackend.Test.genruntimeconfig.cache
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.TestHost.dll
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\obj\Debug\netcoreapp3.1\PurchaseAssistantBackend.Test.csproj.CoreCompileInputs.cache
