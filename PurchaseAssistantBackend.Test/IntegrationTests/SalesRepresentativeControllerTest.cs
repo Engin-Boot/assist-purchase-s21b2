@@ -12,12 +12,12 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
 {
     public class SalesRepresentativeControllerTest
     {
-        private readonly TestProgram program;
+        private readonly DummyProgram program;
         private static string url = "http://localhost:5000/api/SalesRepresentative";
 
         public SalesRepresentativeControllerTest()
         {
-            program = new TestProgram();
+            program = new DummyProgram();
         }
 
         [Fact]

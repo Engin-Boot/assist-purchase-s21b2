@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
+﻿using System.Net;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -9,12 +6,12 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
 {
     public class ContinuousPatientMonitoringControllerTest
     {
-        private readonly TestProgram program;
+        private readonly DummyProgram program;
         private static string url = "http://localhost:5000/api/ContinuousPatientMonitoringSystems";
 
         public ContinuousPatientMonitoringControllerTest()
         {
-            program = new TestProgram();
+            program = new DummyProgram();
         }
 
         [Fact]

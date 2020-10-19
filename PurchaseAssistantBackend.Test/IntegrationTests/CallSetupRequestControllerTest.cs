@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using PurchaseAssistantWebApp.Models;
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -12,12 +11,12 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
 {
     public class CallSetupRequestControllerTest
     {
-        private readonly TestProgram program;
+        private readonly DummyProgram program;
         private static string url = "http://localhost:5000/api/CallSetupRequest";
 
         public CallSetupRequestControllerTest()
         {
-            program = new TestProgram();
+            program = new DummyProgram();
         }
 
         [Fact]

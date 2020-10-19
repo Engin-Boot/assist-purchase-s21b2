@@ -32,16 +32,18 @@ namespace PurchaseAssistantWebApp.Controllers
 
         // PUT api/<ModelsSpecificationController>
         [HttpPut]
-        public void Put([FromBody] Models.ModelsSpecification updatedModelSpecification)
+        public ActionResult Put([FromBody] Models.ModelsSpecification updatedModelSpecification)
         {
             _repository.UpdateModelsSpecification(updatedModelSpecification);
+            return Ok();
         }
 
         // DELETE api/<ModelsSpecificationController>/5
         [HttpDelete("{id}")]
-        public void Delete(long id)
+        public ActionResult Delete(long id)
         {
             _repository.DeleteModelsSpecification(id);
+            return Ok();
         }
     }
 }
