@@ -9,5 +9,14 @@
     <PackageReference Include="MailKit" Version="2.9.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="MailKit">
+      <HintPath>..\packages\mailkit\2.9.0\lib\netstandard2.0\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeKit">
+      <HintPath>..\packages\mimekit\2.9.2\lib\netstandard2.0\MimeKit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 
 </Project>
