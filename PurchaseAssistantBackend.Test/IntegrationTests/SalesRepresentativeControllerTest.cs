@@ -49,9 +49,9 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         public async Task Put_WhenValidRequestSentThenUpdateSuccessfullyAndReturnHttpsStatusOk()
         {
             // First add a new sales representative
-            SalesRepresentative newSalesRepresentative = new SalesRepresentative { Id = "SR0042", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "France" };
+            SalesRepresentative newSalesRepresentativeInfo = new SalesRepresentative { Id = "SR0042", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "France" };
 
-            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newSalesRepresentative), Encoding.UTF8, "application/json"));
+            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newSalesRepresentativeInfo), Encoding.UTF8, "application/json"));
             
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -88,9 +88,9 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         public async Task Delete_WhenValidIdSentThenDeleteSuccessfullyAndReturnHttpsStatusOk()
         {
             // First add a new sales representative
-            SalesRepresentative newSalesRepresentative = new SalesRepresentative { Id = "SR0042", Name = "jack", Email = "jack@gmail.com", DepartmentRegion = "France" };
+            SalesRepresentative newSalesRepresentativeData = new SalesRepresentative { Id = "SR0042", Name = "jack", Email = "jack@gmail.com", DepartmentRegion = "France" };
 
-            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newSalesRepresentative), Encoding.UTF8, "application/json"));
+            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newSalesRepresentativeData), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 

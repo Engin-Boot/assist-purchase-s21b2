@@ -31,11 +31,11 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         {
             CallSetupRequest newCallSetupRequest = new CallSetupRequest
             {
-                RequestId = "REQ011",
+                RequestId = "REQ013",
                 PointOfContactName = "James",
                 Organisation = "XYZ Hospital",
                 Email = "james@xyz.com",
-                Region = "Italy",
+                Region = "Singapore",
                 SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
             };
 

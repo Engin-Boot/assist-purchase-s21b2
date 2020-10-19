@@ -53,7 +53,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         public async Task Put_WhenValidModelDetailsSentThenUpdateSuccessfullyAndReturnHttpsStatusOk()
         {
             // First add a new model
-            ModelsSpecification newModel = new ModelsSpecification
+            ModelsSpecification newModelInfo = new ModelsSpecification
             {
                 Id = 52,
                 ProductName = "IntelliVue",
@@ -69,7 +69,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
                 MultiPatientSupport = "NO",
             };
 
-            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newModel), Encoding.UTF8, "application/json"));
+            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newModelInfo), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -98,7 +98,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         [Fact]
         public async Task Delete_WhenValidModelIdSentThenDeleteSuccessfullyAndReturnHttpsStatusOk()
         {
-            ModelsSpecification newModel = new ModelsSpecification
+            ModelsSpecification newModelSpec = new ModelsSpecification
             {
                 Id = 52,
                 ProductName = "IntelliVue",
@@ -114,7 +114,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
                 MultiPatientSupport = "NO",
             };
 
-            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newModel), Encoding.UTF8, "application/json"));
+            var response = await program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newModelSpec), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 

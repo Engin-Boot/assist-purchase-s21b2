@@ -208,19 +208,8 @@ namespace PurchaseAssistantBackend.Test
             Assert.Single(filteredModelsByBatterySupport);
 
             var model = filteredModelsByBatterySupport.First();
-            
-            Assert.Equal("Intelli", model.ProductName);
-            Assert.Equal("MX40", model.ProductKey);
-            Assert.Equal("The IntelliVue MX40 patient wearable monitor gives you technology, intelligent design, and innovative features you expect from Philips – in a device light enough and small enough to be comfortably worn by ambulatory patients.",
-                model.Description);
-            Assert.Equal("37000", model.Price);
-            Assert.Equal(65, model.Weight);
-            Assert.True(model.Portable);
-            Assert.Equal(2.8, model.ScreenSize);
-            Assert.True(model.TouchScreenSupport);
-            Assert.Equal("10*11", model.MonitorResolution);
-            Assert.Equal("YES", model.BatterySupport);
-            Assert.Equal("NO", model.MultiPatientSupport);
+
+            TestModelInfoWithSecondModel(model);
         }
 
         [Fact]
