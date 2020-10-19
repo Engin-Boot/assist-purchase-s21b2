@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PurchaseAssistantWebApp", "PurchaseAssistantWebApp\PurchaseAssistantWebApp.csproj", "{3A957664-5E4B-45F8-A470-747FC15F2EF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PurchaseAssistantBackend.Test", "PurchaseAssistantBackend.Test\PurchaseAssistantBackend.Test.csproj", "{DFEFFC00-B08E-421B-B053-E25D3CD98D7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PurchaseAssistantBackend.Test", "PurchaseAssistantBackend.Test\PurchaseAssistantBackend.Test.csproj", "{DFEFFC00-B08E-421B-B053-E25D3CD98D7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

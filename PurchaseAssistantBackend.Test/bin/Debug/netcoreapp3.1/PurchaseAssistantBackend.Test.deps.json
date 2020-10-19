@@ -13,7 +13,12 @@
           "PurchaseAssistantWebApp": "1.0.0",
           "coverlet.collector": "1.2.0",
           "xunit": "2.4.0",
-          "xunit.runner.visualstudio": "2.4.0"
+          "xunit.runner.visualstudio": "2.4.0",
+          "xunit.analyzers.Reference": "0.10.0.0",
+          "xunit.console": "2.4.1.0",
+          "xunit.runner.reporters.netcoreapp10": "2.4.0.4049",
+          "xunit.runner.utility.netcoreapp10": "2.4.0.4049",
+          "xunit.runner.visualstudio.dotnetcore.testadapter": "2.4.0.4049"
         },
         "runtime": {
           "PurchaseAssistantBackend.Test.dll": {}
@@ -764,6 +769,46 @@
         "runtime": {
           "PurchaseAssistantWebApp.dll": {}
         }
+      },
+      "xunit.analyzers.Reference/0.10.0.0": {
+        "runtime": {
+          "xunit.analyzers.dll": {
+            "assemblyVersion": "0.10.0.0",
+            "fileVersion": "0.10.0.0"
+          }
+        }
+      },
+      "xunit.console/2.4.1.0": {
+        "runtime": {
+          "xunit.console.dll": {
+            "assemblyVersion": "2.4.1.0",
+            "fileVersion": "2.4.1.0"
+          }
+        }
+      },
+      "xunit.runner.reporters.netcoreapp10/2.4.0.4049": {
+        "runtime": {
+          "xunit.runner.reporters.netcoreapp10.dll": {
+            "assemblyVersion": "2.4.0.4049",
+            "fileVersion": "2.4.0.4049"
+          }
+        }
+      },
+      "xunit.runner.utility.netcoreapp10/2.4.0.4049": {
+        "runtime": {
+          "xunit.runner.utility.netcoreapp10.dll": {
+            "assemblyVersion": "2.4.0.4049",
+            "fileVersion": "2.4.0.4049"
+          }
+        }
+      },
+      "xunit.runner.visualstudio.dotnetcore.testadapter/2.4.0.4049": {
+        "runtime": {
+          "xunit.runner.visualstudio.dotnetcore.testadapter.dll": {
+            "assemblyVersion": "2.4.0.4049",
+            "fileVersion": "2.4.0.4049"
+          }
+        }
       }
     }
   },
@@ -1188,6 +1233,31 @@
     },
     "PurchaseAssistantWebApp/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "xunit.analyzers.Reference/0.10.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "xunit.console/2.4.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "xunit.runner.reporters.netcoreapp10/2.4.0.4049": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "xunit.runner.utility.netcoreapp10/2.4.0.4049": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "xunit.runner.visualstudio.dotnetcore.testadapter/2.4.0.4049": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

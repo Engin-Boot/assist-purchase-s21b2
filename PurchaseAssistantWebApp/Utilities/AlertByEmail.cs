@@ -72,8 +72,6 @@ namespace PurchaseAssistantWebApp.Utilities
             //smtp.Authenticate("s21b2team@gmail.com", "");
             //smtp.Send(email);
             smtp.Disconnect(true);
-
-            Console.WriteLine(email.MessageId);
             
             return true;
         }

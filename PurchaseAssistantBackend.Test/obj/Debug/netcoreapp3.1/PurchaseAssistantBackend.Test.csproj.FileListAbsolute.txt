@@ -106,3 +106,7 @@ C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\Purcha
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\obj\Debug\netcoreapp3.1\PurchaseAssistantBackend.Test.csproj.CoreCompileInputs.cache
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\bin\Debug\netcoreapp3.1\JetBrains.Annotations.dll
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\bin\Debug\netcoreapp3.1\xunit.analyzers.dll
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\bin\Debug\netcoreapp3.1\xunit.console.dll
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\bin\Debug\netcoreapp3.1\xunit.console.dll.config
+C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantBackend.Test\bin\Debug\netcoreapp3.1\xunit.runner.utility.netcoreapp10.xml
