@@ -65,7 +65,8 @@ namespace PurchaseAssistantWebApp.Utilities
 
             var emailBodyStr = CreateEmailMessageBody(requestInfo);
 
-            var email = ComposeEmail("s21b2team@gmail.com", receivers, "New Call Setup Request Received", emailBodyStr);
+            //var email = ComposeEmail("s21b2team@gmail.com", receivers, "New Call Setup Request Received", emailBodyStr);
+            _ = ComposeEmail("s21b2team@gmail.com", receivers, "New Call Setup Request Received", emailBodyStr);
 
             using var smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
