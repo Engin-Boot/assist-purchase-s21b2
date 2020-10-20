@@ -35,6 +35,12 @@ namespace PurchaseAssistantWebApp.Database
                     MonitorResolution = "10*11",
                     BatterySupport = "NO",
                     MultiPatientSupport = "NO",
+                    BpCheck = "YES",
+                    HeartRateCheck = "YES",
+                    EcgCheck = "YES",
+                    SpO2Check = "YES",
+                    TemperatureCheck = "YES",
+                    CardiacOutputCheck = "YES",
                     
                 },
                 new ModelsSpecification
@@ -52,6 +58,12 @@ namespace PurchaseAssistantWebApp.Database
                     MonitorResolution = "10*11",
                     BatterySupport = "YES",
                     MultiPatientSupport = "NO",
+                    BpCheck = "YES",
+                    HeartRateCheck = "YES",
+                    EcgCheck = "NO",
+                    SpO2Check = "YES",
+                    TemperatureCheck = "YES",
+                    CardiacOutputCheck = "NO",
 
                 },
            
