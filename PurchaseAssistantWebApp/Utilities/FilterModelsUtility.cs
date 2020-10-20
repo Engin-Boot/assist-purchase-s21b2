@@ -16,6 +16,13 @@ namespace PurchaseAssistantWebApp.Utilities
             filteredModels = FilterByBatterySupport(searchRequest.BatterySupport, filteredModels);
             filteredModels = FilterByMultiPatientSupport(searchRequest.MultiPatientSupport, filteredModels);
             filteredModels = FilterByTouchScreenSupport(searchRequest.TouchScreenSupport, filteredModels);
+            
+            filteredModels = FilterByBpCheck(searchRequest.BpCheck, filteredModels);
+            filteredModels = FilterByHeartRateCheck(searchRequest.HeartRateCheck, filteredModels);
+            filteredModels = FilterByEcgCheck(searchRequest.EcgCheck, filteredModels);
+            filteredModels = FilterBySpO2Check(searchRequest.SpO2Check, filteredModels);
+            filteredModels = FilterByTemperatureCheck(searchRequest.TemperatureCheck, filteredModels);
+            filteredModels = FilterByCardiacOutputCheck(searchRequest.CardiacOutputCheck, filteredModels);
 
             return filteredModels;
         }
@@ -86,5 +93,49 @@ namespace PurchaseAssistantWebApp.Utilities
                 throw new ArgumentException("Query Argument 'touchScreenSupport' is invalid. It must be a valid boolean value (either true or false).");
             }
         }
+        
+        // clinical
+        public static IEnumerable<ModelsSpecification> FilterByBpCheck(string bpCheck, IEnumerable<ModelsSpecification> models)
+        {
+            if (string.IsNullOrEmpty(bpCheck)) return models;
+
+            return models.Where(model => model.BpCheck.Equals(bpCheck));
+        }
+
+        public static IEnumerable<ModelsSpecification> FilterByHeartRateCheck(string heartRateCheck, IEnumerable<ModelsSpecification> models)
+        {
+            if (string.IsNullOrEmpty(heartRateCheck)) return models;
+
+            return models.Where(model => model.HeartRateCheck.Equals(heartRateCheck));
+        }
+
+        public static IEnumerable<ModelsSpecification> FilterByEcgCheck(string ecgCheck, IEnumerable<ModelsSpecification> models)
+        {
+            if (string.IsNullOrEmpty(ecgCheck)) return models;
+
+            return models.Where(model => model.EcgCheck.Equals(ecgCheck));
+        }
+
+        public static IEnumerable<ModelsSpecification> FilterBySpO2Check(string spO2Check, IEnumerable<ModelsSpecification> models)
+        {
+            if (string.IsNullOrEmpty(spO2Check)) return models;
+
+            return models.Where(model => model.SpO2Check.Equals(spO2Check));
+        }
+
+        public static IEnumerable<ModelsSpecification> FilterByTemperatureCheck(string temperatureCheck, IEnumerable<ModelsSpecification> models)
+        {
+            if (string.IsNullOrEmpty(temperatureCheck)) return models;
+
+            return models.Where(model => model.TemperatureCheck.Equals(temperatureCheck));
+        }
+
+        public static IEnumerable<ModelsSpecification> FilterByCardiacOutputCheck(string cardiacOutputCheck, IEnumerable<ModelsSpecification> models)
+        {
+            if (string.IsNullOrEmpty(cardiacOutputCheck)) return models;
+
+            return models.Where(model => model.CardiacOutputCheck.Equals(cardiacOutputCheck));
+        }
+        
     }
 }
