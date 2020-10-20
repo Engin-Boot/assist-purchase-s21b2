@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using System.Resources;
 
+[assembly: NeutralResourcesLanguage("en")]
 namespace PurchaseAssistantWebApp
 {
     public static class Program

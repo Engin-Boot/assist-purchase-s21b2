@@ -3,13 +3,14 @@ using PurchaseAssistantWebApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Resources;
 
 namespace PurchaseAssistantWebApp.Repository
 {
     public class CallSetupRequestDataRepository : ICallSetupRequestDataRepository
     {
         private readonly List<CallSetupRequest> _requestsDb = new List<CallSetupRequest>();
-
+        
         public CallSetupRequestDataRepository()
         {
 
@@ -32,17 +33,17 @@ namespace PurchaseAssistantWebApp.Repository
         {
             if (String.IsNullOrEmpty(value))
             {
-                throw new ArgumentNullException(name, "Customer detail required: " + name + " cannot be null or empty.");
+                throw new ArgumentNullException(name, $"Customer detail required: { name } cannot be null or empty.");
             }
         }
 
         private void ValidateCallSetupRequestData(CallSetupRequest request)
         {
-            ValidateField("requestId", request.RequestId);
-            ValidateField("email", request.Email);
-            ValidateField("organisation", request.Organisation);
-            ValidateField("pointOfContactName", request.PointOfContactName);
-            ValidateField("region", request.Region);
+            ValidateField(nameof(request.RequestId), request.RequestId);
+            ValidateField(nameof(request.Email), request.Email);
+            ValidateField(nameof(request.Organisation), request.Organisation);
+            ValidateField(nameof(request.PointOfContactName), request.PointOfContactName);
+            ValidateField(nameof(request.Region), request.Region);
 
             if (request.SelectedModels==null || !request.SelectedModels.Any())
             {
@@ -58,7 +59,7 @@ namespace PurchaseAssistantWebApp.Repository
             {
                 if (request.RequestId.Equals(newRequest.RequestId))
                 {
-                    throw new ArgumentException("A Call Setup Request with " + newRequest.RequestId + " key already exists.", nameof(newRequest.RequestId));
+                    throw new ArgumentException($"A Call Setup Request with {newRequest.RequestId} key already exists.", nameof(newRequest.RequestId));
                 }
             }
             _requestsDb.Add(newRequest);
@@ -76,7 +77,7 @@ namespace PurchaseAssistantWebApp.Repository
                     return $"Call Setup Request with id {id} deleted successfully!";
                 }
             }
-            throw new KeyNotFoundException("Delete operation failed. Call Setup Request with " + id + " key does not exist.");
+            throw new KeyNotFoundException($"Delete operation failed. Call Setup Request with {id} key does not exist.");
         }
 
         public string UpdateCallSetupRequest(CallSetupRequest request)
@@ -95,7 +96,7 @@ namespace PurchaseAssistantWebApp.Repository
                     return $"Call Setup Request with id {request.RequestId} updated successfully!";
                 }
             }
-            throw new KeyNotFoundException("Update operation failed. Call Setup Request with " + request.RequestId + " key does not exist.");
+            throw new KeyNotFoundException($"Update operation failed. Call Setup Request with {request.RequestId} key does not exist.");
         }
     }
 }

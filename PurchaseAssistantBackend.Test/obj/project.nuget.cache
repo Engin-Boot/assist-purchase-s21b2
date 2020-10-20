@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cB8a+WOh0UV7FF0P0QMoHHb36ENSehrbGm3UN+TuwRpOcNdqbhSYEpA0kS+iPYI7Qs2YBC19usJBYy91azTjhA==",
+  "dgSpecHash": "V78++dLPclP0Jv4azMj8Fh3kazrZB+m6dKhtPtZW3v2w2EXRosSDFepqkvivv9yJ0tL86nsK+vpHY+48bzvbbg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantBackend.Test\\PurchaseAssistantBackend.Test.csproj",
   "expectedPackageFiles": [
@@ -61,8 +61,7 @@
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\xunit.assert\\2.4.0\\xunit.assert.2.4.0.nupkg.sha512",
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\xunit.core\\2.4.0\\xunit.core.2.4.0.nupkg.sha512",
     "C:\\Users\\Tripti Saini\\.nuget\\packages\\xunit.extensibility.core\\2.4.0\\xunit.extensibility.core.2.4.0.nupkg.sha512",
-    "C:\\Users\\Tripti Saini\\.nuget\\packages\\xunit.extensibility.execution\\2.4.0\\xunit.extensibility.execution.2.4.0.nupkg.sha512",
-    "C:\\Users\\Tripti Saini\\.nuget\\packages\\xunit.runner.visualstudio\\2.4.0\\xunit.runner.visualstudio.2.4.0.nupkg.sha512"
+    "C:\\Users\\Tripti Saini\\.nuget\\packages\\xunit.extensibility.execution\\2.4.0\\xunit.extensibility.execution.2.4.0.nupkg.sha512"
   ],
   "logs": []
 }

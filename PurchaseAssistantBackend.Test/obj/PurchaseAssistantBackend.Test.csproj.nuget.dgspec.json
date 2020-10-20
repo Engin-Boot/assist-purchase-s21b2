@@ -60,10 +60,6 @@
             "xunit": {
               "target": "Package",
               "version": "[2.4.0, )"
-            },
-            "xunit.runner.visualstudio": {
-              "target": "Package",
-              "version": "[2.4.0, )"
             }
           },
           "imports": [
