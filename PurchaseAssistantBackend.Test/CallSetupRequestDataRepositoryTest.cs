@@ -183,8 +183,8 @@ namespace PurchaseAssistantBackend.Test
             }
             catch (ArgumentNullException exception)
             {
-                Assert.Equal("pointOfContactName", exception.ParamName);
-                Assert.Equal("Customer detail required: pointOfContactName cannot be null or empty. (Parameter 'pointOfContactName')", exception.Message);
+                Assert.Equal("PointOfContactName", exception.ParamName);
+                Assert.Equal("Customer detail required: PointOfContactName cannot be null or empty. (Parameter 'PointOfContactName')", exception.Message);
             }
         }
         

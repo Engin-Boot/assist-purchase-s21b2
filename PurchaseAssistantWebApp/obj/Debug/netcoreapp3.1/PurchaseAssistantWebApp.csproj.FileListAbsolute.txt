@@ -43,7 +43,3 @@ C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\Purcha
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\bin\Debug\netcoreapp3.1\JetBrains.Annotations.dll
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.csproj.CoreCompileInputs.cache
 C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\bin\Debug\netcoreapp3.1\en-US\PurchaseAssistantWebApp.resources.dll
-C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.requesterrors.en-US.resources
-C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\PurchaseAssistantWebApp.csproj.GenerateResource.cache
-C:\Users\Tripti Saini\philips\bootcamp\case-study-2\assist-purchase-s21b2\PurchaseAssistantWebApp\obj\Debug\netcoreapp3.1\en-US\PurchaseAssistantWebApp.resources.dll
