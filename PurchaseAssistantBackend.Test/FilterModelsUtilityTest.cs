@@ -29,7 +29,12 @@ namespace PurchaseAssistantBackend.Test
                     MonitorResolution = "10*11",
                     BatterySupport = "NO",
                     MultiPatientSupport = "NO",
-
+                    BpCheck = "YES",
+                    HeartRateCheck = "NO",
+                    EcgCheck = "YES",
+                    SpO2Check = "YES",
+                    TemperatureCheck = "YES",
+                    CardiacOutputCheck = "YES"
                 },
                 new ModelsSpecification
                 {
@@ -43,10 +48,15 @@ namespace PurchaseAssistantBackend.Test
                     Portable = true,
                     ScreenSize = 2.8,
                     TouchScreenSupport = true,
-                    MonitorResolution = "10*11",
+                    MonitorResolution = "10*15",
                     BatterySupport = "YES",
                     MultiPatientSupport = "NO",
-
+                    BpCheck = "YES",
+                    HeartRateCheck = "YES",
+                    EcgCheck = "NO",
+                    SpO2Check = "YES",
+                    TemperatureCheck = "YES",
+                    CardiacOutputCheck = "NO"
                 }
             };
         }
@@ -65,23 +75,35 @@ namespace PurchaseAssistantBackend.Test
             Assert.Equal("10*11", model.MonitorResolution);
             Assert.Equal("NO", model.BatterySupport);
             Assert.Equal("NO", model.MultiPatientSupport);
+            Assert.Equal("YES", model.BpCheck);
+            Assert.Equal("NO", model.HeartRateCheck);
+            Assert.Equal("YES", model.EcgCheck);
+            Assert.Equal("YES", model.SpO2Check);
+            Assert.Equal("YES", model.TemperatureCheck);
+            Assert.Equal("YES", model.CardiacOutputCheck);
         }
 
         [AssertionMethod]
-        private void TestModelInfoWithSecondModel(ModelsSpecification model)
+        private void TestModelInfoWithSecondModel(ModelsSpecification secondModel)
         {
-            Assert.Equal("Intelli", model.ProductName);
-            Assert.Equal("MX40", model.ProductKey);
+            Assert.Equal("Intelli", secondModel.ProductName);
+            Assert.Equal("MX40", secondModel.ProductKey);
             Assert.Equal("The IntelliVue MX40 patient wearable monitor gives you technology, intelligent design, and innovative features you expect from Philips – in a device light enough and small enough to be comfortably worn by ambulatory patients.",
-                model.Description);
-            Assert.Equal("37000", model.Price);
-            Assert.Equal(65, model.Weight);
-            Assert.True(model.Portable);
-            Assert.Equal(2.8, model.ScreenSize);
-            Assert.True(model.TouchScreenSupport);
-            Assert.Equal("10*11", model.MonitorResolution);
-            Assert.Equal("YES", model.BatterySupport);
-            Assert.Equal("NO", model.MultiPatientSupport);
+                secondModel.Description);
+            Assert.Equal("37000", secondModel.Price);
+            Assert.Equal(65, secondModel.Weight);
+            Assert.True(secondModel.Portable);
+            Assert.Equal(2.8, secondModel.ScreenSize);
+            Assert.True(secondModel.TouchScreenSupport);
+            Assert.Equal("10*15", secondModel.MonitorResolution);
+            Assert.Equal("YES", secondModel.BatterySupport);
+            Assert.Equal("NO", secondModel.MultiPatientSupport);
+            Assert.Equal("YES", secondModel.BpCheck);
+            Assert.Equal("YES", secondModel.HeartRateCheck);
+            Assert.Equal("YES", secondModel.SpO2Check);
+            Assert.Equal("YES", secondModel.TemperatureCheck);
+            Assert.Equal("NO", secondModel.CardiacOutputCheck);
+            Assert.Equal("NO", secondModel.EcgCheck);
         }
 
         [Fact]
@@ -258,10 +280,120 @@ namespace PurchaseAssistantBackend.Test
             TestModelInfoWithSecondModel(filteredModelsByTouchScreenSupport[1]);
         }
 
+
+        [Fact]
+        public void WhenApplyFilterByBpCheckWithNullOrEmptyValueThenReturnAllModels()
+        {
+            var filteredModelsByBpCheck = FilterModelsUtility.FilterByBpCheck("", _models);
+            Assert.Equal(2, filteredModelsByBpCheck.Count());
+
+            filteredModelsByBpCheck = FilterModelsUtility.FilterByBpCheck(null, _models);
+            Assert.Equal(2, filteredModelsByBpCheck.Count());
+        }
+
+        [Fact]
+        public void WhenApplyFilterByBpCheckWithValidValueThenReturnModelsWithMatchingBpCheckSupport()
+        {
+            var filteredModelsByBpCheck = FilterModelsUtility.FilterByBpCheck("NO", _models);
+            Assert.Empty(filteredModelsByBpCheck);
+        }
+
+
+        [Fact]
+        public void WhenApplyFilterByHeartRateCheckWithNullOrEmptyValueThenReturnAllModels()
+        {
+            var filteredModelsByHeartRateCheck = FilterModelsUtility.FilterByHeartRateCheck("", _models);
+            Assert.Equal(2, filteredModelsByHeartRateCheck.Count());
+
+            filteredModelsByHeartRateCheck = FilterModelsUtility.FilterByHeartRateCheck(null, _models);
+            Assert.Equal(2, filteredModelsByHeartRateCheck.Count());
+        }
+
+        [Fact]
+        public void WhenApplyFilterByHeartRateCheckWithValidValueThenReturnModelsWithMatchingHeartRateCheckSupport()
+        {
+            var filteredModelsByHeartRateCheck = FilterModelsUtility.FilterByHeartRateCheck("YES", _models);
+            Assert.Single(filteredModelsByHeartRateCheck);
+        }
+
+
+        [Fact]
+        public void WhenApplyFilterByEcgCheckWithNullOrEmptyValueThenReturnAllModels()
+        {
+            var filteredModelsByEcgCheck = FilterModelsUtility.FilterByEcgCheck("", _models);
+            Assert.Equal(2, filteredModelsByEcgCheck.Count());
+
+            filteredModelsByEcgCheck = FilterModelsUtility.FilterByEcgCheck(null, _models);
+            Assert.Equal(2, filteredModelsByEcgCheck.Count());
+        }
+
+        [Fact]
+        public void WhenApplyFilterByEcgCheckWithValidValueThenReturnModelsWithMatchingEcgCheckSupport()
+        {
+            var filteredModelsByEcgCheck = FilterModelsUtility.FilterByEcgCheck("YES", _models);
+            Assert.Single(filteredModelsByEcgCheck);
+        }
+
+
+        [Fact]
+        public void WhenApplyFilterBySpO2CheckWithNullOrEmptyValueThenReturnAllModels()
+        {
+            var filteredModelsBySpO2Check = FilterModelsUtility.FilterBySpO2Check("", _models);
+            Assert.Equal(2, filteredModelsBySpO2Check.Count());
+
+            filteredModelsBySpO2Check = FilterModelsUtility.FilterBySpO2Check(null, _models);
+            Assert.Equal(2, filteredModelsBySpO2Check.Count());
+        }
+
+        [Fact]
+        public void WhenApplyFilterBySpO2CheckWithValidValueThenReturnModelsWithMatchingSpO2CheckSupport()
+        {
+            var filteredModelsBySpO2Check = FilterModelsUtility.FilterBySpO2Check("YES", _models);
+            Assert.Equal(2, filteredModelsBySpO2Check.Count());
+        }
+
+
+        [Fact]
+        public void WhenApplyFilterByTemperatureCheckWithNullOrEmptyValueThenReturnAllModels()
+        {
+            var filteredModelsByTemperatureCheck = FilterModelsUtility.FilterByTemperatureCheck("", _models);
+            Assert.Equal(2, filteredModelsByTemperatureCheck.Count());
+
+            filteredModelsByTemperatureCheck = FilterModelsUtility.FilterByTemperatureCheck(null, _models);
+            Assert.Equal(2, filteredModelsByTemperatureCheck.Count());
+        }
+
+        [Fact]
+        public void WhenApplyFilterByTemperatureCheckWithValidValueThenReturnModelsWithMatchingTemperatureCheckSupport()
+        {
+            var filteredModelsByTemperatureCheck = FilterModelsUtility.FilterByTemperatureCheck("YES", _models);
+            Assert.Equal(2, filteredModelsByTemperatureCheck.Count());
+        }
+
+        
+        [Fact]
+        public void WhenApplyFilterByCardiacOutputCheckWithNullOrEmptyValueThenReturnAllModels()
+        {
+            var filteredModelsByCardiacOutputCheck = FilterModelsUtility.FilterByCardiacOutputCheck("", _models);
+            Assert.Equal(2, filteredModelsByCardiacOutputCheck.Count());
+
+            filteredModelsByCardiacOutputCheck = FilterModelsUtility.FilterByCardiacOutputCheck(null, _models);
+            Assert.Equal(2, filteredModelsByCardiacOutputCheck.Count());
+        }
+
+        [Fact]
+        public void WhenApplyFilterByCardiacOutputCheckWithValidValueThenReturnModelsWithMatchingCardiacOutputCheckSupport()
+        {
+            var filteredModelsByCardiacOutputCheck = FilterModelsUtility.FilterByCardiacOutputCheck("YES", _models);
+            Assert.Single(filteredModelsByCardiacOutputCheck);
+        }
+
+
         [Fact]
         public void WhenApplyAllFiltersThenReturnFilteredModelsResult()
         {
-            SearchQuery query = new SearchQuery { Portability = "true", BatterySupport = "YES", MultiPatientSupport="NO", TouchScreenSupport="true"};
+            SearchQuery query = new SearchQuery { BpCheck = "YES", SpO2Check = "YES", HeartRateCheck = "YES", TemperatureCheck = "YES", CardiacOutputCheck = "NO", EcgCheck = "NO", 
+                Portability = "true", BatterySupport = "YES", MultiPatientSupport="NO", TouchScreenSupport="true"};
             var filteredModelsList = FilterModelsUtility.ApplyAllFilters(_models, query).ToList();
             
             Assert.Single(filteredModelsList);

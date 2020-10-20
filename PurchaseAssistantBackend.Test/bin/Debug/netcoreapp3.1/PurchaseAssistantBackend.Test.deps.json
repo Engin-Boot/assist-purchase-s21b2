@@ -762,11 +762,6 @@
         },
         "runtime": {
           "PurchaseAssistantWebApp.dll": {}
-        },
-        "resources": {
-          "en-US/PurchaseAssistantWebApp.resources.dll": {
-            "locale": "en-US"
-          }
         }
       },
       "xunit.analyzers.Reference/0.10.0.0": {

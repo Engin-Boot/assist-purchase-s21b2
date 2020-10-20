@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -26,24 +27,49 @@ namespace PurchaseAssistantWebApp.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] Models.ModelsSpecification newModelSpecification)
         {
-            _repository.AddNewModelsSpecification(newModelSpecification);
-            return Ok();
+            try
+            {
+                _repository.AddNewModelsSpecification(newModelSpecification);
+                return Ok();
+            }
+            catch (ArgumentException exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
 
         // PUT api/<ModelsSpecificationController>
         [HttpPut]
         public ActionResult Put([FromBody] Models.ModelsSpecification updatedModelSpecification)
         {
-            _repository.UpdateModelsSpecification(updatedModelSpecification);
-            return Ok();
+            try
+            {
+                _repository.UpdateModelsSpecification(updatedModelSpecification);
+                return Ok();
+            }
+            catch (ArgumentException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+            catch (KeyNotFoundException exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
 
         // DELETE api/<ModelsSpecificationController>/5
         [HttpDelete("{id}")]
         public ActionResult Delete(long id)
         {
-            _repository.DeleteModelsSpecification(id);
-            return Ok();
+            try
+            {
+                _repository.DeleteModelsSpecification(id);
+                return Ok();
+            }
+            catch (KeyNotFoundException exception)
+            {
+                return BadRequest(exception.Message);
+            }
         }
     }
 }

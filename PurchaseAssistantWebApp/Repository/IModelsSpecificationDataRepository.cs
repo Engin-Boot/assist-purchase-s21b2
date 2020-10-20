@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Net;
 using PurchaseAssistantWebApp.Models;
 
 namespace PurchaseAssistantWebApp.Repository
@@ -8,11 +7,11 @@ namespace PurchaseAssistantWebApp.Repository
     {
         IEnumerable<ModelsSpecification> GetAllModelsSpecifications();
 
-        HttpStatusCode AddNewModelsSpecification(ModelsSpecification newModelsSpecification);
+        void AddNewModelsSpecification(ModelsSpecification newModelsSpecification);
 
-        HttpStatusCode UpdateModelsSpecification(ModelsSpecification updatedModelsSpecification);
+        void UpdateModelsSpecification(ModelsSpecification updatedModelsSpecification);
 
-        HttpStatusCode DeleteModelsSpecification(long id);
+        void DeleteModelsSpecification(long id);
 
     }
 }
