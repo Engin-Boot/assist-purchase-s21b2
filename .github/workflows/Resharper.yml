@@ -18,6 +18,9 @@ jobs:
       
       - name: Install resharper
         run: dotnet tool install -g JetBrains.ReSharper.GlobalTools
+      
+      - name: Add packages
+        run: dotnet add PurchaseAssistantBackend.Test/PurchaseAssistantBackend.Test.csproj package xunit --version 2.4.0
         
       - name: Run resharper inspection
         run: jb inspectcode PurchaseAssistantWebApp.sln /output=insreport.xml
