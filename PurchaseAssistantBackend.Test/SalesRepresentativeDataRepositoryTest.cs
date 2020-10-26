@@ -7,18 +7,19 @@ using Xunit;
 
 namespace PurchaseAssistantBackend.Test
 {
-    public class SalesRepresentativeDataRepositoryTest
+    public class SalesRepresentativeDataRepositoryTest : InMemoryContext
     {
         private readonly ISalesRepresentativeDataRepository _repository;
         public SalesRepresentativeDataRepositoryTest()
         {
-            var salesRepresentativeTestDb = new List<SalesRepresentative>
-            {
-                new SalesRepresentative { Id = "SR001", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "India" },
-                new SalesRepresentative { Id = "SR002", Name = "Sam", Email = "samuel@gmail.com", DepartmentRegion = "Switzerland" }
-            };
+            //var salesRepresentativeTestDb = new List<SalesRepresentative>
+            //{
+            //    new SalesRepresentative { Id = "SR001", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "India" },
+            //    new SalesRepresentative { Id = "SR002", Name = "Sam", Email = "samuel@gmail.com", DepartmentRegion = "Switzerland" }
+            //};
+            //_repository = new SalesRepresentativeDataRepository(SalesRepresentative);
 
-            _repository = new SalesRepresentativeDataRepository(salesRepresentativeTestDb);
+            _repository = new SalesRepresentativeDataRepository(Context);
         }
         [Fact]
         public void WhenGetAllSalesRepresentativeThenReturnAllRecords()
@@ -28,15 +29,15 @@ namespace PurchaseAssistantBackend.Test
             Assert.NotNull(salesRepresentatives);
             Assert.Equal(2, salesRepresentatives.Count);
 
-            Assert.Equal("SR001", salesRepresentatives[0].Id);
-            Assert.Equal("Ellie", salesRepresentatives[0].Name);
-            Assert.Equal("ellie@gmail.com", salesRepresentatives[0].Email);
-            Assert.Equal("India", salesRepresentatives[0].DepartmentRegion);
+            Assert.Equal("SR001", salesRepresentatives[1].Id);
+            Assert.Equal("Ellie", salesRepresentatives[1].Name);
+            Assert.Equal("ellie@gmail.com", salesRepresentatives[1].Email);
+            Assert.Equal("India", salesRepresentatives[1].DepartmentRegion);
 
-            Assert.Equal("SR002", salesRepresentatives[1].Id);
-            Assert.Equal("Sam", salesRepresentatives[1].Name);
-            Assert.Equal("samuel@gmail.com", salesRepresentatives[1].Email);
-            Assert.Equal("Switzerland", salesRepresentatives[1].DepartmentRegion);
+            Assert.Equal("SR002", salesRepresentatives[0].Id);
+            Assert.Equal("Sam", salesRepresentatives[0].Name);
+            Assert.Equal("samuel@gmail.com", salesRepresentatives[0].Email);
+            Assert.Equal("Switzerland", salesRepresentatives[0].DepartmentRegion);
         }
         
         [Fact]
@@ -69,6 +70,7 @@ namespace PurchaseAssistantBackend.Test
                 new SalesRepresentative { Id = "SR003", Name = "Adam", Email = "adam@ymail.com", DepartmentRegion = "USA" });
 
             Assert.Equal("Sales representative with id SR003 added successfully!", message);
+            Assert.NotNull(_repository.GetSalesRepresentative("SR003"));
         }
         
         [Fact]
@@ -108,6 +110,7 @@ namespace PurchaseAssistantBackend.Test
                 new SalesRepresentative { Id = "SR001", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "USA" });
 
             Assert.Equal("Sales representative with id SR001 updated successfully!", message);
+            Assert.Equal("USA", _repository.GetSalesRepresentative("SR001").DepartmentRegion);
         }
         
         [Fact]
@@ -145,6 +148,7 @@ namespace PurchaseAssistantBackend.Test
             var message = _repository.DeleteSalesRepresentative("SR001");
 
             Assert.Equal("Sales representative with id SR001 deleted successfully!", message);
+            Assert.Null(_repository.GetSalesRepresentative("SR001"));
         }
 
         [Fact]
@@ -160,11 +164,11 @@ namespace PurchaseAssistantBackend.Test
             }
         }
 
-        [Fact]
-        public void WhenRepositoryCreatedWithDefaultConstructorThenNonEmptyRepository()
-        {
-            ISalesRepresentativeDataRepository defaultRepository = new SalesRepresentativeDataRepository();
-            Assert.NotNull(defaultRepository);
-        }
+        //[Fact]
+        //public void WhenRepositoryCreatedWithDefaultConstructorThenNonEmptyRepository()
+        //{
+        //    ISalesRepresentativeDataRepository defaultRepository = new SalesRepresentativeDataRepository();
+        //    Assert.NotNull(defaultRepository);
+        //}
     }
 }

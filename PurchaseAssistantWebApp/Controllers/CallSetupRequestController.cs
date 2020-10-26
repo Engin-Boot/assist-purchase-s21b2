@@ -71,8 +71,8 @@ namespace PurchaseAssistantWebApp.Controllers
         {
             try
             {
-                _repository.DeleteCallSetupRequest(id);
-                return Ok();
+                var msg = _repository.DeleteCallSetupRequest(id);
+                return Ok(msg);
             }
             catch(KeyNotFoundException exception)
             {

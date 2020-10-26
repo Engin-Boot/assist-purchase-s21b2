@@ -13,5 +13,6 @@ namespace PurchaseAssistantWebApp.Repository
 
         void DeleteModelsSpecification(long id);
 
+        ModelsSpecification GetModel(long id);
     }
 }

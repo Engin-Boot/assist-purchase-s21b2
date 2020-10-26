@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using PurchaseAssistantWebApp.Database;
 using PurchaseAssistantWebApp.Models;
 using System;
 using System.Collections.Generic;
@@ -8,19 +9,20 @@ namespace PurchaseAssistantWebApp.Repository
 {
     public class SalesRepresentativeDataRepository : ISalesRepresentativeDataRepository
     {
-        private readonly List<SalesRepresentative> _salesRepresentativesDb = new List<SalesRepresentative>();
-
-        public SalesRepresentativeDataRepository()
+        //private readonly List<SalesRepresentative> _salesRepresentativesDb = new List<SalesRepresentative>();
+        private readonly AppDbContext _context;
+        public SalesRepresentativeDataRepository(AppDbContext context)
         {
-            _salesRepresentativesDb.Add(new SalesRepresentative { Id = "SR001", Name = "Tripti", Email = "sainitripti5@gmail.com", DepartmentRegion = "India" });
+            _context = context;
+            //_salesRepresentativesDb.Add(new SalesRepresentative { Id = "SR001", Name = "Tripti", Email = "sainitripti5@gmail.com", DepartmentRegion = "India" });
         }
-        public SalesRepresentativeDataRepository(List<SalesRepresentative> initialSalesRepresentativesDb)
-        {
-            foreach(SalesRepresentative salesRepresentativeInfo in initialSalesRepresentativesDb)
-            {
-                _salesRepresentativesDb.Add(salesRepresentativeInfo);
-            }
-        }
+        //public SalesRepresentativeDataRepository(List<SalesRepresentative> initialSalesRepresentativesDb)
+        //{
+        //    foreach(SalesRepresentative salesRepresentativeInfo in initialSalesRepresentativesDb)
+        //    {
+        //        _salesRepresentativesDb.Add(salesRepresentativeInfo);
+        //    }
+        //}
 
         [AssertionMethod]
         private void ValidateField(string name, string value)
@@ -42,59 +44,87 @@ namespace PurchaseAssistantWebApp.Repository
 
         public IEnumerable<SalesRepresentative> GetAllSalesRepresentative()
         {
-            return _salesRepresentativesDb;
+            //return _salesRepresentativesDb;
+            return _context.SalesRepresentatives;
         }
 
         public IEnumerable<SalesRepresentative> GetAllSalesRepresentativeByRegion(string region)
         {
-            return _salesRepresentativesDb.Where(salesRepresentative => salesRepresentative.DepartmentRegion.Equals(region));
+            //return _salesRepresentativesDb.Where(salesRepresentative => salesRepresentative.DepartmentRegion.Equals(region));
+            return _context.SalesRepresentatives.Where(salesRepresentative => salesRepresentative.DepartmentRegion.Equals(region));
         }
 
         public string AddNewSalesRepresentative(SalesRepresentative newSalesRepresentativeInfo)
         {
             ValidateSalesRepresentativetData(newSalesRepresentativeInfo);
-
-            foreach (SalesRepresentative salesRepresentative in _salesRepresentativesDb)
+            if (GetSalesRepresentative(newSalesRepresentativeInfo.Id) != null)
             {
-                if (salesRepresentative.Id.Equals(newSalesRepresentativeInfo.Id))
-                {
-                    throw new ArgumentException("A Sales Representative with " + newSalesRepresentativeInfo.Id + " id already exists.", nameof(newSalesRepresentativeInfo.Id));
-                }
+                throw new ArgumentException("A Sales Representative with " + newSalesRepresentativeInfo.Id + " id already exists.", nameof(newSalesRepresentativeInfo.Id));
             }
-            _salesRepresentativesDb.Add(newSalesRepresentativeInfo);
+            _context.SalesRepresentatives.Add(newSalesRepresentativeInfo);
+            _context.SaveChanges();
             return $"Sales representative with id {newSalesRepresentativeInfo.Id} added successfully!";
+            //foreach (SalesRepresentative salesRepresentative in _salesRepresentativesDb)
+            //{
+            //    if (salesRepresentative.Id.Equals(newSalesRepresentativeInfo.Id))
+            //    {
+            //        throw new ArgumentException("A Sales Representative with " + newSalesRepresentativeInfo.Id + " id already exists.", nameof(newSalesRepresentativeInfo.Id));
+            //    }
+            //}
+            //_salesRepresentativesDb.Add(newSalesRepresentativeInfo);
+            //return $"Sales representative with id {newSalesRepresentativeInfo.Id} added successfully!";
         }
 
         public string UpdateSalesRepresentative(SalesRepresentative salesRepresentativeInfo)
         {
             ValidateSalesRepresentativetData(salesRepresentativeInfo);
-
-            foreach (SalesRepresentative salesRepresentative in _salesRepresentativesDb)
+            if (GetSalesRepresentative(salesRepresentativeInfo.Id) == null)
             {
-                if (salesRepresentative.Id.Equals(salesRepresentativeInfo.Id))
-                {
-                    salesRepresentative.DepartmentRegion = salesRepresentativeInfo.DepartmentRegion;
-                    salesRepresentative.Email = salesRepresentativeInfo.Email;
-                    salesRepresentative.Name = salesRepresentativeInfo.Name;
-                    return $"Sales representative with id {salesRepresentativeInfo.Id} updated successfully!";
-                }
+                throw new KeyNotFoundException("Update operation failed. Sales representative with " + salesRepresentativeInfo.Id + " id does not exist.");
             }
-
-            throw new KeyNotFoundException("Update operation failed. Sales representative with " + salesRepresentativeInfo.Id + " id does not exist.");
+            var old = GetSalesRepresentative(salesRepresentativeInfo.Id);
+            old.Name = salesRepresentativeInfo.Name;
+            old.DepartmentRegion = salesRepresentativeInfo.DepartmentRegion;
+            old.Email = salesRepresentativeInfo.Email;
+            _context.SaveChanges();
+            return $"Sales representative with id {salesRepresentativeInfo.Id} updated successfully!";
+            //foreach (SalesRepresentative salesRepresentative in _salesRepresentativesDb)
+            //{
+            //    if (salesRepresentative.Id.Equals(salesRepresentativeInfo.Id))
+            //    {
+            //        salesRepresentative.DepartmentRegion = salesRepresentativeInfo.DepartmentRegion;
+            //        salesRepresentative.Email = salesRepresentativeInfo.Email;
+            //        salesRepresentative.Name = salesRepresentativeInfo.Name;
+            //        return $"Sales representative with id {salesRepresentativeInfo.Id} updated successfully!";
+            //    }
+            //}
+            //throw new KeyNotFoundException("Update operation failed. Sales representative with " + salesRepresentativeInfo.Id + " id does not exist.");
         }
 
         public string DeleteSalesRepresentative(string id)
         {
-            int totalSalesRepresentatives = _salesRepresentativesDb.Count;
-            for (var i = 0; i < totalSalesRepresentatives; i++)
+            if (GetSalesRepresentative(id) == null)
             {
-                if (_salesRepresentativesDb[i].Id.Equals(id))
-                {
-                    _salesRepresentativesDb.RemoveAt(i);
-                    return $"Sales representative with id {id} deleted successfully!";
-                }
+                throw new KeyNotFoundException("Delete operation failed. Sales Representative with " + id + " id does not exist.");
             }
-            throw new KeyNotFoundException("Delete operation failed. Sales Representative with " + id + " id does not exist.");
+            _context.SalesRepresentatives.Remove(GetSalesRepresentative(id));
+            _context.SaveChanges();
+            return $"Sales representative with id {id} deleted successfully!";
+            //int totalSalesRepresentatives = _salesRepresentativesDb.Count;
+            //for (var i = 0; i < totalSalesRepresentatives; i++)
+            //{
+            //    if (_salesRepresentativesDb[i].Id.Equals(id))
+            //    {
+            //        _salesRepresentativesDb.RemoveAt(i);
+            //        return $"Sales representative with id {id} deleted successfully!";
+            //    }
+            //}
+            //throw new KeyNotFoundException("Delete operation failed. Sales Representative with " + id + " id does not exist.");
+        }
+
+        public SalesRepresentative GetSalesRepresentative(string id)
+        {
+            return _context.SalesRepresentatives.Find(id);
         }
     }
 }

@@ -1,0 +1,11 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1436aefc_002D0db2_002D45c4_002Da3b0_002D5e5ada0e9dc0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="SalesRepresentativeDataRepositoryTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::DFEFFC00-B08E-421B-B053-E25D3CD98D7F::.NETCoreApp,Version=v3.1::PurchaseAssistantBackend.Test.SalesRepresentativeDataRepositoryTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DFEFFC00-B08E-421B-B053-E25D3CD98D7F::.NETCoreApp,Version=v3.1::PurchaseAssistantBackend.Test.CallSetupRequestDataRepositoryTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DFEFFC00-B08E-421B-B053-E25D3CD98D7F::.NETCoreApp,Version=v3.1::PurchaseAssistantBackend.Test.IntegrationTests.CallSetupRequestControllerTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DFEFFC00-B08E-421B-B053-E25D3CD98D7F::.NETCoreApp,Version=v3.1::PurchaseAssistantBackend.Test.AlertByEmailTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DFEFFC00-B08E-421B-B053-E25D3CD98D7F::.NETCoreApp,Version=v3.1::PurchaseAssistantBackend.Test.IntegrationTests.SalesRepresentativeControllerTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DFEFFC00-B08E-421B-B053-E25D3CD98D7F::.NETCoreApp,Version=v3.1::PurchaseAssistantBackend.Test.IntegrationTests.ModelsSpecificationControllerTest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -1,7 +1,10 @@
-﻿namespace PurchaseAssistantWebApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PurchaseAssistantWebApp.Models
 {
     public class SalesRepresentative
     {
+        [Key]
         public string Id { get; set; }
 
         public string Name { get; set; }

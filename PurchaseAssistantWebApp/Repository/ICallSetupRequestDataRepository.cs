@@ -12,5 +12,7 @@ namespace PurchaseAssistantWebApp.Repository
         string UpdateCallSetupRequest(CallSetupRequest request);
 
         string DeleteCallSetupRequest(string id);
+
+        CallSetupRequest GetCallSetupRequest(string id);
     }
 }

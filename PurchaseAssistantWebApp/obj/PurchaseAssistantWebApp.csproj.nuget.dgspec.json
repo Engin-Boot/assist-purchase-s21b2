@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj": {}
+    "C:\\Users\\Ajay kumar\\source\\repos\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj": {
+    "C:\\Users\\Ajay kumar\\source\\repos\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj",
+        "projectUniqueName": "C:\\Users\\Ajay kumar\\source\\repos\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj",
         "projectName": "PurchaseAssistantWebApp",
-        "projectPath": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj",
-        "packagesPath": "C:\\Users\\Tripti Saini\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tripti Saini\\philips\\bootcamp\\case-study-2\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\obj\\",
+        "projectPath": "C:\\Users\\Ajay kumar\\source\\repos\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\PurchaseAssistantWebApp.csproj",
+        "packagesPath": "C:\\Users\\Ajay kumar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ajay kumar\\source\\repos\\assist-purchase-s21b2\\PurchaseAssistantWebApp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Tripti Saini\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ajay kumar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -48,6 +45,28 @@
             "MailKit": {
               "target": "Package",
               "version": "[2.9.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
             }
           },
           "imports": [
@@ -68,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

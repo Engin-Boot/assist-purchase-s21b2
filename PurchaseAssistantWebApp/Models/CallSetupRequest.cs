@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PurchaseAssistantWebApp.Models
 {
     public class CallSetupRequest
     {
+        [Key]
         public string RequestId { get; set; }
 
-        public string PointOfContactName { get; set; }
+        public string CoustomerName { get; set; }       // considerinig it as userName for time being.
+
+        //public string CousterId { get; set; }
 
         public string Organisation { get; set; }
 

@@ -14,7 +14,7 @@ namespace PurchaseAssistantWebApp.Utilities
         {
             StringBuilder emailBodyStringBuilder = new StringBuilder();
 
-            emailBodyStringBuilder.Append(requestInfo.PointOfContactName + " from " + requestInfo.Region +
+            emailBodyStringBuilder.Append(requestInfo.CoustomerName + " from " + requestInfo.Region +
                 " region is interested in following Philips products from Continuous Patient Monitoring Systems range:\n");
 
             foreach (string productFullName in requestInfo.SelectedModels)
@@ -23,7 +23,7 @@ namespace PurchaseAssistantWebApp.Utilities
             }
 
             emailBodyStringBuilder.Append("\nCustomer details are as follows: \n");
-            emailBodyStringBuilder.Append("Point of Contact: " + requestInfo.PointOfContactName + "\n");
+            emailBodyStringBuilder.Append("Point of Contact: " + requestInfo.CoustomerName + "\n");
             emailBodyStringBuilder.Append("Organisation: " + requestInfo.Organisation + "\n");
             emailBodyStringBuilder.Append("Email Id: " + requestInfo.Email + "\n");
             emailBodyStringBuilder.Append("\nLets add one more happy customer to our list!");

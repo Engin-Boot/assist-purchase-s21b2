@@ -15,5 +15,6 @@ namespace PurchaseAssistantWebApp.Repository
 
         string DeleteSalesRepresentative(string id);
 
+        SalesRepresentative GetSalesRepresentative(string id);
     }
 }

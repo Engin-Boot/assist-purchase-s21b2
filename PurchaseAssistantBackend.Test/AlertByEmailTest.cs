@@ -18,7 +18,7 @@ namespace PurchaseAssistantBackend.Test
         {
             CallSetupRequest request = new CallSetupRequest {
                 RequestId = "REQ002",
-                PointOfContactName = "Mike",
+                CoustomerName = "Mike",
                 Organisation = "ABC Hospital",
                 Region = "India",
                 Email = "samuel@abc.com",
@@ -44,7 +44,7 @@ namespace PurchaseAssistantBackend.Test
             CallSetupRequest request = new CallSetupRequest
             {
                 RequestId = "REQ002",
-                PointOfContactName = "Mike",
+                CoustomerName = "Mike",
                 Organisation = "ABC Hospital",
                 Region = "India",
                 Email = "mike@abc.com",
@@ -64,7 +64,7 @@ namespace PurchaseAssistantBackend.Test
             CallSetupRequest request = new CallSetupRequest
             {
                 RequestId = "REQ002",
-                PointOfContactName = "Mike",
+                CoustomerName = "Mike",
                 Organisation = "ABC Hospital",
                 Region = "Africa",
                 Email = "mike@abc.com",

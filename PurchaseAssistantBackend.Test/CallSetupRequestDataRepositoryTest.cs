@@ -7,59 +7,63 @@ using Xunit;
 
 namespace PurchaseAssistantBackend.Test
 {
-    public class CallSetupRequestDataRepositoryTest
+    public class CallSetupRequestDataRepositoryTest : InMemoryContext
     {
         private readonly ICallSetupRequestDataRepository _repository;
         public CallSetupRequestDataRepositoryTest()
         {
-            var requestsTestDb = new List<CallSetupRequest>
-            {
-                new CallSetupRequest
-                {
-                    RequestId = "REQ001",
-                    PointOfContactName = "James",
-                    Organisation = "XYZ Hospital",
-                    Email = "james@xyz.com",
-                    Region = "Italy",
-                    SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
-                },
+            //var requestsTestDb = new List<CallSetupRequest>
+            //{
+            //    new CallSetupRequest
+            //    {
+            //        RequestId = "REQ001",
+            //        CoustomerName = "James",
+            //        Organisation = "XYZ Hospital",
+            //        Email = "james@xyz.com",
+            //        Region = "Italy",
+            //        SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
+            //    },
 
-                new CallSetupRequest
-                {
-                    RequestId = "REQ002",
-                    PointOfContactName = "Sara",
-                    Organisation = "ABC Hospital",
-                    Email = "sara@abc.com",
-                    Region = "India",
-                    SelectedModels = new List<string> { "IntelliVue X3" }
-                }
-            };
+            //    new CallSetupRequest
+            //    {
+            //        RequestId = "REQ002",
+            //        CoustomerName = "Sara",
+            //        Organisation = "ABC Hospital",
+            //        Email = "sara@abc.com",
+            //        Region = "India",
+            //        SelectedModels = new List<string> { "IntelliVue X3" }
+            //    }
+            //};
 
-            _repository = new CallSetupRequestDataRepository(requestsTestDb);
+            //_repository = new CallSetupRequestDataRepository(requestsTestDb);
+            _repository = new CallSetupRequestDataRepository(Context);
         }
 
         [Fact]
         public void WhenGetAllCallSetupRequestThenReturnAllRequests()
         {
+
             var requests = _repository.GetAllCallSetupRequest() as List<CallSetupRequest>;
 
             Assert.NotNull(requests);
 
             Assert.Equal(2, requests.Count);
 
-            Assert.Equal("REQ001", requests[0].RequestId);
-            Assert.Equal("James", requests[0].PointOfContactName);
-            Assert.Equal("XYZ Hospital", requests[0].Organisation);
-            Assert.Equal("james@xyz.com", requests[0].Email);
-            Assert.Equal("Italy", requests[0].Region);
-            Assert.Equal(2, requests[0].SelectedModels.Count());
+            Assert.Equal("REQ001", requests[1].RequestId);
+            Assert.Equal("James", requests[1].CoustomerName);
+            Assert.Equal("XYZ Hospital", requests[1].Organisation);
+            Assert.Equal("james@xyz.com", requests[1].Email);
+            Assert.Equal("Italy", requests[1].Region);
+            Assert.Equal(2, requests[1].SelectedModels.Count());
+            Assert.Equal("IntelliVue X3", requests[1].SelectedModels.ElementAt(0));
+            Assert.Equal("IntelliVue X40", requests[1].SelectedModels.ElementAt(1));
 
-            Assert.Equal("REQ002", requests[1].RequestId);
-            Assert.Equal("Sara", requests[1].PointOfContactName);
-            Assert.Equal("ABC Hospital", requests[1].Organisation);
-            Assert.Equal("sara@abc.com", requests[1].Email);
-            Assert.Equal("India", requests[1].Region);
-            Assert.Single(requests[1].SelectedModels);
+            Assert.Equal("REQ002", requests[0].RequestId);
+            Assert.Equal("Sara", requests[0].CoustomerName);
+            Assert.Equal("ABC Hospital", requests[0].Organisation);
+            Assert.Equal("sara@abc.com", requests[0].Email);
+            Assert.Equal("India", requests[0].Region);
+            Assert.Single(requests[0].SelectedModels);
         }
 
         [Fact]
@@ -68,7 +72,7 @@ namespace PurchaseAssistantBackend.Test
             var message = _repository.AddNewCallSetupRequest(
                 new CallSetupRequest {
                     RequestId = "REQ003",
-                    PointOfContactName = "George",
+                    CoustomerName = "George",
                     Organisation = "PQRS Hospital",
                     Email = "george@pqrs.com",
                     Region = "USA",
@@ -87,7 +91,7 @@ namespace PurchaseAssistantBackend.Test
                     new CallSetupRequest
                     {
                         RequestId = "REQ001",
-                        PointOfContactName = "George",
+                        CoustomerName = "George",
                         Organisation = "PQRS Hospital",
                         Email = "george@pqrs.com",
                         Region = "USA",
@@ -110,7 +114,7 @@ namespace PurchaseAssistantBackend.Test
                     new CallSetupRequest
                     {
                         RequestId = "REQ003",
-                        PointOfContactName = "George",
+                        CoustomerName = "George",
                         Organisation = "PQRS Hospital",
                         Email = "george@pqrs.com",
                         Region = "USA",
@@ -132,7 +136,7 @@ namespace PurchaseAssistantBackend.Test
                 new CallSetupRequest
                 {
                     RequestId = "REQ001",
-                    PointOfContactName = "James",
+                    CoustomerName = "James",
                     Organisation = "XYZ Hospital",
                     Email = "james@xyz.com",
                     Region = "Italy",
@@ -151,7 +155,7 @@ namespace PurchaseAssistantBackend.Test
                 new CallSetupRequest
                 {
                     RequestId = "REQ005",
-                    PointOfContactName = "Katie",
+                    CoustomerName = "Katie",
                     Organisation = "XYZ Hospital",
                     Email = "katie@xyz.com",
                     Region = "Italy",
@@ -174,7 +178,7 @@ namespace PurchaseAssistantBackend.Test
                 new CallSetupRequest
                 {
                     RequestId = "REQ001",
-                    PointOfContactName = "",
+                    CoustomerName = "",
                     Organisation = "XYZ Hospital",
                     Email = "katie@xyz.com",
                     Region = "Italy",
@@ -183,8 +187,8 @@ namespace PurchaseAssistantBackend.Test
             }
             catch (ArgumentNullException exception)
             {
-                Assert.Equal("PointOfContactName", exception.ParamName);
-                Assert.Equal("Customer detail required: PointOfContactName cannot be null or empty. (Parameter 'PointOfContactName')", exception.Message);
+                Assert.Equal("CoustomerName", exception.ParamName);
+                Assert.Equal("Customer detail required: CoustomerName cannot be null or empty. (Parameter 'CoustomerName')", exception.Message);
             }
         }
         
@@ -194,6 +198,7 @@ namespace PurchaseAssistantBackend.Test
             var message = _repository.DeleteCallSetupRequest("REQ001");
 
             Assert.Equal("Call Setup Request with id REQ001 deleted successfully!", message);
+            Assert.Null(_repository.GetCallSetupRequest("REQ001"));
         }
         
         [Fact]
@@ -209,12 +214,12 @@ namespace PurchaseAssistantBackend.Test
             }
         }
         
-        [Fact]
-        public void WhenCallSetupRequestDataRepositoryCreatedWithDefaultConstructorThenNonEmptyRepository()
-        {
-            ICallSetupRequestDataRepository defaultRepository = new CallSetupRequestDataRepository();
-            Assert.NotNull(defaultRepository);
-        }
+        //[Fact]
+        //public void WhenCallSetupRequestDataRepositoryCreatedWithDefaultConstructorThenNonEmptyRepository()
+        //{
+        //    ICallSetupRequestDataRepository defaultRepository = new CallSetupRequestDataRepository();
+        //    Assert.NotNull(defaultRepository);
+        //}
 
         [Fact]
         public void WhenCallValidateCallSetupRequestDataMethodWithoutSelectedModelsThenThrowException()
@@ -225,7 +230,7 @@ namespace PurchaseAssistantBackend.Test
                     new CallSetupRequest
                     {
                         RequestId = "REQ003",
-                        PointOfContactName = "George",
+                        CoustomerName = "George",
                         Organisation = "PQRS Hospital",
                         Email = "george@pqrs.com",
                         Region = "USA"

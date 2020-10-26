@@ -31,7 +31,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
             CallSetupRequest newCallSetupRequest = new CallSetupRequest
             {
                 RequestId = "REQ013",
-                PointOfContactName = "James",
+                CoustomerName = "James",
                 Organisation = "XYZ Hospital",
                 Email = "james@xyz.com",
                 Region = "Singapore",
@@ -57,7 +57,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
             CallSetupRequest newCallSetupRequestWithoutEmail = new CallSetupRequest
             {
                 RequestId = "REQ011",
-                PointOfContactName = "James",
+                CoustomerName = "James",
                 Organisation = "XYZ Hospital",
                 Region = "Italy",
                 SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
@@ -80,7 +80,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
             CallSetupRequest updatedCallSetupRequest = new CallSetupRequest
             {
                 RequestId = "REQ013",
-                PointOfContactName = "James Mathew",
+                CoustomerName = "James Mathew",
                 Organisation = "XYZ Hospital",
                 Email = "james@xyz.com",
                 Region = "Slovania",
@@ -99,7 +99,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
             CallSetupRequest request = new CallSetupRequest
             {
                 RequestId = "REQ015",
-                PointOfContactName = "James",
+                CoustomerName = "James",
                 Organisation = "XYZ Hospital",
                 Email = "james@xyz.com",
                 Region = "Italy",
@@ -117,7 +117,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
             CallSetupRequest requestWithMissingRegion = new CallSetupRequest
             {
                 RequestId = "REQ015",
-                PointOfContactName = "James",
+                CoustomerName = "James",
                 Organisation = "XYZ Hospital",
                 Email = "james@xyz.com",
                 SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }

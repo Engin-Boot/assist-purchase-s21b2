@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace PurchaseAssistantWebApp.Models
 {
     public class ModelsSpecification
     {
+        [Key]
         public long Id { get; set; }
         public string ProductName { get; set; }
         public string ProductKey { get; set; }
