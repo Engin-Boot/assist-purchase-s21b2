@@ -28,3 +28,34 @@ D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.cspr
 D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.CopyComplete
 D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.exe
 D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.pdb
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\AssistToPurchase.exe.config
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\AssistToPurchase.exe
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\AssistToPurchase.pdb
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csprojAssemblyReference.cache
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\MainWindow.g.cs
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\ContinuousMonitoringPage.g.cs
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\HomePage.g.cs
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\ModelCatalogPage.g.cs
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\SaleRepresentativePage.g.cs
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\App.g.cs
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase_MarkupCompile.cache
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase_MarkupCompile.lref
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\App.baml
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\MainWindow.baml
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\Resources\ContinuousMonitoringTemplate.baml
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\Resources\Styles\MainWindow.baml
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\ContinuousMonitoringPage.baml
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\HomePage.baml
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\ModelCatalogPage.baml
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\SaleRepresentativePage.baml
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.g.resources
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.Properties.Resources.resources
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.GenerateResource.cache
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.CoreCompileInputs.cache
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.CopyComplete
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.exe
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.pdb
