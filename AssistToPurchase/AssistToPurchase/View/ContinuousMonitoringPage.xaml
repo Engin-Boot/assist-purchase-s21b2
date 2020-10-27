@@ -1,0 +1,136 @@
+﻿<Page x:Class="AssistToPurchase.View.ContinuousMonitoringPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AssistToPurchase.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ContinuousMonitoringPage">
+
+    <DockPanel LastChildFill="True" Background="PapayaWhip">
+        <Border x:Name="header" BorderThickness="2"  Height="50"  DockPanel.Dock="Top">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="DeepSkyBlue"  >Asset Purchase ChatBot</TextBlock>
+        </Border>
+        <Border x:Name="footer" BorderThickness="2" Height="50"  DockPanel.Dock="Bottom">
+            <TextBlock  Foreground="DeepSkyBlue" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" >@Philips 2020</TextBlock>
+        </Border>
+        <Border BorderThickness="2"  Width="250"  DockPanel.Dock="Right">
+            <StackPanel>
+                <TextBlock FontSize="20"  HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="DeepSkyBlue">Registration And Ordering</TextBlock>
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Children>
+                        <!--Defination of box-->
+                        <TextBlock Margin="2" Width="100" Height="25" Grid.Row="0" Grid.Column="0">Name</TextBlock>
+                        <TextBlock Margin="2"  Width="100" Height="25"  Grid.Row="1" Grid.Column="0">Email</TextBlock>
+                        <TextBlock Margin="2"  Width="100" Height="25" Grid.Row="2" Grid.Column="0">Model</TextBlock>
+                        <TextBlock Margin="2" Width="100" Height="25" Grid.Row="3" Grid.Column="0">Contact Number</TextBlock>
+
+                        <!--Naming-->
+                        <TextBox  Margin="2" Width="100" Grid.Row="0" Grid.Column="1" x:Name="NameOfCustomer"></TextBox>
+                        <TextBox  Margin="2" Width="100" Grid.Row="1" Grid.Column="1" x:Name="Email"></TextBox>
+                        <ComboBox  Width="100" Grid.Row="2" Grid.Column="1" x:Name="ModelSelect" ></ComboBox>
+                        <TextBox  Margin="2" Width="100" Grid.Row="3" Grid.Column="1" x:Name="ContactNumber"></TextBox>
+
+                        <Button Width="120"  Height="30" Grid.Row="4" Grid.Column="0" Content="Register/OrderConfirmed"></Button>
+                        <Button Width="100" Height="30" Grid.Row="4" Grid.Column="1" Content="Clear"></Button>
+                    </Grid.Children>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black"></Border>
+
+        <!--`MODEL LIST-->
+        <StackPanel>
+            <TextBlock FontSize="18" FontWeight="Bold">LIST OF MODELS</TextBlock>
+            <ComboBox x:Name="userListCombo"  DisplayMemberPath="Name"></ComboBox>
+        </StackPanel>
+
+        <!--CHATBOT-->
+        <Border Margin="10" Background="AliceBlue">
+            <StackPanel>
+                <TextBlock FontSize="18" FontWeight="Bold">CHATBOT</TextBlock>
+                <TextBlock FontSize="12" FontWeight="SemiBold" Margin="7">SPECIFY THE NORMAL PARAMETERs</TextBlock>
+                <DockPanel>
+                    <TextBlock>Portability</TextBlock>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">Yes</CheckBox>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                </DockPanel>
+
+                <DockPanel>
+                    <TextBlock>BatterySupport</TextBlock>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                </DockPanel>
+
+                <DockPanel>
+                    <TextBlock>MultiPatientSupport</TextBlock>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                </DockPanel>
+
+                <DockPanel>
+                    <TextBlock>TouchScreenSupport</TextBlock>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                </DockPanel>
+
+
+                <TextBlock FontSize="12" FontWeight="SemiBold" Margin="7">SPECIFY THE CLINAL PARAMETERs</TextBlock>
+                <DockPanel>
+                    <TextBlock>BpCheck</TextBlock>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                </DockPanel>
+
+                <DockPanel>
+                    <TextBlock>HeartRateCheck</TextBlock>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                </DockPanel>
+
+                <DockPanel>
+                    <TextBlock>EcgCheck</TextBlock>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                </DockPanel>
+
+                <DockPanel>
+                    <TextBlock>SpO2Check</TextBlock>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                </DockPanel>
+
+
+                <DockPanel>
+                    <TextBlock>TemperatureCheck</TextBlock>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                </DockPanel>
+
+                <DockPanel>
+                    <TextBlock>CardiacOutputCheck</TextBlock>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                </DockPanel>
+
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" FontSize="10"><Run Text="*PLEASE SLECT ANY 4 CONDITON"/></TextBlock>
+                </StackPanel>
+                <Button x:Name="Submit">Submit</Button>
+            </StackPanel>
+        </Border>
+    </DockPanel>
+</Page>
