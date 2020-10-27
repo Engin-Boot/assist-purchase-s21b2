@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
-
+using System.Diagnostics.CodeAnalysis;
 using PurchaseAssistantWebApp.Models;
 
 namespace PurchaseAssistantWebApp.Database
 {
+    [ExcludeFromCodeCoverage]
     public class ProductsGetter
     {
         public List<ModelsSpecification> Products { get; private set; }

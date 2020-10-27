@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PurchaseAssistantWebApp.Database;
+using System.Diagnostics.CodeAnalysis;
 
 namespace PurchaseAssistantWebApp.Migrations
 {
+    [ExcludeFromCodeCoverage]
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
     {

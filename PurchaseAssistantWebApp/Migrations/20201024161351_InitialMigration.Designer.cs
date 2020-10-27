@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PurchaseAssistantWebApp.Database;
+using System.Diagnostics.CodeAnalysis;
 
 namespace PurchaseAssistantWebApp.Migrations
 {
+    [ExcludeFromCodeCoverage]
     [DbContext(typeof(AppDbContext))]
     [Migration("20201024161351_InitialMigration")]
     partial class InitialMigration

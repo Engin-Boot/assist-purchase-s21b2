@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using PurchaseAssistantWebApp.Database;
+using System.Diagnostics.CodeAnalysis;
 
 namespace PurchaseAssistantWebApp.Repository
 {
@@ -143,6 +144,7 @@ namespace PurchaseAssistantWebApp.Repository
         }
 
         #region DataBase Initial values
+        [ExcludeFromCodeCoverage]
         private void InitializeDatabase(AppDbContext context)
         {
             #region Users
