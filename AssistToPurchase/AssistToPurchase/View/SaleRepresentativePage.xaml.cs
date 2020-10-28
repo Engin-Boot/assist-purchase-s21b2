@@ -20,9 +20,11 @@ namespace AssistToPurchase.View
     /// </summary>
     public partial class SaleRepresentativePage : Page
     {
+        ViewModel.SalesRepresentativeViewModel _viewModel = new ViewModel.SalesRepresentativeViewModel();
         public SaleRepresentativePage()
         {
             InitializeComponent();
+            this.DataContext = _viewModel;
         }
     }
 }

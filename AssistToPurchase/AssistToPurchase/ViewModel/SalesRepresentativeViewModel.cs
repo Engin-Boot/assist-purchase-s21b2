@@ -3,22 +3,30 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using AlertToCareFrontend.Command;
 using AssistToPurchase.Model;
 using Newtonsoft.Json;
-
+using RestSharp;
+using RestSharp.Serialization.Json;
 
 namespace AssistToPurchase.ViewModel
 {
     class SalesRepresentativeViewModel:BaseViewModel
     {
+        public string _baseUrl = "http://localhost:5000/api/";
+        private static RestClient _client;
+        private static RestRequest _request;
+        private readonly JsonDeserializer _deserializer = new JsonDeserializer();
+        private static IRestResponse _response;
+
         #region Fields
-       SalesRepresentative _salesRepresentativeModel;
+        SalesRepresentative _salesRepresentativeModel;
         string message;
-        ObservableCollection<Model.SalesRepresentative> _SalesRepresentativesList = new ObservableCollection<SalesRepresentative>();
+        private ObservableCollection<SalesRepresentative> _SalesRepresentativesList = new ObservableCollection<SalesRepresentative>();
         #endregion
 
         #region Initializers
@@ -26,6 +34,7 @@ namespace AssistToPurchase.ViewModel
         public SalesRepresentativeViewModel()
         {
             _salesRepresentativeModel = new SalesRepresentative();
+            //this._SalesRepresentativesList = SalesRepresentativesList;
             AddSaleRepCommand = new DelegateCommandClass(this.AddSaleRepCommandWrapper,this.CommandCanExecuteWrapper);
         }
         #endregion
@@ -82,10 +91,10 @@ namespace AssistToPurchase.ViewModel
         }
 
 
-        public ObservableCollection<Model.SalesRepresentative> SalesRepresentativesList
+        public ObservableCollection<SalesRepresentative> SalesRepresentativesList
         {
-            get { return this._SalesRepresentativesList; }
-            set { this._SalesRepresentativesList = value; }
+            get { return GetSalesRepresentatives(); }
+            //set { this._SalesRepresentativesList = value; }
         }
 
         public string Message 
@@ -166,6 +175,43 @@ namespace AssistToPurchase.ViewModel
             }
 
             return resObj;
+        }
+
+        public ObservableCollection<SalesRepresentative> GetSalesRepresentatives()
+        {
+            //System.Net.WebClient _httpRequest = new System.Net.WebClient();
+            //System.Net.HttpWebRequest _httpReq =
+            //    System.Net.WebRequest.CreateHttp("http://localhost:5000/api/SalesRepresentative");
+            //_httpReq.Method = "GET";
+            //System.Net.HttpWebResponse response = _httpReq.GetResponse() as System.Net.HttpWebResponse;
+            //if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            //{
+            //    Console.WriteLine("Communication Successful");
+            //    Console.WriteLine(response.ContentType);
+            //    Console.WriteLine(response.ContentLength);
+            //    System.Runtime.Serialization.Json.DataContractJsonSerializer _jsonSerializer =
+            //        new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(List<SalesRepresentative>));
+            //    List<SalesRepresentative> salesRepresentatives =
+            //          _jsonSerializer.ReadObject(response.GetResponseStream()) as List<SalesRepresentative>;
+            //    foreach (var salesRepresentative in salesRepresentatives)
+            //    {
+            //        Console.WriteLine($"SalesRepresentative {salesRepresentative.Id == null} and {salesRepresentative.Name == null}");
+            //    }
+            //    return new ObservableCollection<SalesRepresentative>(salesRepresentatives); ;
+            //}
+            //return new ObservableCollection<SalesRepresentative>();
+
+            _client = new RestClient(_baseUrl);
+            _request = new RestRequest("SalesRepresentative", Method.GET);
+            
+
+            _response = _client.Execute(_request);
+            var salesRepresentatives = _deserializer.Deserialize<List<SalesRepresentative>>(_response);
+            foreach (var salesRepresentative in salesRepresentatives)
+            {
+                Console.WriteLine($"SalesRepresentative {salesRepresentative.Id == null} and {salesRepresentative.Name == null}");
+            }
+            return new ObservableCollection<SalesRepresentative>(salesRepresentatives);
         }
 
         #endregion

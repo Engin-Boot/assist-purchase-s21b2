@@ -43,7 +43,7 @@
                 <StackPanel>
                     <TextBlock FontSize="14" FontWeight="Bold">Select Representative To Edit details</TextBlock>
                     <!--binding done to observable clloection-->
-                <ComboBox x:Name="userListCombo" ItemsSource="{Binding Path=_SalesRepresentativesList}" DisplayMemberPath="Name"></ComboBox>
+                <ComboBox x:Name="userListCombo" ItemsSource="{Binding Path=SalesRepresentativesList}" DisplayMemberPath="Name"></ComboBox>
                 </StackPanel>
             </Border>
             <Border Margin="10" Background="AliceBlue">

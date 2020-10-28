@@ -59,3 +59,5 @@ C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistTo
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.CopyComplete
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.exe
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.pdb
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\RestSharp.dll
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\RestSharp.xml
