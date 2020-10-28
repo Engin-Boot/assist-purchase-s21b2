@@ -8,33 +8,34 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SaleRepresentativePage">
 
-    
-        <DockPanel LastChildFill="True">
-            <Grid  Margin="20" DockPanel.Dock="Left" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.Children>
-                    <TextBlock FontSize="12" FontWeight="Bold" Grid.Row="0" Grid.Column="0">Add new Sale Representative</TextBlock>
-                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="1" Grid.Column="0">Id</TextBlock>
-                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="2" Grid.Column="0">Name</TextBlock>
-                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="3" Grid.Column="0">Department Region</TextBlock>
-                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="4" Grid.Column="0">Email</TextBlock>
-                    <TextBox Text="{Binding Path=Id}" Margin="2" Width="100" Grid.Row="1" Grid.Column="1"></TextBox>
-                    <TextBox Text="{Binding Path=Name}" Margin="2" Width="100" Grid.Row="2" Grid.Column="1"></TextBox>
-                    <TextBox Text="{Binding Path=DepartmentRegion}" Margin="2" Width="100" Grid.Row="3" Grid.Column="1"></TextBox>
-                    <TextBox Text="{Binding Path=Email}" Margin="2" Width="100" Grid.Row="4" Grid.Column="1"></TextBox>
-                    <!--`add new  usercommand-->
+
+    <DockPanel LastChildFill="True">
+        <Grid  Margin="20" DockPanel.Dock="Left" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.Children>
+                <TextBlock FontSize="12" FontWeight="Bold" Grid.Row="0" Grid.Column="0">Add new Sale Representative</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="1" Grid.Column="0">Id</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="2" Grid.Column="0">Name</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="3" Grid.Column="0">Department Region</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="4" Grid.Column="0">Email</TextBlock>
+                <TextBox Text="{Binding Path=Id}" Margin="2" Width="100" Grid.Row="1" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=Name}" Margin="2" Width="100" Grid.Row="2" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=DepartmentRegion}" Margin="2" Width="100" Grid.Row="3" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=Email}" Margin="2" Width="100" Grid.Row="4" Grid.Column="1"></TextBox>
+                <!--`add new  usercommand-->
                 <Button Width="100" Grid.Row="5" Grid.Column="0" Content="Add" Command="{Binding Path=AddSaleRepCommand}"></Button>
+<<<<<<< HEAD
                     <Button Width="100" Grid.Row="5" Grid.Column="1" Content="Clear"></Button>
                 </Grid.Children>
             </Grid>
@@ -58,4 +59,31 @@
             </Border>
         </DockPanel>
    
+=======
+                <Button Width="100" Grid.Row="5" Grid.Column="1" Content="Clear"></Button>
+            </Grid.Children>
+        </Grid>
+
+        <Border Background="Beige" Margin="10"  DockPanel.Dock="Left" Width="250">
+            <StackPanel>
+                <TextBlock FontSize="14" FontWeight="Bold">Select Representative To Edit details</TextBlock>
+                <!--binding done to observable clloection-->
+                <ComboBox x:Name="userListCombo" ItemsSource="{Binding Path=_SalesRepresentativesList}" DisplayMemberPath="Name"></ComboBox>
+            </StackPanel>
+        </Border>
+        <Border Margin="10" Background="AliceBlue">
+            <StackPanel>
+                <TextBlock FontSize="16" FontWeight="Bold">Edit Repesnetative Details</TextBlock>
+
+
+                <ContentControl Content="{Binding ElementName=userListCombo,Path=SelectedItem}" 
+                                ContentTemplate="{StaticResource ResourceKey=userDataModelDataTemplate}"></ContentControl>
+                <Button Width="100" HorizontalAlignment="Center" >Update</Button>
+
+
+            </StackPanel>
+        </Border>
+    </DockPanel>
+
+>>>>>>> e75d4b65ff5434e1aa97fbd0e9f93f3fca538663
 </Page>
