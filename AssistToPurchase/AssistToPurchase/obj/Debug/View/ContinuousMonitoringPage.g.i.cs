@@ -41,7 +41,7 @@ namespace AssistToPurchase.View {
     public partial class ContinuousMonitoringPage : System.Windows.Controls.Page, System.Windows.Markup.IComponentConnector {
         
         
-        #line 12 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        #line 15 "..\..\..\View\ContinuousMonitoringPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Border header;
         
@@ -49,7 +49,7 @@ namespace AssistToPurchase.View {
         #line hidden
         
         
-        #line 15 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        #line 18 "..\..\..\View\ContinuousMonitoringPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Border footer;
         
@@ -57,7 +57,7 @@ namespace AssistToPurchase.View {
         #line hidden
         
         
-        #line 41 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        #line 44 "..\..\..\View\ContinuousMonitoringPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox NameOfCustomer;
         
@@ -65,7 +65,7 @@ namespace AssistToPurchase.View {
         #line hidden
         
         
-        #line 42 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        #line 45 "..\..\..\View\ContinuousMonitoringPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox Email;
         
@@ -73,7 +73,7 @@ namespace AssistToPurchase.View {
         #line hidden
         
         
-        #line 43 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        #line 46 "..\..\..\View\ContinuousMonitoringPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ComboBox ModelSelect;
         
@@ -81,7 +81,7 @@ namespace AssistToPurchase.View {
         #line hidden
         
         
-        #line 44 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        #line 47 "..\..\..\View\ContinuousMonitoringPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox ContactNumber;
         
@@ -89,7 +89,7 @@ namespace AssistToPurchase.View {
         #line hidden
         
         
-        #line 58 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        #line 61 "..\..\..\View\ContinuousMonitoringPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ComboBox modelListCombo;
         
@@ -97,7 +97,87 @@ namespace AssistToPurchase.View {
         #line hidden
         
         
-        #line 132 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        #line 71 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.RadioButton Portability;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 76 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.RadioButton BatterySupport;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 82 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.RadioButton MultiPatientSupport;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 90 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.RadioButton TouchScreenSupport;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 99 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.RadioButton BpCheck;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 107 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.RadioButton HeartRateCheck;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 115 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.RadioButton EcgCheck;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 122 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.RadioButton SpO2Check;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 131 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.RadioButton TemperatureCheck;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 137 "..\..\..\View\ContinuousMonitoringPage.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.RadioButton CardiacOutputCheck;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 145 "..\..\..\View\ContinuousMonitoringPage.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Button Submit;
         
@@ -156,6 +236,36 @@ namespace AssistToPurchase.View {
             this.modelListCombo = ((System.Windows.Controls.ComboBox)(target));
             return;
             case 8:
+            this.Portability = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 9:
+            this.BatterySupport = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 10:
+            this.MultiPatientSupport = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 11:
+            this.TouchScreenSupport = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 12:
+            this.BpCheck = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 13:
+            this.HeartRateCheck = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 14:
+            this.EcgCheck = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 15:
+            this.SpO2Check = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 16:
+            this.TemperatureCheck = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 17:
+            this.CardiacOutputCheck = ((System.Windows.Controls.RadioButton)(target));
+            return;
+            case 18:
             this.Submit = ((System.Windows.Controls.Button)(target));
             return;
             }

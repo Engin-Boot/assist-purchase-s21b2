@@ -9,6 +9,8 @@
                 <ResourceDictionary Source="pack://application:,,,/Resources/styles/MainWindow.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Resources/ContinuousMonitoringTemplate.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Resources/SaleRepresentativeDataTemplate.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/Resources/styles/RadioButton.xaml"></ResourceDictionary>
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
