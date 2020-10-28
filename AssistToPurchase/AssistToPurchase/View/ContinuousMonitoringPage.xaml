@@ -8,6 +8,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ContinuousMonitoringPage">
 
+
+
+
     <DockPanel LastChildFill="True" Background="PapayaWhip">
         <Border x:Name="header" BorderThickness="2"  Height="50"  DockPanel.Dock="Top">
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="DeepSkyBlue"  >Asset Purchase ChatBot</TextBlock>
@@ -59,71 +62,81 @@
         </StackPanel>
 
         <!--CHATBOT-->
-        <Border Margin="10" Background="AliceBlue">
-            <StackPanel>
-                <TextBlock FontSize="18" FontWeight="Bold">CHATBOT</TextBlock>
+        <Border Margin="10" Background="AliceBlue" >
+            <StackPanel  Grid.Column="1">
+                <TextBlock FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center">CHATBOT</TextBlock>
                 <TextBlock FontSize="12" FontWeight="SemiBold" Margin="7">SPECIFY THE NORMAL PARAMETERs</TextBlock>
                 <DockPanel>
                     <TextBlock>Portability</TextBlock>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" IsChecked="{x:Null}">Yes</CheckBox>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" IsChecked="{x:Null}">NO</CheckBox>
+                    <RadioButton x:Name="Portability" GroupName="Portability" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}" >I need this</RadioButton>
                 </DockPanel>
 
                 <DockPanel>
                     <TextBlock>BatterySupport</TextBlock>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">Yes</CheckBox>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                    <RadioButton x:Name="BatterySupport" GroupName="BatterySupport" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+
                 </DockPanel>
 
                 <DockPanel>
                     <TextBlock>MultiPatientSupport</TextBlock>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">Yes</CheckBox>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                    <RadioButton x:Name="MultiPatientSupport" GroupName="MultiPatientSupport" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+
+
                 </DockPanel>
 
                 <DockPanel>
                     <TextBlock>TouchScreenSupport</TextBlock>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+
+                    <RadioButton x:Name="TouchScreenSupport" GroupName="TouchScreenSupport" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+
                 </DockPanel>
 
 
                 <TextBlock FontSize="12" FontWeight="SemiBold" Margin="7">SPECIFY THE CLINAL PARAMETERs</TextBlock>
                 <DockPanel>
                     <TextBlock>BpCheck</TextBlock>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+
+                    <RadioButton x:Name="BpCheck" GroupName="BpCheck" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+
+
                 </DockPanel>
 
                 <DockPanel>
                     <TextBlock>HeartRateCheck</TextBlock>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+
+                    <RadioButton x:Name="HeartRateCheck" GroupName="HeartRateCheck" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+
+
                 </DockPanel>
 
                 <DockPanel>
                     <TextBlock>EcgCheck</TextBlock>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+
+                    <RadioButton x:Name="EcgCheck" GroupName="EcgCheck" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+
+
                 </DockPanel>
 
                 <DockPanel>
                     <TextBlock>SpO2Check</TextBlock>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                    <RadioButton x:Name="SpO2Check" GroupName="SpO2Check" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+
+
                 </DockPanel>
 
 
                 <DockPanel>
                     <TextBlock>TemperatureCheck</TextBlock>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+
+                    <RadioButton x:Name="TemperatureCheck" GroupName="TemperatureCheck" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+
                 </DockPanel>
 
                 <DockPanel>
                     <TextBlock>CardiacOutputCheck</TextBlock>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
+                    <RadioButton x:Name="CardiacOutputCheck" GroupName="CardiacOutputCheck" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+
+
                 </DockPanel>
 
                 <StackPanel>
