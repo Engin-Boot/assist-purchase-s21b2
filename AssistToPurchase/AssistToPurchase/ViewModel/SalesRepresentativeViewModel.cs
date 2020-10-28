@@ -38,6 +38,7 @@ namespace AssistToPurchase.ViewModel
         {
             _salesRepresentativeModel = new SalesRepresentative();
             UpdateSalesRepresentativeList();
+            UpdatePendingRequestList();
             AddSaleRepCommand = new DelegateCommandClass(this.AddSaleRepCommandWrapper, this.CommandCanExecuteWrapper);
             UpdateSaleRepCommand = new DelegateCommandClass(this.UpdateSaleRepCommandWrapper, this.CommandCanExecuteWrapper);
             ClearSaleRepCommand = new DelegateCommandClass(this.ClearSaleRepCommandWrapper, this.CommandCanExecuteWrapper);
@@ -124,6 +125,8 @@ namespace AssistToPurchase.ViewModel
 
         public ObservableCollection<SalesRepresentative> SalesRepresentativesList { get; set; } = new ObservableCollection<SalesRepresentative>();
 
+        public ObservableCollection<CallSetupRequest> PendingRequestsList { get; set; } = new ObservableCollection<CallSetupRequest>();
+
         public string Message
         {
             get { return message; }
@@ -166,8 +169,9 @@ namespace AssistToPurchase.ViewModel
         {
             _client = new RestClient(_baseUrl);
             _request = new RestRequest($"CallSetupRequest/{RequestId}/{SalesRepresentativeId}", Method.DELETE);
-            _request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
+            //_request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
             _response = _client.Execute(_request);
+            UpdatePendingRequestList();
         }
         //public void DeleteSaleRepresentative()
         //{
@@ -308,9 +312,36 @@ namespace AssistToPurchase.ViewModel
             //return new ObservableCollection<SalesRepresentative>(salesRepresentatives);
         }
 
+        public void UpdatePendingRequestList()
+        {
+            _client = new RestClient(_baseUrl);
+            _request = new RestRequest("CallSetupRequest", Method.GET);
+
+
+            _response = _client.Execute(_request);
+            var callSetupRequests = _deserializer.Deserialize<List<CallSetupRequest>>(_response);
+            foreach (var callSetupRequest in callSetupRequests)
+            {
+                if (!CheckWhetherCallRequestExists(callSetupRequest.RequestId))
+                {
+                    PendingRequestsList.Add(callSetupRequest);
+                }
+            }
+            //return new ObservableCollection<SalesRepresentative>(salesRepresentatives);
+        }
+
         public bool CheckWhetherSalesRepresentativeExists(string id)
         {
             var s = SalesRepresentativesList.Where(x => x.Id == id);
+            if (s.Count() != 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool CheckWhetherCallRequestExists(string id)
+        {
+            var s = PendingRequestsList.Where(x => x.RequestId == id);
             if (s.Count() != 0)
             {
                 return true;

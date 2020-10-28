@@ -40,11 +40,21 @@
         </Grid>
 
         <Border Background="Beige" Margin="10"  DockPanel.Dock="Left" Width="250">
-            <StackPanel>
-                <TextBlock FontSize="14" FontWeight="Bold">Select Representative To Edit details</TextBlock>
-                <!--binding done to observable clloection-->
-                <ComboBox x:Name="userListCombo" ItemsSource="{Binding Path=SalesRepresentativesList}" DisplayMemberPath="Name"></ComboBox>
-            </StackPanel>
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top" Margin="10" >
+                    <TextBlock FontSize="14" FontWeight="Bold">Select Representative To Edit details</TextBlock>
+                    <!--binding done to observable clloection-->
+                    <ComboBox x:Name="userListCombo" ItemsSource="{Binding Path=SalesRepresentativesList}" DisplayMemberPath="Name"></ComboBox>
+                </StackPanel>
+                
+                <StackPanel DockPanel.Dock="Bottom" Margin="10">
+                    <TextBlock FontSize="14" FontWeight="Bold">List of Pending Requests</TextBlock>
+                    <!--binding done to observable clloection -->
+                    <ComboBox x:Name="pendingRequestsListCombo" ItemsSource="{Binding Path=PendingRequestsList}" DisplayMemberPath="RequestId"></ComboBox>
+               
+                </StackPanel>
+            </DockPanel>
+            
         </Border>
         <Border Margin="10" Background="AliceBlue">
             <StackPanel Height="auto" Width="auto" VerticalAlignment="Top">
@@ -60,7 +70,7 @@
                 <TextBlock FontSize="16" FontWeight="Bold" Margin="0,10,0,0" HorizontalAlignment="Center">Request Details</TextBlock>
                 <TextBox Text="{Binding Path=RequestId}"   Margin="2" Width="100"></TextBox>
                 <TextBox Text="{Binding Path=SalesRepresentativeId}"  Margin="2" Width="100"></TextBox>
-                <Button Width="100" >Accept Order</Button>
+                <Button Width="100" Command="{Binding Path=AcceptOrderCommand}">Accept Order</Button>
 
             </StackPanel>
 
