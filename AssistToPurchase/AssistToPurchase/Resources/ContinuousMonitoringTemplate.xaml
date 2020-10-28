@@ -13,6 +13,9 @@
                 <Setter Property="Content" Value="Not selected this option" ></Setter>
                 <Setter Property="Foreground" Value="Red"></Setter>
             </Trigger>
+            <Trigger Property="IsChecked" Value="{x:Null}">
+                <Setter Property="Foreground" Value="Orange"></Setter>
+            </Trigger>
 
         </Style.Triggers>
     </Style>

@@ -10,7 +10,7 @@
 
 
     <DockPanel LastChildFill="True">
-        <Grid  Margin="20" DockPanel.Dock="Left" >
+        <Grid  Margin="20" DockPanel.Dock="Left" Background="AliceBlue" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
@@ -35,33 +35,7 @@
                 <TextBox Text="{Binding Path=Email}" Margin="2" Width="100" Grid.Row="4" Grid.Column="1"></TextBox>
                 <!--`add new  usercommand-->
                 <Button Width="100" Grid.Row="5" Grid.Column="0" Content="Add" Command="{Binding Path=AddSaleRepCommand}"></Button>
-                <!-- 
-<<<<<<< HEAD
-                    <Button Width="100" Grid.Row="5" Grid.Column="1" Content="Clear"></Button>
-                </Grid.Children>
-            </Grid>
-
-            <Border Background="Beige" Margin="10"  DockPanel.Dock="Left" Width="250">
-                <StackPanel>
-                    <TextBlock FontSize="14" FontWeight="Bold">Select Representative To Edit details</TextBlock>
-                    
-                <ComboBox x:Name="userListCombo" ItemsSource="{Binding Path=SalesRepresentativesList}" DisplayMemberPath="Name"></ComboBox>
-                </StackPanel>
-            </Border>
-            <Border Margin="10" Background="AliceBlue">
-                <StackPanel>
-                    <TextBlock FontSize="16" FontWeight="Bold">Edit Repesnetative Details</TextBlock>
-
-                    
-                    <ContentControl Content="{Binding ElementName=userListCombo,Path=SelectedItem}" 
-                                ContentTemplate="{StaticResource ResourceKey=userDataModelDataTemplates}"></ContentControl>
-                    <Button Width="100"  HorizontalAlignment="Center" >Update</Button>
-                </StackPanel>
-            </Border>
-        </DockPanel>
-
-    =======  -->
-    <Button Width="100" Grid.Row="5" Grid.Column="1" Content="Clear"></Button>
+                <Button Width="100" Grid.Row="5" Grid.Column="1" Content="Clear" Command="{Binding Path=ClearSaleRepCommand}"></Button>
             </Grid.Children>
         </Grid>
 
@@ -73,17 +47,28 @@
             </StackPanel>
         </Border>
         <Border Margin="10" Background="AliceBlue">
-            <StackPanel>
+            <StackPanel Height="auto" Width="auto" VerticalAlignment="Top">
                 <TextBlock FontSize="16" FontWeight="Bold">Edit Repesnetative Details</TextBlock>
 
 
                 <ContentControl Content="{Binding ElementName=userListCombo,Path=SelectedItem}" 
                                 ContentTemplate="{StaticResource ResourceKey=userDataModelDataTemplate}"></ContentControl>
-                <Button Width="100" HorizontalAlignment="Center" >Update</Button>
+                <Button Width="100" HorizontalAlignment="Center" Command="{Binding Path=UpdateSaleRepCommand}" >Update</Button>
 
+
+
+                <TextBlock FontSize="16" FontWeight="Bold" Margin="0,10,0,0" HorizontalAlignment="Center">Request Details</TextBlock>
+                <TextBox Text="you need Reuest id of call"   Margin="2" Width="100"></TextBox>
+                <TextBox Text="another id"  Margin="2" Width="100"></TextBox>
+                <Button Width="100" >Sending Request</Button>
 
             </StackPanel>
+
+            
         </Border>
+        
     </DockPanel>
+
+    
 
 </Page>

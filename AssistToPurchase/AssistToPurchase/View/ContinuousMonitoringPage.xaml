@@ -65,19 +65,19 @@
                 <TextBlock FontSize="12" FontWeight="SemiBold" Margin="7">SPECIFY THE NORMAL PARAMETERs</TextBlock>
                 <DockPanel>
                     <TextBlock>Portability</TextBlock>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" IsChecked="{x:Null}">Yes</CheckBox>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" IsChecked="{x:Null}">NO</CheckBox>
+                </DockPanel>
+
+                <DockPanel>
+                    <TextBlock>BatterySupport</TextBlock>
                     <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">Yes</CheckBox>
                     <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
                 </DockPanel>
 
                 <DockPanel>
-                    <TextBlock>BatterySupport</TextBlock>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
-                </DockPanel>
-
-                <DockPanel>
                     <TextBlock>MultiPatientSupport</TextBlock>
-                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}" >Yes</CheckBox>
+                    <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">Yes</CheckBox>
                     <CheckBox Margin="2" Style="{StaticResource ResourceKey=CheckBoxTemplate}">NO</CheckBox>
                 </DockPanel>
 

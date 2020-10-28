@@ -6,16 +6,18 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using AlertToCareFrontend.Command;
 using AssistToPurchase.Model;
 using Newtonsoft.Json;
+
 using RestSharp;
 using RestSharp.Serialization.Json;
 
 namespace AssistToPurchase.ViewModel
 {
-    class SalesRepresentativeViewModel:BaseViewModel
+    class SalesRepresentativeViewModel : BaseViewModel
     {
         public string _baseUrl = "http://localhost:5000/api/";
         private static RestClient _client;
@@ -24,9 +26,9 @@ namespace AssistToPurchase.ViewModel
         private static IRestResponse _response;
 
         #region Fields
-        SalesRepresentative _salesRepresentativeModel;
+        readonly SalesRepresentative _salesRepresentativeModel;
         string message;
-        private ObservableCollection<SalesRepresentative> _SalesRepresentativesList = new ObservableCollection<SalesRepresentative>();
+        // private ObservableCollection<SalesRepresentative> _SalesRepresentativesList = new ObservableCollection<SalesRepresentative>();
         #endregion
 
         #region Initializers
@@ -35,17 +37,19 @@ namespace AssistToPurchase.ViewModel
         {
             _salesRepresentativeModel = new SalesRepresentative();
             //this._SalesRepresentativesList = SalesRepresentativesList;
-            AddSaleRepCommand = new DelegateCommandClass(this.AddSaleRepCommandWrapper,this.CommandCanExecuteWrapper);
+            AddSaleRepCommand = new DelegateCommandClass(this.AddSaleRepCommandWrapper, this.CommandCanExecuteWrapper);
+            UpdateSaleRepCommand = new DelegateCommandClass(this.UpdateSaleRepCommandWrapper, this.CommandCanExecuteWrapper);
+            ClearSaleRepCommand = new DelegateCommandClass(this.ClearSaleRepCommandWrapper, this.CommandCanExecuteWrapper);
         }
         #endregion
 
         #region Property
-        public string Id 
+        public string Id
         {
             get { return _salesRepresentativeModel.Id; }
             set
             {
-                if(value!=_salesRepresentativeModel.Id)
+                if (value != _salesRepresentativeModel.Id)
                 {
                     _salesRepresentativeModel.Id = value;
                     OnPropertyChanged();
@@ -97,11 +101,12 @@ namespace AssistToPurchase.ViewModel
             //set { this._SalesRepresentativesList = value; }
         }
 
-        public string Message 
-        { 
+        public string Message
+        {
             get { return message; }
-            set { 
-                if(value!=message)
+            set
+            {
+                if (value != message)
                 {
                     message = value;
                     OnPropertyChanged();
@@ -112,70 +117,114 @@ namespace AssistToPurchase.ViewModel
 
         #region Logic
 
-        private void AddNewSalesRepresentative()
+        public void AddNewSalesRepresentative()
         {
-            SalesRepresentative newSaleRep = new SalesRepresentative();
+            _client = new RestClient(_baseUrl);
+            _request = new RestRequest("SalesRepresentative", Method.POST);
+            _request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
+            _response = _client.Execute(_request);
+            GetSalesRepresentatives();
 
-            SalesRepresentative savedSaleRep = PostSaleRep(newSaleRep).Result;
 
-            //update settings
-            Properties.Settings.Default.CurrentSaleRepId = savedSaleRep.Id;
-            Properties.Settings.Default.Save();
+        }
+        //public void DeleteSaleRepresentative()
+        //{
+        //    _client = new RestClient(_baseUrl);
+        //    _request = new RestRequest("SalesRepresentative/{id}", Method.DELETE);
+        //    _response = _client.Execute(_request);
+        //    GetSalesRepresentatives();
+        //}
+        //public void UpdateSalesRepresentative(string saleid)
+        //{
+        //    _client = new RestClient(_baseUrl);
+        //    _request = new RestRequest("SalesRepresentative/{saleid}", Method.GET);
+        //    _request.AddUrlSegment("saleid", saleid);
+        //    _response = _client.Execute(_request);
+        //    var _sales = _deserializer.Deserialize<SalesRepresentative>(_response);
 
-            //message 
-            Message = String.IsNullOrEmpty(savedSaleRep.Id) ? "Adding Sale Rep Failed" : "Adding Sale Rep Passed";
+        //    Id = _sales.Id;
+        //    Name = _sales.Name;
+        //    DepartmentRegion = _sales.DepartmentRegion;
+        //    Email = _sales.Email;
+
+
+
+        //}
+
+        public void ClearSaleRepresentative()
+        {
+            this.Id = "";
+            this.Name = "";
+            this.DepartmentRegion = "";
+            this.Email = "";
         }
 
-        //post task
-        public static async Task<SalesRepresentative> PostSaleRep(SalesRepresentative reqObj)
-        {
-            //init
-            SalesRepresentative resObj = new SalesRepresentative();
 
-            try
-            {
-                using(var client=new HttpClient())
-                {
-                    //base address
-                    client.BaseAddress = new Uri("http://localhost:5000/");
 
-                    //content type needed
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")); ;
+        //private void AddNewSalesRepresentative()
+        //{
+        //    SalesRepresentative newSaleRep = new SalesRepresentative();
 
-                    //stateess manner
-                    client.Timeout = TimeSpan.FromSeconds(Convert.ToDouble(1000000));
+        //    SalesRepresentative savedSaleRep = PostSaleRep(newSaleRep).Result;
 
-                    //init resp message
-                    HttpResponseMessage response = new HttpResponseMessage();
+        //    //update settings
+        //    Properties.Settings.Default.CurrentSaleRepId = savedSaleRep.Id;
+        //    Properties.Settings.Default.Save();
 
-                    //POST 
-                    response = await client.PostAsJsonAsync("api/SaleRepresentative/", reqObj).ConfigureAwait(false);
+        //    //message 
+        //    Message = String.IsNullOrEmpty(savedSaleRep.Id) ? "Adding Sale Rep Failed" : "Adding Sale Rep Passed";
+        //}
 
-                    //vertification
-                    if(response.IsSuccessStatusCode)
-                    {
-                        //reading resp
-                        string result = response.Content.ReadAsStringAsync().Result;
-                        //convert back
-                        resObj = JsonConvert.DeserializeObject<SalesRepresentative>(result);
-                        //releasing
-                        response.Dispose();
-                    }
-                    else
-                    {
-                        //reading resp
-                        string result = response.Content.ReadAsStringAsync().Result;
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+        ////post task
+        //public static async Task<SalesRepresentative> PostSaleRep(SalesRepresentative reqObj)
+        //{
+        //    //init
+        //    SalesRepresentative resObj = new SalesRepresentative();
 
-            return resObj;
-        }
+        //    try
+        //    {
+        //        using(var client=new HttpClient())
+        //        {
+        //            //base address
+        //            client.BaseAddress = new Uri("http://localhost:5000/");
+
+        //            //content type needed
+        //            client.DefaultRequestHeaders.Accept.Clear();
+        //            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")); ;
+
+        //            //stateess manner
+        //            client.Timeout = TimeSpan.FromSeconds(Convert.ToDouble(1000000));
+
+        //            //init resp message
+        //            HttpResponseMessage response = new HttpResponseMessage();
+
+        //            //POST 
+        //            response = await client.PostAsJsonAsync("api/SaleRepresentative/", reqObj).ConfigureAwait(false);
+
+        //            //vertification
+        //            if(response.IsSuccessStatusCode)
+        //            {
+        //                //reading resp
+        //                string result = response.Content.ReadAsStringAsync().Result;
+        //                //convert back
+        //                resObj = JsonConvert.DeserializeObject<SalesRepresentative>(result);
+        //                //releasing
+        //                response.Dispose();
+        //            }
+        //            else
+        //            {
+        //                //reading resp
+        //                string result = response.Content.ReadAsStringAsync().Result;
+        //            }
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+
+        //    return resObj;
+        //}
 
         public ObservableCollection<SalesRepresentative> GetSalesRepresentatives()
         {
@@ -203,7 +252,7 @@ namespace AssistToPurchase.ViewModel
 
             _client = new RestClient(_baseUrl);
             _request = new RestRequest("SalesRepresentative", Method.GET);
-            
+
 
             _response = _client.Execute(_request);
             var salesRepresentatives = _deserializer.Deserialize<List<SalesRepresentative>>(_response);
@@ -218,6 +267,9 @@ namespace AssistToPurchase.ViewModel
 
         #region Commands
         public ICommand AddSaleRepCommand { get; set; }
+        public ICommand UpdateSaleRepCommand { get; set; }
+
+        public ICommand ClearSaleRepCommand { get; set; }
         #endregion
 
         #region Command Helper Methods
@@ -229,6 +281,15 @@ namespace AssistToPurchase.ViewModel
         {
             return true;
         }
+
+
+        void UpdateSaleRepCommandWrapper(object parameter)
+        {
+            this.AddNewSalesRepresentative();
+        }
+
+        void ClearSaleRepCommandWrapper(object parameter)
+        { this.ClearSaleRepresentative(); }
         #endregion
     }
 }
