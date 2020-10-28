@@ -28,7 +28,8 @@ namespace AssistToPurchase.ViewModel
         #region Fields
         readonly SalesRepresentative _salesRepresentativeModel;
         string message;
-        // private ObservableCollection<SalesRepresentative> _SalesRepresentativesList = new ObservableCollection<SalesRepresentative>();
+        string _requestId;
+        string _salesRepresentativeId;
         #endregion
 
         #region Initializers
@@ -36,10 +37,11 @@ namespace AssistToPurchase.ViewModel
         public SalesRepresentativeViewModel()
         {
             _salesRepresentativeModel = new SalesRepresentative();
-            //this._SalesRepresentativesList = SalesRepresentativesList;
+            UpdateSalesRepresentativeList();
             AddSaleRepCommand = new DelegateCommandClass(this.AddSaleRepCommandWrapper, this.CommandCanExecuteWrapper);
             UpdateSaleRepCommand = new DelegateCommandClass(this.UpdateSaleRepCommandWrapper, this.CommandCanExecuteWrapper);
             ClearSaleRepCommand = new DelegateCommandClass(this.ClearSaleRepCommandWrapper, this.CommandCanExecuteWrapper);
+            AcceptOrderCommand = new DelegateCommandClass(this.AcceptOrderCommandWrapper, this.CommandCanExecuteWrapper);
         }
         #endregion
 
@@ -94,12 +96,33 @@ namespace AssistToPurchase.ViewModel
             }
         }
 
-
-        public ObservableCollection<SalesRepresentative> SalesRepresentativesList
+        public string RequestId
         {
-            get { return GetSalesRepresentatives(); }
-            //set { this._SalesRepresentativesList = value; }
+            get { return this._requestId; }
+            set
+            {
+                if (value != _requestId)
+                {
+                    _requestId = value;
+                    OnPropertyChanged();
+                }
+            }
         }
+
+        public string SalesRepresentativeId
+        {
+            get { return this._salesRepresentativeId; }
+            set
+            {
+                if (value != _salesRepresentativeId)
+                {
+                    _salesRepresentativeId = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public ObservableCollection<SalesRepresentative> SalesRepresentativesList { get; set; } = new ObservableCollection<SalesRepresentative>();
 
         public string Message
         {
@@ -123,9 +146,28 @@ namespace AssistToPurchase.ViewModel
             _request = new RestRequest("SalesRepresentative", Method.POST);
             _request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
             _response = _client.Execute(_request);
-            GetSalesRepresentatives();
+            UpdateSalesRepresentativeList();
 
 
+        }
+
+        public void UpdateSalesRepresentative()
+        {
+            _client = new RestClient(_baseUrl);
+            _request = new RestRequest("SalesRepresentative", Method.PUT);
+            _request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
+            _response = _client.Execute(_request);
+            UpdateSalesRepresentativeList();
+
+
+        }
+
+        public void AcceptOrder()
+        {
+            _client = new RestClient(_baseUrl);
+            _request = new RestRequest($"CallSetupRequest/{RequestId}/{SalesRepresentativeId}", Method.DELETE);
+            _request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
+            _response = _client.Execute(_request);
         }
         //public void DeleteSaleRepresentative()
         //{
@@ -226,7 +268,7 @@ namespace AssistToPurchase.ViewModel
         //    return resObj;
         //}
 
-        public ObservableCollection<SalesRepresentative> GetSalesRepresentatives()
+        public void UpdateSalesRepresentativeList()
         {
             //System.Net.WebClient _httpRequest = new System.Net.WebClient();
             //System.Net.HttpWebRequest _httpReq =
@@ -256,11 +298,24 @@ namespace AssistToPurchase.ViewModel
 
             _response = _client.Execute(_request);
             var salesRepresentatives = _deserializer.Deserialize<List<SalesRepresentative>>(_response);
-            foreach (var salesRepresentative in salesRepresentatives)
+            foreach(var salesRepresentative in salesRepresentatives)
             {
-                Console.WriteLine($"SalesRepresentative {salesRepresentative.Id == null} and {salesRepresentative.Name == null}");
+                if (!CheckWhetherSalesRepresentativeExists(salesRepresentative.Id))
+                {
+                    SalesRepresentativesList.Add(salesRepresentative);
+                }
             }
-            return new ObservableCollection<SalesRepresentative>(salesRepresentatives);
+            //return new ObservableCollection<SalesRepresentative>(salesRepresentatives);
+        }
+
+        public bool CheckWhetherSalesRepresentativeExists(string id)
+        {
+            var s = SalesRepresentativesList.Where(x => x.Id == id);
+            if (s.Count() != 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         #endregion
@@ -268,7 +323,7 @@ namespace AssistToPurchase.ViewModel
         #region Commands
         public ICommand AddSaleRepCommand { get; set; }
         public ICommand UpdateSaleRepCommand { get; set; }
-
+        public ICommand AcceptOrderCommand { get; set; }
         public ICommand ClearSaleRepCommand { get; set; }
         #endregion
 
@@ -282,7 +337,10 @@ namespace AssistToPurchase.ViewModel
             return true;
         }
 
-
+        void AcceptOrderCommandWrapper(object parameter)
+        {
+            this.AcceptOrder();
+        }
         void UpdateSaleRepCommandWrapper(object parameter)
         {
             this.AddNewSalesRepresentative();

@@ -75,5 +75,36 @@ namespace PurchaseAssistantWebApp.Utilities
             
             return true;
         }
+
+        public bool SendAlert(SalesRepresentative salesRepresentative, string customerEmail )
+        {
+            List<string> receivers = new List<string>();
+
+            receivers.Add(customerEmail);
+
+            if (receivers.Count == 0)
+            {
+                return false;
+            }
+
+            var emailBodyStr = new StringBuilder();
+            emailBodyStr.Append("\nThank You, for choosing Philips \n");
+            emailBodyStr.Append("Our Sales Representative " + salesRepresentative.Name + " has accepted your order\n");
+            emailBodyStr.Append("He Will contact you soon..\n");
+            emailBodyStr.Append("Sales Representative Email Id: " + salesRepresentative.Email + "\n");
+            emailBodyStr.Append("\nThanks and Regards..!\n");
+            emailBodyStr.Append("Philips\n");
+            emailBodyStr.Append("Innovation and You!\n");
+
+            //var email = ComposeEmail("s21b2team@gmail.com", receivers, "New Call Setup Request Received", emailBodyStr);
+            _ = ComposeEmail("s21b2team@gmail.com", receivers, "New Call Setup Request Received", emailBodyStr.ToString());
+
+            using var smtp = new SmtpClient();
+            smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+            //smtp.Authenticate("s21b2team@gmail.com", "");
+            //smtp.Send(email);
+            smtp.Disconnect(true);
+            return true;
+        }
     }
 }

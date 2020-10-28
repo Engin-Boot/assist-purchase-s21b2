@@ -51,16 +51,16 @@
                 <TextBlock FontSize="16" FontWeight="Bold">Edit Repesnetative Details</TextBlock>
 
 
-                <ContentControl Content="{Binding ElementName=userListCombo,Path=SelectedItem}" 
+                <ContentControl x:Name="UpdateDetails" Content="{Binding ElementName=userListCombo,Path=SelectedItem}" 
                                 ContentTemplate="{StaticResource ResourceKey=userDataModelDataTemplate}"></ContentControl>
                 <Button Width="100" HorizontalAlignment="Center" Command="{Binding Path=UpdateSaleRepCommand}" >Update</Button>
 
 
 
                 <TextBlock FontSize="16" FontWeight="Bold" Margin="0,10,0,0" HorizontalAlignment="Center">Request Details</TextBlock>
-                <TextBox Text="you need Reuest id of call"   Margin="2" Width="100"></TextBox>
-                <TextBox Text="another id"  Margin="2" Width="100"></TextBox>
-                <Button Width="100" >Sending Request</Button>
+                <TextBox Text="{Binding Path=RequestId}"   Margin="2" Width="100"></TextBox>
+                <TextBox Text="{Binding Path=SalesRepresentativeId}"  Margin="2" Width="100"></TextBox>
+                <Button Width="100" >Accept Order</Button>
 
             </StackPanel>
 

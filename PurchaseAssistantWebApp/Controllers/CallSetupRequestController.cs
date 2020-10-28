@@ -66,12 +66,14 @@ namespace PurchaseAssistantWebApp.Controllers
         }
 
         // DELETE api/<CallSetupRequestController>/5
-        [HttpDelete("{id}")]
-        public ActionResult Delete(string id)
+        [HttpDelete("{RequestId}/{SalesRepId}")]
+        public ActionResult Delete(string RequestId, string SalesRepId)
         {
             try
             {
-                var msg = _repository.DeleteCallSetupRequest(id);
+                var costomerEmail = _repository.GetCallSetupRequest(RequestId).Email;
+                var msg = _repository.DeleteCallSetupRequest(RequestId);
+                _alerter.SendAlert(_salesRepresentativeRepository.GetSalesRepresentative(SalesRepId) , costomerEmail);
                 return Ok(msg);
             }
             catch(KeyNotFoundException exception)

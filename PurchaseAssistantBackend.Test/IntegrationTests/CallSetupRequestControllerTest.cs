@@ -134,7 +134,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
             
             _ = await _program.Client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(newCallSetupRequestToBeDeleted), Encoding.UTF8, "application/json"));
 
-            HttpResponseMessage response = await _program.Client.DeleteAsync(url + "/REQ013");
+            HttpResponseMessage response = await _program.Client.DeleteAsync(url + "/REQ013/SR001");
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
@@ -143,7 +143,7 @@ namespace PurchaseAssistantBackend.Test.IntegrationTests
         [Fact]
         public async Task Delete_WhenInvalidRequestWithNonExistentRequestIdSentThenReturnHttpsStatusBadRequest()
         {
-            var response = await _program.Client.DeleteAsync(url + "/REQ0097");
+            var response = await _program.Client.DeleteAsync(url + "/REQ0097/SR001");
 
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
