@@ -55,7 +55,7 @@
         <!--`MODEL LIST-->
         <StackPanel>
             <TextBlock FontSize="18" FontWeight="Bold">LIST OF MODELS</TextBlock>
-            <ComboBox x:Name="userListCombo"  DisplayMemberPath="Name"></ComboBox>
+            <ComboBox x:Name="modelListCombo"  ItemsSource="{Binding Path=Models}" DisplayMemberPath="ProductName"></ComboBox>
         </StackPanel>
 
         <!--CHATBOT-->

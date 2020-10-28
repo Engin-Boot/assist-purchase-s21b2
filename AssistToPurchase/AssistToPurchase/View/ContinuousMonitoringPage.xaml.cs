@@ -20,9 +20,11 @@ namespace AssistToPurchase.View
     /// </summary>
     public partial class ContinuousMonitoringPage : Page
     {
+        ViewModel.ContinuousMonitoringViewModel _viewModel = new ViewModel.ContinuousMonitoringViewModel();
         public ContinuousMonitoringPage()
         {
             InitializeComponent();
+            this.DataContext = _viewModel;
         }
     }
 }

@@ -35,6 +35,7 @@
                 <TextBox Text="{Binding Path=Email}" Margin="2" Width="100" Grid.Row="4" Grid.Column="1"></TextBox>
                 <!--`add new  usercommand-->
                 <Button Width="100" Grid.Row="5" Grid.Column="0" Content="Add" Command="{Binding Path=AddSaleRepCommand}"></Button>
+                <!-- 
 <<<<<<< HEAD
                     <Button Width="100" Grid.Row="5" Grid.Column="1" Content="Clear"></Button>
                 </Grid.Children>
@@ -43,7 +44,7 @@
             <Border Background="Beige" Margin="10"  DockPanel.Dock="Left" Width="250">
                 <StackPanel>
                     <TextBlock FontSize="14" FontWeight="Bold">Select Representative To Edit details</TextBlock>
-                    <!--binding done to observable clloection-->
+                    
                 <ComboBox x:Name="userListCombo" ItemsSource="{Binding Path=SalesRepresentativesList}" DisplayMemberPath="Name"></ComboBox>
                 </StackPanel>
             </Border>
@@ -52,15 +53,15 @@
                     <TextBlock FontSize="16" FontWeight="Bold">Edit Repesnetative Details</TextBlock>
 
                     
-                    <!--<ContentControl Content="{Binding ElementName=userListCombo,Path=SelectedItem}" 
-                                ContentTemplate="{StaticResource ResourceKey=userDataModelDataTemplates}"></ContentControl>-->
+                    <ContentControl Content="{Binding ElementName=userListCombo,Path=SelectedItem}" 
+                                ContentTemplate="{StaticResource ResourceKey=userDataModelDataTemplates}"></ContentControl>
                     <Button Width="100"  HorizontalAlignment="Center" >Update</Button>
                 </StackPanel>
             </Border>
         </DockPanel>
-   
-=======
-                <Button Width="100" Grid.Row="5" Grid.Column="1" Content="Clear"></Button>
+
+    =======  -->
+    <Button Width="100" Grid.Row="5" Grid.Column="1" Content="Clear"></Button>
             </Grid.Children>
         </Grid>
 
@@ -68,7 +69,7 @@
             <StackPanel>
                 <TextBlock FontSize="14" FontWeight="Bold">Select Representative To Edit details</TextBlock>
                 <!--binding done to observable clloection-->
-                <ComboBox x:Name="userListCombo" ItemsSource="{Binding Path=_SalesRepresentativesList}" DisplayMemberPath="Name"></ComboBox>
+                <ComboBox x:Name="userListCombo" ItemsSource="{Binding Path=SalesRepresentativesList}" DisplayMemberPath="Name"></ComboBox>
             </StackPanel>
         </Border>
         <Border Margin="10" Background="AliceBlue">
@@ -85,5 +86,4 @@
         </Border>
     </DockPanel>
 
->>>>>>> e75d4b65ff5434e1aa97fbd0e9f93f3fca538663
 </Page>

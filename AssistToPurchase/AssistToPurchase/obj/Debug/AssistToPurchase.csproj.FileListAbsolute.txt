@@ -1,52 +1,25 @@
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\bin\Debug\AssistToPurchase.exe.config
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\bin\Debug\AssistToPurchase.exe
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\bin\Debug\AssistToPurchase.pdb
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\bin\Debug\Newtonsoft.Json.dll
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\bin\Debug\System.Net.Http.Formatting.dll
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\bin\Debug\Newtonsoft.Json.xml
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\bin\Debug\System.Net.Http.Formatting.xml
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\MainWindow.g.cs
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\View\ContinuousMonitoringPage.g.cs
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\View\HomePage.g.cs
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\View\ModelCatalogPage.g.cs
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\View\SaleRepresentativePage.g.cs
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\App.g.cs
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase_MarkupCompile.cache
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase_MarkupCompile.lref
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\App.baml
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\MainWindow.baml
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\Resources\ContinuousMonitoringTemplate.baml
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\Resources\Styles\MainWindow.baml
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\View\ContinuousMonitoringPage.baml
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\View\HomePage.baml
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\View\ModelCatalogPage.baml
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\View\SaleRepresentativePage.baml
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.g.resources
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.Properties.Resources.resources
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.GenerateResource.cache
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.CoreCompileInputs.cache
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.CopyComplete
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.exe
-D:\phillips\c#\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.pdb
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\AssistToPurchase.exe.config
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\AssistToPurchase.exe
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\AssistToPurchase.pdb
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\RestSharp.dll
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\RestSharp.xml
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\System.Net.Http.Formatting.xml
-C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csprojAssemblyReference.cache
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\MainWindow.g.cs
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\ContinuousMonitoringPage.g.cs
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\HomePage.g.cs
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\ModelCatalogPage.g.cs
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\SaleRepresentativePage.g.cs
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\App.g.cs
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase_MarkupCompile.cache
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase_MarkupCompile.lref
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\App.baml
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\MainWindow.baml
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\Resources\ContinuousMonitoringTemplate.baml
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\Resources\SaleRepresentativeDataTemplate.baml
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\Resources\Styles\MainWindow.baml
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\ContinuousMonitoringPage.baml
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\HomePage.baml
@@ -59,41 +32,4 @@ C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistTo
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.CopyComplete
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.exe
 C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.pdb
-<<<<<<< HEAD
-C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\RestSharp.dll
-C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\RestSharp.xml
-=======
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\AssistToPurchase.exe.config
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\AssistToPurchase.exe
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\AssistToPurchase.pdb
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\Newtonsoft.Json.dll
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\System.Net.Http.Formatting.dll
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\Newtonsoft.Json.xml
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\bin\Debug\System.Net.Http.Formatting.xml
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csprojAssemblyReference.cache
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\MainWindow.g.cs
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\ContinuousMonitoringPage.g.cs
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\HomePage.g.cs
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\ModelCatalogPage.g.cs
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\SaleRepresentativePage.g.cs
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\App.g.cs
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase_MarkupCompile.cache
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase_MarkupCompile.lref
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\App.baml
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\MainWindow.baml
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\Resources\ContinuousMonitoringTemplate.baml
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\Resources\SaleRepresentativeDataTemplate.baml
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\Resources\Styles\MainWindow.baml
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\ContinuousMonitoringPage.baml
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\HomePage.baml
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\ModelCatalogPage.baml
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\View\SaleRepresentativePage.baml
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.g.resources
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.Properties.Resources.resources
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.GenerateResource.cache
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.CoreCompileInputs.cache
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.CopyComplete
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.exe
-D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.pdb
->>>>>>> e75d4b65ff5434e1aa97fbd0e9f93f3fca538663
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csprojAssemblyReference.cache
