@@ -320,6 +320,7 @@ namespace AssistToPurchase.ViewModel
 
             _response = _client.Execute(_request);
             var callSetupRequests = _deserializer.Deserialize<List<CallSetupRequest>>(_response);
+            PendingRequestsList.Clear();
             foreach (var callSetupRequest in callSetupRequests)
             {
                 if (!CheckWhetherCallRequestExists(callSetupRequest.RequestId))
