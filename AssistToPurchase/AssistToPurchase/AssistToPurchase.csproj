@@ -67,6 +67,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\DelegateCommandClass.cs" />
+    <Compile Include="Converters\RadioBoolToStringConverter.cs" />
     <Compile Include="Model\CallSetupRequest.cs" />
     <Compile Include="Model\ModelsSpecification.cs" />
     <Compile Include="Model\SalesRepresentative.cs" />

@@ -24,6 +24,7 @@ namespace AssistToPurchase.ViewModel
         {
             this.searchQuery = new SearchQuery();
             //this._models = GetModels();
+            UpdateModelsList();
 
         }
 
@@ -33,14 +34,11 @@ namespace AssistToPurchase.ViewModel
         #region Fields
         //private readonly ObservableCollection<ModelsSpecification> _models;
         private SearchQuery searchQuery;
-    
+
         #endregion
 
         #region Properties
-        public ObservableCollection<ModelsSpecification> Models
-        {
-            get { return GetModels(); }
-        }
+        public ObservableCollection<ModelsSpecification> Models { get; set; } = new ObservableCollection<ModelsSpecification>();
 
         public string Id 
         { 
@@ -50,6 +48,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.Id = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             } 
         }
@@ -61,6 +60,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.ProductName = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             }
         }
@@ -72,6 +72,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.ProductKey = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             }
         }
@@ -83,6 +84,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.Portability = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             }
         }
@@ -94,6 +96,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.BatterySupport = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             }
         }
@@ -105,6 +108,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.MultiPatientSupport = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             }
         }
@@ -116,6 +120,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.TouchScreenSupport = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             }
         }
@@ -127,6 +132,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.BpCheck = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             }
         }
@@ -138,6 +144,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.HeartRateCheck = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             }
         }
@@ -149,6 +156,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.EcgCheck = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             }
         }
@@ -160,6 +168,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.SpO2Check = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             }
         }
@@ -171,6 +180,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.TemperatureCheck = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             }
         }
@@ -182,6 +192,7 @@ namespace AssistToPurchase.ViewModel
                 {
                     searchQuery.CardiacOutputCheck = value;
                     OnPropertyChanged();
+                    UpdateModelsList();
                 }
             }
         }
@@ -190,7 +201,7 @@ namespace AssistToPurchase.ViewModel
 
         #region Methods Getting Data From Database
 
-        public ObservableCollection<ModelsSpecification> GetModels()
+        public void UpdateModelsList()
         {
             _client = new RestClient(_baseUrl);
             string request = $"Id={searchQuery.Id}" +
@@ -211,13 +222,25 @@ namespace AssistToPurchase.ViewModel
             _request = new RestRequest($"?{request}", Method.GET);
             _response = _client.Execute(_request);
             var models = _deserializer.Deserialize<List<ModelsSpecification>>(_response);
-            foreach(var model in models)
+            Models.Clear();
+            foreach (var model in models)
             {
-                Console.WriteLine($"{model.ProductName} and {model.ProductName}");
+                if (!CheckWhetherModelExists(model.Id))
+                {
+                    Models.Add(model);
+                }
             }
-            return new ObservableCollection<ModelsSpecification>(models);
+            
         }
-
+        public bool CheckWhetherModelExists(long id)
+        {
+            var s = Models.Where(x => x.Id == id);
+            if (s.Count() != 0)
+            {
+                return true;
+            }
+            return false;
+        }
         #endregion
     }
 }

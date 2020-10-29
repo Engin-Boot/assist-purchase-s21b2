@@ -4,10 +4,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AssistToPurchase.View"
+      xmlns:converters="clr-namespace:AssistToPurchase.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ContinuousMonitoringPage">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <converters:RadioBoolToStringConverter x:Key="boolToString"></converters:RadioBoolToStringConverter>
+        </ResourceDictionary>
+    </Page.Resources>
 
 
 
@@ -68,18 +73,25 @@
                 <TextBlock FontSize="12" FontWeight="SemiBold" Margin="7">SPECIFY THE NORMAL PARAMETERs</TextBlock>
                 <DockPanel>
                     <TextBlock>Portability</TextBlock>
-                    <RadioButton x:Name="Portability" GroupName="Portability" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}" >I need this</RadioButton>
+                    <RadioButton  GroupName="Portability" IsChecked="{Binding Path=Portability, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Yes}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}"  Content="Yes"></RadioButton>
+                    <RadioButton  GroupName="Portability" IsChecked="{Binding Path=Portability, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=No}"  Style="{StaticResource ResourceKey=RadioButtonViewStyle}" Content="No"></RadioButton>
+                    <RadioButton  GroupName="Portability" IsChecked="{Binding Path=Portability, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Optional}"  Style="{StaticResource ResourceKey=RadioButtonViewStyle}" Content="Optional"></RadioButton>
+
                 </DockPanel>
 
                 <DockPanel>
                     <TextBlock>BatterySupport</TextBlock>
-                    <RadioButton x:Name="BatterySupport" GroupName="BatterySupport" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+                    <RadioButton  GroupName="BatterySupport" IsChecked="{Binding Path=BatterySupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Yes}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Yes</RadioButton>
+                    <RadioButton  GroupName="BatterySupport" IsChecked="{Binding Path=BatterySupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=No}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">No</RadioButton>
+                    <RadioButton  GroupName="BatterySupport" IsChecked="{Binding Path=BatterySupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Optional}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Optional</RadioButton>
 
                 </DockPanel>
 
                 <DockPanel>
                     <TextBlock>MultiPatientSupport</TextBlock>
-                    <RadioButton x:Name="MultiPatientSupport" GroupName="MultiPatientSupport" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+                    <RadioButton  GroupName="MultiPatientSupport" IsChecked="{Binding Path=MultiPatientSupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Yes}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Yes</RadioButton>
+                    <RadioButton  GroupName="MultiPatientSupport" IsChecked="{Binding Path=MultiPatientSupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=No}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">No</RadioButton>
+                    <RadioButton  GroupName="MultiPatientSupport" IsChecked="{Binding Path=MultiPatientSupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Optional}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Optional</RadioButton>
 
 
                 </DockPanel>
@@ -87,7 +99,9 @@
                 <DockPanel>
                     <TextBlock>TouchScreenSupport</TextBlock>
 
-                    <RadioButton x:Name="TouchScreenSupport" GroupName="TouchScreenSupport" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+                    <RadioButton  GroupName="TouchScreenSupport" IsChecked="{Binding Path=TouchScreenSupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Yes}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Yes</RadioButton>
+                    <RadioButton  GroupName="TouchScreenSupport" IsChecked="{Binding Path=TouchScreenSupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=No}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">No</RadioButton>
+                    <RadioButton  GroupName="TouchScreenSupport" IsChecked="{Binding Path=TouchScreenSupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Optional}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Optional</RadioButton>
 
                 </DockPanel>
 
@@ -96,7 +110,9 @@
                 <DockPanel>
                     <TextBlock>BpCheck</TextBlock>
 
-                    <RadioButton x:Name="BpCheck" GroupName="BpCheck" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+                    <RadioButton  GroupName="BpCheck" IsChecked="{Binding Path=BpCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Yes}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Yes</RadioButton>
+                    <RadioButton  GroupName="BpCheck" IsChecked="{Binding Path=BpCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=No}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">No</RadioButton>
+                    <RadioButton  GroupName="BpCheck" IsChecked="{Binding Path=BpCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Optional}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Optional</RadioButton>
 
 
                 </DockPanel>
@@ -104,7 +120,9 @@
                 <DockPanel>
                     <TextBlock>HeartRateCheck</TextBlock>
 
-                    <RadioButton x:Name="HeartRateCheck" GroupName="HeartRateCheck" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+                    <RadioButton  GroupName="HeartRateCheck" IsChecked="{Binding Path=HeartRateCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Yes}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Yes</RadioButton>
+                    <RadioButton  GroupName="HeartRateCheck" IsChecked="{Binding Path=HeartRateCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=No}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">No</RadioButton>
+                    <RadioButton  GroupName="HeartRateCheck" IsChecked="{Binding Path=HeartRateCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Optional}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Optional</RadioButton>
 
 
                 </DockPanel>
@@ -112,14 +130,18 @@
                 <DockPanel>
                     <TextBlock>EcgCheck</TextBlock>
 
-                    <RadioButton x:Name="EcgCheck" GroupName="EcgCheck" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+                    <RadioButton  GroupName="EcgCheck" IsChecked="{Binding Path=EcgCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Yes}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Yes</RadioButton>
+                    <RadioButton  GroupName="EcgCheck" IsChecked="{Binding Path=EcgCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=No}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">No</RadioButton>
+                    <RadioButton  GroupName="EcgCheck" IsChecked="{Binding Path=EcgCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Optional}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Optional</RadioButton>
 
 
                 </DockPanel>
 
                 <DockPanel>
                     <TextBlock>SpO2Check</TextBlock>
-                    <RadioButton x:Name="SpO2Check" GroupName="SpO2Check" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+                    <RadioButton  GroupName="SpO2Check" IsChecked="{Binding Path=SpO2Check, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Yes}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Yes</RadioButton>
+                    <RadioButton  GroupName="SpO2Check" IsChecked="{Binding Path=SpO2Check, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=No}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">No</RadioButton>
+                    <RadioButton  GroupName="SpO2Check" IsChecked="{Binding Path=SpO2Check, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Optional}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Optional</RadioButton>
 
 
                 </DockPanel>
@@ -128,13 +150,18 @@
                 <DockPanel>
                     <TextBlock>TemperatureCheck</TextBlock>
 
-                    <RadioButton x:Name="TemperatureCheck" GroupName="TemperatureCheck" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+                    <RadioButton  GroupName="TemperatureCheck" IsChecked="{Binding Path=TemperatureCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Yes}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Yes</RadioButton>
+                    <RadioButton  GroupName="TemperatureCheck" IsChecked="{Binding Path=TemperatureCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=No}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">No</RadioButton>
+                    <RadioButton  GroupName="TemperatureCheck" IsChecked="{Binding Path=TemperatureCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Optional}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Optional</RadioButton>
+
 
                 </DockPanel>
 
                 <DockPanel>
                     <TextBlock>CardiacOutputCheck</TextBlock>
-                    <RadioButton x:Name="CardiacOutputCheck" GroupName="CardiacOutputCheck" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">I need this</RadioButton>
+                    <RadioButton  GroupName="CardiacOutputCheck" IsChecked="{Binding Path=CardiacOutputCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Yes}"  Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Yes</RadioButton>
+                    <RadioButton  GroupName="CardiacOutputCheck" IsChecked="{Binding Path=CardiacOutputCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=No}"  Style="{StaticResource ResourceKey=RadioButtonViewStyle}">No</RadioButton>
+                    <RadioButton  GroupName="CardiacOutputCheck" IsChecked="{Binding Path=CardiacOutputCheck, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Optional}"  Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Optional</RadioButton>
 
 
                 </DockPanel>
@@ -142,7 +169,7 @@
                 <StackPanel>
                     <TextBlock HorizontalAlignment="Center" FontSize="10"><Run Text="*PLEASE SLECT ANY 4 CONDITON"/></TextBlock>
                 </StackPanel>
-                <Button x:Name="Submit">Submit</Button>
+                <Button x:Name="Submit" Margin="20" Width="100">Submit</Button>
             </StackPanel>
         </Border>
     </DockPanel>

@@ -67,3 +67,4 @@ D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\Assi
 D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.csproj.CopyComplete
 D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.exe
 D:\github\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\AssistToPurchase.pdb
+C:\Users\Ajay kumar\source\repos\assist-purchase-s21b2\AssistToPurchase\AssistToPurchase\obj\Debug\Resources\Styles\RadioButton.baml
