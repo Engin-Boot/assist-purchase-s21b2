@@ -302,9 +302,10 @@ namespace AssistToPurchase.ViewModel
 
             _response = _client.Execute(_request);
             var salesRepresentatives = _deserializer.Deserialize<List<SalesRepresentative>>(_response);
+            SalesRepresentativesList.Clear();
             foreach(var salesRepresentative in salesRepresentatives)
             {
-                if (!CheckWhetherSalesRepresentativeExists(salesRepresentative.Id))
+                if (!CheckWhetherSalesRepresentativeExists(salesRepresentative.Id))  // can remove safely
                 {
                     SalesRepresentativesList.Add(salesRepresentative);
                 }
@@ -323,7 +324,7 @@ namespace AssistToPurchase.ViewModel
             PendingRequestsList.Clear();
             foreach (var callSetupRequest in callSetupRequests)
             {
-                if (!CheckWhetherCallRequestExists(callSetupRequest.RequestId))
+                if (!CheckWhetherCallRequestExists(callSetupRequest.RequestId))  // can remove safely
                 {
                     PendingRequestsList.Add(callSetupRequest);
                 }

@@ -294,7 +294,7 @@ namespace AssistToPurchase.ViewModel
             Models.Clear();
             foreach (var model in models)
             {
-                if (!CheckWhetherModelExists(model.Id))
+                if (!CheckWhetherModelExists(model.Id)) // can remove safely
                 {
                     Models.Add(model);
                 }
