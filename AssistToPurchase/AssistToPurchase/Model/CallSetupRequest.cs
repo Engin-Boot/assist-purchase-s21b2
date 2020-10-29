@@ -10,7 +10,7 @@ namespace AssistToPurchase.Model
     {
         public string RequestId { get; set; }//
 
-        public string PointOfContactName { get; set; }
+        public string CoustomerName { get; set; }
 
         public string Organisation { get; set; }
 

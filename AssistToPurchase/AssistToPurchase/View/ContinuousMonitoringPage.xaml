@@ -11,6 +11,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <converters:RadioBoolToStringConverter x:Key="boolToString"></converters:RadioBoolToStringConverter>
+            <converters:ModelObjectToStringConverter x:Key="ModelObjToString"></converters:ModelObjectToStringConverter>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -33,6 +34,7 @@
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -43,16 +45,18 @@
                         <TextBlock Margin="2" Width="100" Height="25" Grid.Row="0" Grid.Column="0">Name</TextBlock>
                         <TextBlock Margin="2"  Width="100" Height="25"  Grid.Row="1" Grid.Column="0">Email</TextBlock>
                         <TextBlock Margin="2"  Width="100" Height="25" Grid.Row="2" Grid.Column="0">Model</TextBlock>
-                        <TextBlock Margin="2" Width="100" Height="25" Grid.Row="3" Grid.Column="0">Contact Number</TextBlock>
+                        <TextBlock Margin="2" Width="100" Height="25" Grid.Row="3" Grid.Column="0">Organisation</TextBlock>
+                        <TextBlock Margin="2" Width="100" Height="25" Grid.Row="4" Grid.Column="0">Region</TextBlock>
 
                         <!--Naming-->
-                        <TextBox  Margin="2" Width="100" Grid.Row="0" Grid.Column="1" x:Name="NameOfCustomer"></TextBox>
-                        <TextBox  Margin="2" Width="100" Grid.Row="1" Grid.Column="1" x:Name="Email"></TextBox>
-                        <ComboBox  Width="100" Grid.Row="2" Grid.Column="1" x:Name="ModelSelect" ></ComboBox>
-                        <TextBox  Margin="2" Width="100" Grid.Row="3" Grid.Column="1" x:Name="ContactNumber"></TextBox>
+                        <TextBox  Margin="2" Width="100" Grid.Row="0" Grid.Column="1" x:Name="NameOfCustomer" Text="{Binding Path=Name}"></TextBox>
+                        <TextBox  Margin="2" Width="100" Grid.Row="1" Grid.Column="1" x:Name="Email" Text="{Binding Path=Email}"></TextBox>
+                        <TextBlock  Width="100" Grid.Row="2" Grid.Column="1" x:Name="ModelSelect" Text="{Binding Path=Model}"></TextBlock>
+                        <TextBox  Margin="2" Width="100" Grid.Row="3" Grid.Column="1" x:Name="Organisation" Text="{Binding Path=Organisation}"></TextBox>
+                        <TextBox  Margin="2" Width="100" Grid.Row="4" Grid.Column="1" x:Name="Region" Text="{Binding Path=Region}"></TextBox>
 
-                        <Button Width="120"  Height="30" Grid.Row="4" Grid.Column="0" Content="Register/OrderConfirmed"></Button>
-                        <Button Width="100" Height="30" Grid.Row="4" Grid.Column="1" Content="Clear"></Button>
+                        <Button Width="120"  Height="30" Grid.Row="5" Grid.Column="0" Content="Register/OrderConfirmed" Command="{Binding Path=AddCallSetupRequestCommand}"></Button>
+                        <Button Width="100" Height="30" Grid.Row="5" Grid.Column="1" Content="Clear" Command="{Binding Path=ClearCallSetupRequestCommand}"></Button>
                     </Grid.Children>
                 </Grid>
             </StackPanel>
@@ -63,7 +67,7 @@
         <!--`MODEL LIST-->
         <StackPanel>
             <TextBlock FontSize="18" FontWeight="Bold">LIST OF MODELS</TextBlock>
-            <ComboBox x:Name="modelListCombo"  ItemsSource="{Binding Path=Models}" DisplayMemberPath="ProductName"></ComboBox>
+            <ComboBox x:Name="modelListCombo"  ItemsSource="{Binding Path=Models, Converter={StaticResource ModelObjToString}}"  Text="{Binding Path=Model}"></ComboBox>
         </StackPanel>
 
         <!--CHATBOT-->

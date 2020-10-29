@@ -1,12 +1,15 @@
-﻿using AssistToPurchase.Model;
+﻿using AlertToCareFrontend.Command;
+using AssistToPurchase.Model;
 using RestSharp;
 using RestSharp.Serialization.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace AssistToPurchase.ViewModel
 {
@@ -25,7 +28,8 @@ namespace AssistToPurchase.ViewModel
             this.searchQuery = new SearchQuery();
             //this._models = GetModels();
             UpdateModelsList();
-
+            AddCallSetupRequestCommand = new DelegateCommandClass(this.AddCallSetupRequestCommandWrapper, this.CommandCanExecuteWrapper);
+            ClearCallSetupRequestCommand = new DelegateCommandClass(this.ClearCallSetupRequestCommandWrapper, this.CommandCanExecuteWrapper);
         }
 
         #endregion
@@ -34,10 +38,75 @@ namespace AssistToPurchase.ViewModel
         #region Fields
         //private readonly ObservableCollection<ModelsSpecification> _models;
         private SearchQuery searchQuery;
+        private  string _name;
+        private  string _email;
+        private  string _organisation;
+        private  string _model;
+        private string _region;
 
         #endregion
 
         #region Properties
+
+
+        public string Name
+        {
+            set
+            {
+                if (value != _name)
+                {
+                    _name = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public string Email
+        {
+            set
+            {
+                if (value != _email)
+                {
+                    _email = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public string Model
+        {
+            get { return this._model; }
+            set
+            {
+                if (value != _model)
+                {
+                    _model = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public string Region
+        {
+            get { return this._region; }
+            set
+            {
+                if (value != _region)
+                {
+                    _region = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public string Organisation
+        {
+            set
+            {
+                if (value != _organisation)
+                {
+                    _organisation = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public ObservableCollection<ModelsSpecification> Models { get; set; } = new ObservableCollection<ModelsSpecification>();
 
         public string Id 
@@ -240,6 +309,53 @@ namespace AssistToPurchase.ViewModel
                 return true;
             }
             return false;
+        }
+        #endregion
+
+        #region Logic
+        private void PlaceOrder()
+        {
+            _client = new RestClient("http://localhost:5000/api/");
+            _request = new RestRequest("CallSetupRequest", Method.POST);
+            var selectedModels = new List<string>();
+            selectedModels.Add(_model);
+            _request.AddJsonBody(new CallSetupRequest { CoustomerName = _name,
+                RequestId = GenerateRequestId(),
+                Email = _email,
+                Organisation = _organisation,
+                Region = _region,
+                SelectedModels = selectedModels }
+                );
+            _response = _client.Execute(_request);
+        }
+
+        private string GenerateRequestId()
+        {
+            Random random = new Random();
+            return $"REQ{random.Next(100, 10000)}";
+        }
+        #endregion
+
+        #region Commands
+        public ICommand AddCallSetupRequestCommand { get; set; }
+        public ICommand ClearCallSetupRequestCommand { get; set; }
+        #endregion
+        #region Command Helper Methods
+        void AddCallSetupRequestCommandWrapper(object parameter)
+        {
+            this.PlaceOrder();
+        }
+
+        
+
+        bool CommandCanExecuteWrapper(object parameter)
+        {
+            return true;
+        }
+
+        void ClearCallSetupRequestCommandWrapper(object parameter)
+        { 
+            //this.ClearSaleRepresentative(); 
         }
         #endregion
     }
