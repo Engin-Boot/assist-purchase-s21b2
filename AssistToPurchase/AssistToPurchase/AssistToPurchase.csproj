@@ -75,6 +75,7 @@
     <Compile Include="Model\SearchQuery.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ContinuousMonitoringViewModel.cs" />
+    <Compile Include="ViewModel\ModelCatalogViewModel.cs" />
     <Compile Include="ViewModel\SalesRepresentativeViewModel.cs" />
     <Compile Include="View\ContinuousMonitoringPage.xaml.cs">
       <DependentUpon>ContinuousMonitoringPage.xaml</DependentUpon>
