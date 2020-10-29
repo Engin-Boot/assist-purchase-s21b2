@@ -20,9 +20,11 @@ namespace AssistToPurchase.View
     /// </summary>
     public partial class ModelCatalogPage : Page
     {
+        ViewModel.ModelCatalogViewModel ModelCatalogViewModel = new ViewModel.ModelCatalogViewModel();
         public ModelCatalogPage()
         {
             InitializeComponent();
+            this.DataContext = ModelCatalogViewModel;
         }
     }
 }

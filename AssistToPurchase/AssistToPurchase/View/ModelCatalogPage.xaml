@@ -8,10 +8,79 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ModelCatalogPage">
 
-    
-        <DockPanel LastChildFill="True">
-            <Grid  Margin="20" DockPanel.Dock="Left" >
+
+    <DockPanel LastChildFill="True">
+        <Grid  Margin="10" DockPanel.Dock="Left" Background="AliceBlue" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+
+
+            <Grid.Children>
+                <TextBlock FontSize="12" FontWeight="Bold" Grid.Row="0" Grid.Column="0">Add new Model</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="1" Grid.Column="0">Product Id</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="2" Grid.Column="0"> Product Name</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="3" Grid.Column="0">Product Key</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="4" Grid.Column="0">Description</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="5" Grid.Column="0">Price</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="6" Grid.Column="0">Weight</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="7" Grid.Column="0">Portable</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="8" Grid.Column="0">ScreenSize</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="9" Grid.Column="0">TouchScreenSupport</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="10" Grid.Column="0">MonitorResolution</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="11" Grid.Column="0">BatterySupport</TextBlock>
+                <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="12" Grid.Column="0">MultiPatientSupport</TextBlock>
+
+
+
+
+
+                <TextBox Text="{Binding Path=Id}" Margin="2" Width="100" Grid.Row="1" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=ProductName}" Margin="2" Width="100" Grid.Row="2" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=ProductKey}" Margin="2" Width="100" Grid.Row="3" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=Description}" Margin="2" Width="100" Grid.Row="4" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=Price}" Margin="2" Width="100" Grid.Row="5" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=Weight}" Margin="2" Width="100" Grid.Row="6" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=Portable}" Margin="2" Width="100" Grid.Row="7" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=ScreenSize}" Margin="2" Width="100" Grid.Row="8" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=TouchScreenSupport}" Margin="2" Width="100" Grid.Row="9" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=MonitorResolution}" Margin="2" Width="100" Grid.Row="10" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=BatterySupport}" Margin="2" Width="100" Grid.Row="11" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=MultiPatientSupport}" Margin="2" Width="100" Grid.Row="12" Grid.Column="1"></TextBox>
+
+
+
+
+            </Grid.Children>
+        </Grid>
+        <Border Background="Beige"  DockPanel.Dock="Left" Width="250" Margin="10" HorizontalAlignment="Left" >
+
+            <Grid Margin="10" DockPanel.Dock="Left" Background="Azure">
                 <Grid.RowDefinitions>
+
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
@@ -21,22 +90,48 @@
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
+
                 <Grid.Children>
-                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="0" Grid.Column="0">UserName</TextBlock>
-                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="1" Grid.Column="0">Password</TextBlock>
-                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="2" Grid.Column="0">Email</TextBlock>
+                    <TextBlock FontSize="12" FontWeight="Bold" Grid.Row="0" Grid.Column="0">Add Clinal Parameter</TextBlock>
+                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="1" Grid.Column="0">BpCheck</TextBlock>
+                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="2" Grid.Column="0">HeartRateCheck</TextBlock>
+                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="3" Grid.Column="0">EcgCheck</TextBlock>
+                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="4" Grid.Column="0">SpO2Check</TextBlock>
+                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="5" Grid.Column="0">TemperatureCheck</TextBlock>
+                    <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="6" Grid.Column="0">CardiacOutputCheck</TextBlock>
 
-                    <TextBox Text="{Binding Path=Name}" Margin="2" Width="100" Grid.Row="0" Grid.Column="1"></TextBox>
-                    <TextBox Text="{Binding Path=Password}" Margin="2" Width="100" Grid.Row="1" Grid.Column="1">
+                    <TextBox Text="{Binding Path=BpCheck}" Margin="2" Width="100" Grid.Row="1" Grid.Column="1"></TextBox>
+                    <TextBox Text="{Binding Path=HeartRateCheck}" Margin="2" Width="100" Grid.Row="2" Grid.Column="1"></TextBox>
+                    <TextBox Text="{Binding Path=EcgCheck}" Margin="2" Width="100" Grid.Row="3" Grid.Column="1"></TextBox>
+                    <TextBox Text="{Binding Path=SpO2Check}" Margin="2" Width="100" Grid.Row="4" Grid.Column="1"></TextBox>
+                    <TextBox Text="{Binding Path=TemperatureCheck}" Margin="2" Width="100" Grid.Row="5" Grid.Column="1"></TextBox>
+                    <TextBox Text="{Binding Path=CardiacOutputCheck}" Margin="2" Width="100" Grid.Row="6" Grid.Column="1"></TextBox>
+                    <!--`add new  usercommand-->
+                    <Button Margin="10" Width="100" Grid.Row="7" Grid.Column="0" Content="Add" Command="{Binding Path=AddModelCommand}"></Button>
+                    <Button  Margin="10" Width="100" Grid.Row="7" Grid.Column="1" Content="Clear" Command="{Binding Path=ClearModelCommand}"></Button>
 
-                    </TextBox>
-                    <TextBox Text="{Binding Path=Email}" Margin="2" Width="100" Grid.Row="2" Grid.Column="1"></TextBox>
-
-                    <Button Width="100" Grid.Row="3" Grid.Column="0" Content="Register" Command="{Binding Path=AddNewUserCommand}"></Button>
-                    <Button Width="100" Grid.Row="3" Grid.Column="1" Content="Clear"></Button>
                 </Grid.Children>
             </Grid>
-        </DockPanel>
-   
+
+        </Border>
+
+        <Border Background="Beige" Margin="10"  DockPanel.Dock="Left" Width="250">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top" Margin="10" >
+                    <TextBlock FontSize="14" FontWeight="Bold">Select Models</TextBlock>
+                    <!--binding done to observable clloection-->
+                    <ComboBox x:Name="ModelsListCombo" ItemsSource="{Binding Path=ModelsSpecificationsList}" DisplayMemberPath="ProductName"></ComboBox>
+                </StackPanel>
+
+
+            </DockPanel>
+
+        </Border>
+
+
+
+
+    </DockPanel>
+
 
 </Page>
