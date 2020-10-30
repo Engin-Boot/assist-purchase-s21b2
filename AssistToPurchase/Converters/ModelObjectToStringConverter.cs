@@ -35,7 +35,15 @@ namespace AssistToPurchase.Converters
 
         public bool CheckNull(object value, ObservableCollection<ModelsSpecification> models)
         {
-            if (value == null || models == null || models.Count == 0)
+            if (value == null || CheckModel(models))
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool CheckModel(ObservableCollection<ModelsSpecification> models)
+        {
+            if (models == null || models.Count == 0)
             {
                 return true;
             }
