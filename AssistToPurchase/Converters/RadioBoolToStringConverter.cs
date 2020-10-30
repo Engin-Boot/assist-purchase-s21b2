@@ -12,7 +12,7 @@ namespace AssistToPurchase.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || parameter == null)
+            if (CheckNull(value,parameter))
                 return false;
 
             string checkValue = value.ToString();
@@ -23,12 +23,24 @@ namespace AssistToPurchase.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || parameter == null)
+            if (CheckNull(value, parameter))
                 return null;
 
             bool useValue = (bool)value;
             string targetValue = parameter.ToString();
-            if(targetValue.Equals("Optional"))
+            return GetReturnValue(targetValue,useValue);
+        }
+
+        public bool CheckNull(object value , object parameter)
+        {
+            if (value == null || parameter == null)
+                return true;
+            return false;
+        }
+
+        public object GetReturnValue(string targetValue, bool useValue)
+        {
+            if (targetValue.Equals("Optional"))
                 targetValue = "";
             if (useValue)
                 return targetValue;

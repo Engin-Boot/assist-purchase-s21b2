@@ -15,7 +15,7 @@ namespace AssistToPurchase.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var models = (ObservableCollection<ModelsSpecification>)value;
-            if(value == null || models==null || models.Count == 0)
+            if(CheckNull(value,models))
             {
                 return null;
             }
@@ -31,6 +31,15 @@ namespace AssistToPurchase.Converters
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+        }
+
+        public bool CheckNull(object value, ObservableCollection<ModelsSpecification> models)
+        {
+            if (value == null || models == null || models.Count == 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
