@@ -72,8 +72,9 @@ namespace PurchaseAssistantWebApp.Controllers
             try
             {
                 var callSetupReq = _repository.GetCallSetupRequest(RequestId);
-                var costomerEmail =callSetupReq.Email;
+                
                 var msg = _repository.DeleteCallSetupRequest(RequestId);
+                var costomerEmail = callSetupReq.Email;
                 _alerter.SendAlert(_salesRepresentativeRepository.GetSalesRepresentative(SalesRepId) , costomerEmail);
 
                 return Ok(GetAppropriateMessageOnDeleteCallRequest(msg));

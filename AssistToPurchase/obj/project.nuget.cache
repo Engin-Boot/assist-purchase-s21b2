@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "0WM6Ca5RFTHArjvcXBspdNBKZlgTfV1R0lhsCyn7HNJeduaewWIPAMXsP9looE0XxRYfWVVX1ko+s1E1j8sKnQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Ajay kumar\\source\\repos\\assist-purchase-s21b2\\AssistToPurchase\\AssistToPurchase.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ajay kumar\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Ajay kumar\\.nuget\\packages\\restsharp\\106.11.7\\restsharp.106.11.7.nupkg.sha512"
+  ],
+  "logs": []
+}
