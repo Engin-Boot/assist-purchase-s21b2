@@ -20,9 +20,9 @@ namespace PurchaseAssistantWebApp
             services.AddControllers();
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+                //options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
                 //options.UseSqlite("Data source= C:/Users/Ajay kumar/source/repos/assist-purchase-s21b2/PurchaseAssistantWebApp/PurchaseAssistant.db");
-                //options.UseSqlite("Data source= D:/a/assist-purchase-s21b2/assist-purchase-s21b2/PurchaseAssistantWebApp/PurchaseAssistant.db");
+                options.UseSqlite("Data source= D:/a/assist-purchase-s21b2/assist-purchase-s21b2/PurchaseAssistantWebApp/PurchaseAssistant.db");
             });
             services.AddScoped<Repository.IModelsSpecificationDataRepository, Repository.ModelsSpecificationDataRepository>();
             services.AddScoped<Repository.ICallSetupRequestDataRepository, Repository.CallSetupRequestDataRepository>();

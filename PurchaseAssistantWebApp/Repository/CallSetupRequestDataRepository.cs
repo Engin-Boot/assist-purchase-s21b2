@@ -10,7 +10,6 @@ namespace PurchaseAssistantWebApp.Repository
 {
     public class CallSetupRequestDataRepository : ICallSetupRequestDataRepository
     {
-       // private readonly List<CallSetupRequest> _requestsDb = new List<CallSetupRequest>();
         private readonly AppDbContext _context;
         public CallSetupRequestDataRepository(AppDbContext context)
         {
@@ -18,17 +17,8 @@ namespace PurchaseAssistantWebApp.Repository
 
         }
 
-        //public CallSetupRequestDataRepository(List<CallSetupRequest> initialRequestDb)
-        //{
-        //    foreach (CallSetupRequest requestInfo in initialRequestDb)
-        //    {
-        //        _requestsDb.Add(requestInfo);
-        //    }
-        //}
         public IEnumerable<CallSetupRequest> GetAllCallSetupRequest()
         {
-            //return _requestsDb;
-            //InitializeDatabase(_context);
             return _context.PendingRequests.ToList();
         }
 
@@ -59,13 +49,6 @@ namespace PurchaseAssistantWebApp.Repository
         {
             ValidateCallSetupRequestData(newRequest);
 
-            //foreach (CallSetupRequest request in _requestsDb)
-            //{
-            //    if (request.RequestId.Equals(newRequest.RequestId))
-            //    {
-            //        throw new ArgumentException($"A Call Setup Request with {newRequest.RequestId} key already exists.", nameof(newRequest.RequestId));
-            //    }
-            //}
             if (_context.PendingRequests.Find(newRequest.RequestId) == null)
             {
                 _context.PendingRequests.Add(newRequest);
@@ -76,24 +59,11 @@ namespace PurchaseAssistantWebApp.Repository
                 throw new ArgumentException($"A Call Setup Request with {newRequest.RequestId} key already exists.", nameof(newRequest.RequestId));
             }
 
-           
-
-            //_requestsDb.Add(newRequest);
             return $"Call Setup Request with id {newRequest.RequestId} added successfully!";
         }
 
         public string DeleteCallSetupRequest(string id)
         {
-            //int totalRequests = _requestsDb.Count;
-            //for (var i = 0; i < totalRequests; i++)
-            //{
-            //    if (_requestsDb[i].RequestId.Equals(id))
-            //    {
-            //        _requestsDb.RemoveAt(i);
-
-            //        return $"Call Setup Request with id {id} deleted successfully!";
-            //    }
-            //}
             if (_context.PendingRequests.Find(id) != null)
             {
                 //_context.ServedRequests.Add(_context.PendingRequests.Find(id));
@@ -109,20 +79,6 @@ namespace PurchaseAssistantWebApp.Repository
         {
             ValidateCallSetupRequestData(request);
 
-            //foreach (CallSetupRequest v in _requestsDb)
-            //{
-            //    if (v.RequestId.Equals(request.RequestId))
-            //    {
-            //v.Email = request.Email;
-            //v.Organisation = request.Organisation;
-            //v.CoustomerName = request.CoustomerName;
-            //v.Region = request.Region;
-            //v.SelectedModels = new List<string>(request.SelectedModels);
-
-            //        
-            //        return $"Call Setup Request with id {request.RequestId} updated successfully!";
-            //    }
-            //}
             if (GetCallSetupRequest(request.RequestId) != null)
             {
                 var oldReq = GetCallSetupRequest(request.RequestId);

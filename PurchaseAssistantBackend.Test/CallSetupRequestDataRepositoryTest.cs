@@ -12,30 +12,6 @@ namespace PurchaseAssistantBackend.Test
         private readonly ICallSetupRequestDataRepository _repository;
         public CallSetupRequestDataRepositoryTest()
         {
-            //var requestsTestDb = new List<CallSetupRequest>
-            //{
-            //    new CallSetupRequest
-            //    {
-            //        RequestId = "REQ001",
-            //        CoustomerName = "James",
-            //        Organisation = "XYZ Hospital",
-            //        Email = "james@xyz.com",
-            //        Region = "Italy",
-            //        SelectedModels = new List<string> { "IntelliVue X3", "IntelliVue X40" }
-            //    },
-
-            //    new CallSetupRequest
-            //    {
-            //        RequestId = "REQ002",
-            //        CoustomerName = "Sara",
-            //        Organisation = "ABC Hospital",
-            //        Email = "sara@abc.com",
-            //        Region = "India",
-            //        SelectedModels = new List<string> { "IntelliVue X3" }
-            //    }
-            //};
-
-            //_repository = new CallSetupRequestDataRepository(requestsTestDb);
             _repository = new CallSetupRequestDataRepository(Context);
         }
 
@@ -214,12 +190,6 @@ namespace PurchaseAssistantBackend.Test
             }
         }
         
-        //[Fact]
-        //public void WhenCallSetupRequestDataRepositoryCreatedWithDefaultConstructorThenNonEmptyRepository()
-        //{
-        //    ICallSetupRequestDataRepository defaultRepository = new CallSetupRequestDataRepository();
-        //    Assert.NotNull(defaultRepository);
-        //}
 
         [Fact]
         public void WhenCallValidateCallSetupRequestDataMethodWithoutSelectedModelsThenThrowException()

@@ -11,14 +11,10 @@ namespace PurchaseAssistantWebApp.Repository
     public class ModelsSpecificationDataRepository : IModelsSpecificationDataRepository
     {
     
-        //private readonly List<ModelsSpecification> _monitoringItems = new List<ModelsSpecification>();
         private readonly AppDbContext _context;
         public ModelsSpecificationDataRepository(AppDbContext context)
         {
             _context = context;
-            //var products = new ProductsGetter().Products;
-            //foreach (ModelsSpecification item in products)
-            //    AddNewModelsSpecification(item);
         }
 
         [AssertionMethod]
@@ -50,7 +46,6 @@ namespace PurchaseAssistantWebApp.Repository
 
         public IEnumerable<ModelsSpecification> GetAllModelsSpecifications()
         {
-            //return _monitoringItems;
             return _context.Models.ToList();
         }
 
@@ -64,31 +59,11 @@ namespace PurchaseAssistantWebApp.Repository
             _context.Models.Add(newModelsSpecification);
             _context.SaveChanges();
 
-            //foreach (ModelsSpecification model in _monitoringItems)
-            //{
-            //    if (model.Id.Equals(newModelsSpecification.Id))
-            //    {
-            //        throw new ArgumentException($"Model specification with {newModelsSpecification.Id} id already exists.", nameof(newModelsSpecification.Id));
-            //    }
-            //}
-            
-            //_monitoringItems.Add(newModelsSpecification);
-
         }
 
         public void UpdateModelsSpecification(ModelsSpecification updatedModelsSpecification)
         {
             ValidateModelSpecificationData(updatedModelsSpecification);
-
-            //var currentProductId = updatedModelsSpecification.Id;
-            //for (var i = 0; i < _monitoringItems.Count; i++)
-            //    if (_monitoringItems[i].Id == currentProductId)
-            //    {
-            //        _monitoringItems.RemoveAt(i);
-            //        _monitoringItems.Add(updatedModelsSpecification);
-            //        return;
-            //    }
-            //throw new KeyNotFoundException($"Update operation failed. Model specification with { updatedModelsSpecification.Id } id does not exist.");
 
             if (GetModel(updatedModelsSpecification.Id) == null)
             {
@@ -121,13 +96,6 @@ namespace PurchaseAssistantWebApp.Repository
 
         public void DeleteModelsSpecification(long id)
         {
-            //int totalModels = _monitoringItems.Count;
-            //for (var i = 0; i < totalModels; i++)
-            //    if (_monitoringItems[i].Id == id)
-            //    {
-            //        _monitoringItems.RemoveAt(i);
-            //        return;
-            //    }
             if (GetModel(id) == null)
             {
                 throw new KeyNotFoundException($"Delete operation failed. Model specification with { id } id does not exist.");

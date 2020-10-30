@@ -12,13 +12,6 @@ namespace PurchaseAssistantBackend.Test
         private readonly ISalesRepresentativeDataRepository _repository;
         public SalesRepresentativeDataRepositoryTest()
         {
-            //var salesRepresentativeTestDb = new List<SalesRepresentative>
-            //{
-            //    new SalesRepresentative { Id = "SR001", Name = "Ellie", Email = "ellie@gmail.com", DepartmentRegion = "India" },
-            //    new SalesRepresentative { Id = "SR002", Name = "Sam", Email = "samuel@gmail.com", DepartmentRegion = "Switzerland" }
-            //};
-            //_repository = new SalesRepresentativeDataRepository(SalesRepresentative);
-
             _repository = new SalesRepresentativeDataRepository(Context);
         }
         [Fact]
@@ -163,12 +156,5 @@ namespace PurchaseAssistantBackend.Test
                 Assert.Equal("Delete operation failed. Sales Representative with SR004 id does not exist.", exception.Message);
             }
         }
-
-        //[Fact]
-        //public void WhenRepositoryCreatedWithDefaultConstructorThenNonEmptyRepository()
-        //{
-        //    ISalesRepresentativeDataRepository defaultRepository = new SalesRepresentativeDataRepository();
-        //    Assert.NotNull(defaultRepository);
-        //}
     }
 }

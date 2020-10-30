@@ -27,8 +27,6 @@ namespace AssistToPurchase.ViewModel
         public ContinuousMonitoringViewModel()
         {
             this.searchQuery = new SearchQuery();
-            //this._responseMessage = "";
-            //this._models 
             UpdateModelsList();
             AddCallSetupRequestCommand = new DelegateCommandClass(this.AddCallSetupRequestCommandWrapper, this.CommandCanExecuteWrapper);
             ClearCallSetupRequestCommand = new DelegateCommandClass(this.ClearCallSetupRequestCommandWrapper, this.CommandCanExecuteWrapper);
@@ -45,7 +43,6 @@ namespace AssistToPurchase.ViewModel
         private  string _organisation;
         private  string _model;
         private string _region;
-        //private string _responseMessage;
         #endregion
 
         #region Properties
@@ -302,15 +299,6 @@ namespace AssistToPurchase.ViewModel
             _response = _client.Execute(_request);
             var models = _deserializer.Deserialize<List<ModelsSpecification>>(_response);
             Models = new ObservableCollection<ModelsSpecification>(models);
-            //Models.Clear();
-            //foreach (var model in models)
-            //{
-            //    if (!CheckWhetherModelExists(model.Id)) // can remove safely
-            //    {
-            //        Models.Add(model);
-            //    }
-            //}
-            
         }
         public bool CheckWhetherModelExists(long id)
         {

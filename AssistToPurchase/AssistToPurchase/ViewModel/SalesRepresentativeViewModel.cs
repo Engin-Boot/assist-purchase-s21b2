@@ -185,35 +185,11 @@ namespace AssistToPurchase.ViewModel
         {
             _client = new RestClient(_baseUrl);
             _request = new RestRequest($"CallSetupRequest/{RequestId}/{SalesRepresentativeId}", Method.DELETE);
-            //_request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
             _response = _client.Execute(_request);
             var message = _response.Content;
             MessageBox.Show($"{message}");
             UpdatePendingRequestList();
         }
-        //public void DeleteSaleRepresentative()
-        //{
-        //    _client = new RestClient(_baseUrl);
-        //    _request = new RestRequest("SalesRepresentative/{id}", Method.DELETE);
-        //    _response = _client.Execute(_request);
-        //    GetSalesRepresentatives();
-        //}
-        //public void UpdateSalesRepresentative(string saleid)
-        //{
-        //    _client = new RestClient(_baseUrl);
-        //    _request = new RestRequest("SalesRepresentative/{saleid}", Method.GET);
-        //    _request.AddUrlSegment("saleid", saleid);
-        //    _response = _client.Execute(_request);
-        //    var _sales = _deserializer.Deserialize<SalesRepresentative>(_response);
-
-        //    Id = _sales.Id;
-        //    Name = _sales.Name;
-        //    DepartmentRegion = _sales.DepartmentRegion;
-        //    Email = _sales.Email;
-
-
-
-        //}
 
         public void ClearSaleRepresentative()
         {
@@ -292,28 +268,6 @@ namespace AssistToPurchase.ViewModel
 
         public void UpdateSalesRepresentativeList()
         {
-            //System.Net.WebClient _httpRequest = new System.Net.WebClient();
-            //System.Net.HttpWebRequest _httpReq =
-            //    System.Net.WebRequest.CreateHttp("http://localhost:5000/api/SalesRepresentative");
-            //_httpReq.Method = "GET";
-            //System.Net.HttpWebResponse response = _httpReq.GetResponse() as System.Net.HttpWebResponse;
-            //if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            //{
-            //    Console.WriteLine("Communication Successful");
-            //    Console.WriteLine(response.ContentType);
-            //    Console.WriteLine(response.ContentLength);
-            //    System.Runtime.Serialization.Json.DataContractJsonSerializer _jsonSerializer =
-            //        new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(List<SalesRepresentative>));
-            //    List<SalesRepresentative> salesRepresentatives =
-            //          _jsonSerializer.ReadObject(response.GetResponseStream()) as List<SalesRepresentative>;
-            //    foreach (var salesRepresentative in salesRepresentatives)
-            //    {
-            //        Console.WriteLine($"SalesRepresentative {salesRepresentative.Id == null} and {salesRepresentative.Name == null}");
-            //    }
-            //    return new ObservableCollection<SalesRepresentative>(salesRepresentatives); ;
-            //}
-            //return new ObservableCollection<SalesRepresentative>();
-
             _client = new RestClient(_baseUrl);
             _request = new RestRequest("SalesRepresentative", Method.GET);
 
@@ -328,7 +282,6 @@ namespace AssistToPurchase.ViewModel
                     SalesRepresentativesList.Add(salesRepresentative);
                 }
             }
-            //return new ObservableCollection<SalesRepresentative>(salesRepresentatives);
         }
 
         public void UpdatePendingRequestList()
@@ -347,7 +300,6 @@ namespace AssistToPurchase.ViewModel
                     PendingRequestsList.Add(callSetupRequest);
                 }
             }
-            //return new ObservableCollection<SalesRepresentative>(salesRepresentatives);
         }
 
         public bool CheckWhetherSalesRepresentativeExists(string id)
