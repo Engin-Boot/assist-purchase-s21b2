@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using AlertToCareFrontend.Command;
 using AssistToPurchase.Model;
@@ -310,6 +311,9 @@ namespace AssistToPurchase.ViewModel
             });
 
             _response = _client.Execute(_request);
+            var message = _response.Content;
+            MessageBox.Show($"{message}");
+            ClearModel();
             UpdateModelList();
         }
 
@@ -344,6 +348,7 @@ namespace AssistToPurchase.ViewModel
             _response = _client.Execute(_request);
 
             var models = _deserializer.Deserialize<List<ModelsSpecification>>(_response);
+            ModelsSpecificationsList.Clear();
             foreach (var model in models)
             {
                 if (!CheckWhetherModelExist(model.Id))

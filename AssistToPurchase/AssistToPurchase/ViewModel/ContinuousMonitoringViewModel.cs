@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace AssistToPurchase.ViewModel
@@ -26,7 +27,8 @@ namespace AssistToPurchase.ViewModel
         public ContinuousMonitoringViewModel()
         {
             this.searchQuery = new SearchQuery();
-            //this._models = GetModels();
+            //this._responseMessage = "";
+            //this._models 
             UpdateModelsList();
             AddCallSetupRequestCommand = new DelegateCommandClass(this.AddCallSetupRequestCommandWrapper, this.CommandCanExecuteWrapper);
             ClearCallSetupRequestCommand = new DelegateCommandClass(this.ClearCallSetupRequestCommandWrapper, this.CommandCanExecuteWrapper);
@@ -36,14 +38,14 @@ namespace AssistToPurchase.ViewModel
 
 
         #region Fields
-        //private readonly ObservableCollection<ModelsSpecification> _models;
+        private ObservableCollection<ModelsSpecification> _models = new ObservableCollection<ModelsSpecification>();
         private SearchQuery searchQuery;
         private  string _name;
         private  string _email;
         private  string _organisation;
         private  string _model;
         private string _region;
-
+        //private string _responseMessage;
         #endregion
 
         #region Properties
@@ -107,7 +109,15 @@ namespace AssistToPurchase.ViewModel
             }
         }
 
-        public ObservableCollection<ModelsSpecification> Models { get; set; } = new ObservableCollection<ModelsSpecification>();
+        public ObservableCollection<ModelsSpecification> Models 
+        {
+            get { return this._models; }
+            set 
+            {
+                this._models = value;
+                OnPropertyChanged(); 
+            } 
+        } 
 
         public string Id 
         { 
@@ -291,14 +301,15 @@ namespace AssistToPurchase.ViewModel
             _request = new RestRequest($"?{request}", Method.GET);
             _response = _client.Execute(_request);
             var models = _deserializer.Deserialize<List<ModelsSpecification>>(_response);
-            Models.Clear();
-            foreach (var model in models)
-            {
-                if (!CheckWhetherModelExists(model.Id)) // can remove safely
-                {
-                    Models.Add(model);
-                }
-            }
+            Models = new ObservableCollection<ModelsSpecification>(models);
+            //Models.Clear();
+            //foreach (var model in models)
+            //{
+            //    if (!CheckWhetherModelExists(model.Id)) // can remove safely
+            //    {
+            //        Models.Add(model);
+            //    }
+            //}
             
         }
         public bool CheckWhetherModelExists(long id)
@@ -327,12 +338,24 @@ namespace AssistToPurchase.ViewModel
                 SelectedModels = selectedModels }
                 );
             _response = _client.Execute(_request);
+            var message = _response.Content;
+            MessageBox.Show($"{message}");
+            ClearCallRequestSertup();
         }
 
         private string GenerateRequestId()
         {
             Random random = new Random();
             return $"REQ{random.Next(100, 10000)}";
+        }
+
+        private void ClearCallRequestSertup()
+        {
+            Name = "";
+            Email = "";
+            Region = "";
+            Organisation = "";
+            Model = "";
         }
         #endregion
 
@@ -354,8 +377,8 @@ namespace AssistToPurchase.ViewModel
         }
 
         void ClearCallSetupRequestCommandWrapper(object parameter)
-        { 
-            //this.ClearSaleRepresentative(); 
+        {
+            this.ClearCallRequestSertup();
         }
         #endregion
     }

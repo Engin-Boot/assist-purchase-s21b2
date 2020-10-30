@@ -15,6 +15,11 @@ namespace AssistToPurchase.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var models = (ObservableCollection<ModelsSpecification>)value;
+            if(value == null || models==null || models.Count == 0)
+            {
+                return null;
+            }
+
             List<string> result = new List<string>();
             foreach(var model in models)
             {

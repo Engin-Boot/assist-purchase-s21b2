@@ -77,8 +77,8 @@
                 <TextBlock FontSize="12" FontWeight="SemiBold" Margin="7">SPECIFY THE NORMAL PARAMETERs</TextBlock>
                 <DockPanel>
                     <TextBlock>Portability</TextBlock>
-                    <RadioButton  GroupName="Portability" IsChecked="{Binding Path=Portability, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Yes}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}"  Content="Yes"></RadioButton>
-                    <RadioButton  GroupName="Portability" IsChecked="{Binding Path=Portability, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=No}"  Style="{StaticResource ResourceKey=RadioButtonViewStyle}" Content="No"></RadioButton>
+                    <RadioButton  GroupName="Portability" IsChecked="{Binding Path=Portability, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=true}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}"  Content="Yes"></RadioButton>
+                    <RadioButton  GroupName="Portability" IsChecked="{Binding Path=Portability, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=false}"  Style="{StaticResource ResourceKey=RadioButtonViewStyle}" Content="No"></RadioButton>
                     <RadioButton  GroupName="Portability" IsChecked="{Binding Path=Portability, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Optional}"  Style="{StaticResource ResourceKey=RadioButtonViewStyle}" Content="Optional"></RadioButton>
 
                 </DockPanel>
@@ -93,8 +93,8 @@
 
                 <DockPanel>
                     <TextBlock>MultiPatientSupport</TextBlock>
-                    <RadioButton  GroupName="MultiPatientSupport" IsChecked="{Binding Path=MultiPatientSupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Yes}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Yes</RadioButton>
-                    <RadioButton  GroupName="MultiPatientSupport" IsChecked="{Binding Path=MultiPatientSupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=No}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">No</RadioButton>
+                    <RadioButton  GroupName="MultiPatientSupport" IsChecked="{Binding Path=MultiPatientSupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=true}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Yes</RadioButton>
+                    <RadioButton  GroupName="MultiPatientSupport" IsChecked="{Binding Path=MultiPatientSupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=false}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">No</RadioButton>
                     <RadioButton  GroupName="MultiPatientSupport" IsChecked="{Binding Path=MultiPatientSupport, Converter={StaticResource ResourceKey=boolToString},ConverterParameter=Optional}" Style="{StaticResource ResourceKey=RadioButtonViewStyle}">Optional</RadioButton>
 
 

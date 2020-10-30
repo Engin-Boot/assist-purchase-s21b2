@@ -64,15 +64,15 @@ namespace PurchaseAssistantWebApp.Utilities
 
             var emailBodyStr = CreateEmailMessageBody(requestInfo);
 
-            //var email = ComposeEmail("s21b2team@gmail.com", receivers, "New Call Setup Request Received", emailBodyStr);
-            _ = ComposeEmail("s21b2team@gmail.com", receivers, "New Call Setup Request Received", emailBodyStr);
+            var email = ComposeEmail("s21b2team@gmail.com", receivers, "New Call Setup Request Received", emailBodyStr);
+            //_ = ComposeEmail("s21b2team@gmail.com", receivers, "New Call Setup Request Received", emailBodyStr);
 
             using var smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            //smtp.Authenticate("s21b2team@gmail.com", "");
-            //smtp.Send(email);
+            smtp.Authenticate("s21b1team@gmail.com", "CaseStudy@2");
+            smtp.Send(email);
             smtp.Disconnect(true);
-            
+
             return true;
         }
 
@@ -96,13 +96,13 @@ namespace PurchaseAssistantWebApp.Utilities
             emailBodyStr.Append("Philips\n");
             emailBodyStr.Append("Innovation and You!\n");
 
-            //var email = ComposeEmail("s21b2team@gmail.com", receivers, "New Call Setup Request Received", emailBodyStr);
-            _ = ComposeEmail("s21b2team@gmail.com", receivers, "New Call Setup Request Received", emailBodyStr.ToString());
+            var email = ComposeEmail("s21b1team@gmail.com", receivers, "Order Accepted", emailBodyStr.ToString());
+           // _ = ComposeEmail("s21b2team@gmail.com", receivers, "New Call Setup Request Received", emailBodyStr.ToString());
 
             using var smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            //smtp.Authenticate("s21b2team@gmail.com", "");
-            //smtp.Send(email);
+            smtp.Authenticate("s21b1team@gmail.com", "CaseStudy@2");
+            smtp.Send(email);
             smtp.Disconnect(true);
             return true;
         }

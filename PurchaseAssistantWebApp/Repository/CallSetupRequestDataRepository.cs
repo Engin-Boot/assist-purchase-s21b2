@@ -140,7 +140,8 @@ namespace PurchaseAssistantWebApp.Repository
 
         public CallSetupRequest GetCallSetupRequest(string id)
         {
-            return _context.PendingRequests.Find(id);
+            var callSetupReq = _context.PendingRequests.Find(id);
+            return callSetupReq;
         }
 
         #region DataBase Initial values

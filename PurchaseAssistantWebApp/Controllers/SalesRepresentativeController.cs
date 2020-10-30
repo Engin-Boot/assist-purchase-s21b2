@@ -31,7 +31,7 @@ namespace PurchaseAssistantWebApp.Controllers
             try
             {
                 _repository.AddNewSalesRepresentative(newSalesRepresentative);
-                return Ok();
+                return Ok("Sales Representative Added");
             }
             catch(ArgumentException exception)
             {
@@ -46,7 +46,7 @@ namespace PurchaseAssistantWebApp.Controllers
             try
             {
                 _repository.UpdateSalesRepresentative(salesRepresentative);
-                return Ok();
+                return Ok("Details Updated");
             }
             catch(ArgumentException exception)
             {
@@ -65,7 +65,7 @@ namespace PurchaseAssistantWebApp.Controllers
             try
             {
                 _repository.DeleteSalesRepresentative(id);
-                return Ok();
+                return Ok("Sales Representative Deleted");
             }
             catch(KeyNotFoundException exception)
             {

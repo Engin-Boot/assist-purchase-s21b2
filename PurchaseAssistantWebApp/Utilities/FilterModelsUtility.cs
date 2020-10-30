@@ -44,14 +44,14 @@ namespace PurchaseAssistantWebApp.Utilities
         {
             if (string.IsNullOrEmpty(productName)) return models;
 
-            return models.Where(model => model.ProductName.Equals(productName));
+            return models.Where(model => model.ProductName.Equals(productName, StringComparison.OrdinalIgnoreCase));
         }
 
         public static IEnumerable<ModelsSpecification> FilterByProductKey(string productKey, IEnumerable<ModelsSpecification> models)
         {
             if (string.IsNullOrEmpty(productKey)) return models;
 
-            return models.Where(model => model.ProductKey.Equals(productKey));
+            return models.Where(model => model.ProductKey.Equals(productKey, StringComparison.OrdinalIgnoreCase));
         }
 
         public static IEnumerable<ModelsSpecification> FilterByPortability(string portability, IEnumerable<ModelsSpecification> models)
@@ -71,14 +71,14 @@ namespace PurchaseAssistantWebApp.Utilities
         {
             if (string.IsNullOrEmpty(batterySupport)) return models;
 
-            return models.Where(model => model.BatterySupport.Equals(batterySupport));
+            return models.Where(model => model.BatterySupport.Equals(batterySupport, StringComparison.OrdinalIgnoreCase));
         }
 
         public static IEnumerable<ModelsSpecification> FilterByMultiPatientSupport(string multiPatientSupport, IEnumerable<ModelsSpecification> models)
         {
             if (string.IsNullOrEmpty(multiPatientSupport)) return models;
 
-            return models.Where(model => model.MultiPatientSupport.Equals(multiPatientSupport));
+            return models.Where(model => model.MultiPatientSupport.Equals(multiPatientSupport, StringComparison.OrdinalIgnoreCase));
         }
         public static IEnumerable<ModelsSpecification> FilterByTouchScreenSupport(string touchScreenSupport, IEnumerable<ModelsSpecification> models)
         {
@@ -99,42 +99,42 @@ namespace PurchaseAssistantWebApp.Utilities
         {
             if (string.IsNullOrEmpty(bpCheck)) return models;
 
-            return models.Where(model => model.BpCheck.Equals(bpCheck));
+            return models.Where(model => model.BpCheck.Equals(bpCheck, StringComparison.OrdinalIgnoreCase));
         }
 
         public static IEnumerable<ModelsSpecification> FilterByHeartRateCheck(string heartRateCheck, IEnumerable<ModelsSpecification> models)
         {
             if (string.IsNullOrEmpty(heartRateCheck)) return models;
 
-            return models.Where(model => model.HeartRateCheck.Equals(heartRateCheck));
+            return models.Where(model => model.HeartRateCheck.Equals(heartRateCheck, StringComparison.OrdinalIgnoreCase));
         }
 
         public static IEnumerable<ModelsSpecification> FilterByEcgCheck(string ecgCheck, IEnumerable<ModelsSpecification> models)
         {
             if (string.IsNullOrEmpty(ecgCheck)) return models;
 
-            return models.Where(model => model.EcgCheck.Equals(ecgCheck));
+            return models.Where(model => model.EcgCheck.Equals(ecgCheck, StringComparison.OrdinalIgnoreCase));
         }
 
         public static IEnumerable<ModelsSpecification> FilterBySpO2Check(string spO2Check, IEnumerable<ModelsSpecification> models)
         {
             if (string.IsNullOrEmpty(spO2Check)) return models;
 
-            return models.Where(model => model.SpO2Check.Equals(spO2Check));
+            return models.Where(model => model.SpO2Check.Equals(spO2Check, StringComparison.OrdinalIgnoreCase));
         }
 
         public static IEnumerable<ModelsSpecification> FilterByTemperatureCheck(string temperatureCheck, IEnumerable<ModelsSpecification> models)
         {
             if (string.IsNullOrEmpty(temperatureCheck)) return models;
 
-            return models.Where(model => model.TemperatureCheck.Equals(temperatureCheck));
+            return models.Where(model => model.TemperatureCheck.Equals(temperatureCheck, StringComparison.OrdinalIgnoreCase));
         }
 
         public static IEnumerable<ModelsSpecification> FilterByCardiacOutputCheck(string cardiacOutputCheck, IEnumerable<ModelsSpecification> models)
         {
             if (string.IsNullOrEmpty(cardiacOutputCheck)) return models;
 
-            return models.Where(model => model.CardiacOutputCheck.Equals(cardiacOutputCheck));
+            return models.Where(model => model.CardiacOutputCheck.Equals(cardiacOutputCheck, StringComparison.OrdinalIgnoreCase));
         }
         
     }

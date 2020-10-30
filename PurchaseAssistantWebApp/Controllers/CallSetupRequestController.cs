@@ -38,7 +38,7 @@ namespace PurchaseAssistantWebApp.Controllers
             {
                 _repository.AddNewCallSetupRequest(newRequest);
                 _alerter.SendAlert(newRequest, _salesRepresentativeRepository.GetAllSalesRepresentativeByRegion(newRequest.Region));
-                return Ok();
+                return Ok("Your Request is Registered, Our Sales Representative will contact you soon..");
             }
             catch(ArgumentException exception)
             {
@@ -53,7 +53,7 @@ namespace PurchaseAssistantWebApp.Controllers
             try
             {
                 _repository.UpdateCallSetupRequest(request);
-                return Ok();
+                return Ok("CallSetupRequest Updated");
             }
             catch(ArgumentException exception)
             {
@@ -71,15 +71,27 @@ namespace PurchaseAssistantWebApp.Controllers
         {
             try
             {
-                var costomerEmail = _repository.GetCallSetupRequest(RequestId).Email;
+                var callSetupReq = _repository.GetCallSetupRequest(RequestId);
+                var costomerEmail =callSetupReq.Email;
                 var msg = _repository.DeleteCallSetupRequest(RequestId);
                 _alerter.SendAlert(_salesRepresentativeRepository.GetSalesRepresentative(SalesRepId) , costomerEmail);
-                return Ok(msg);
+
+                return Ok(GetAppropriateMessageOnDeleteCallRequest(msg));
             }
             catch(KeyNotFoundException exception)
             {
                 return BadRequest(exception.Message);
             }
+        }
+
+        public string GetAppropriateMessageOnDeleteCallRequest(string msg)
+        {
+            var comp = StringComparison.OrdinalIgnoreCase;
+            if (msg.Contains("deleted", comp))
+            {
+                return "Thank You for accepting the Order";
+            }
+            return msg;
         }
     }
 }

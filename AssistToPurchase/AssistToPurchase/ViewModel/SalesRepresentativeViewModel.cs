@@ -30,6 +30,7 @@ namespace AssistToPurchase.ViewModel
         string message;
         string _requestId;
         string _salesRepresentativeId;
+        string _salesRepName;
         #endregion
 
         #region Initializers
@@ -96,7 +97,18 @@ namespace AssistToPurchase.ViewModel
                 }
             }
         }
-
+        public string SalesRepName
+        {
+            get { return this._salesRepName; }
+            set
+            {
+                if (value != _salesRepName)
+                {
+                    this._salesRepName = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         public string RequestId
         {
             get { return this._requestId; }
@@ -149,6 +161,8 @@ namespace AssistToPurchase.ViewModel
             _request = new RestRequest("SalesRepresentative", Method.POST);
             _request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
             _response = _client.Execute(_request);
+            var message = _response.Content;
+            MessageBox.Show($"{message}");
             UpdateSalesRepresentativeList();
 
 
@@ -160,6 +174,8 @@ namespace AssistToPurchase.ViewModel
             _request = new RestRequest("SalesRepresentative", Method.PUT);
             _request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
             _response = _client.Execute(_request);
+            var message = _response.Content;
+            MessageBox.Show($"{message}");
             UpdateSalesRepresentativeList();
 
 
@@ -171,6 +187,8 @@ namespace AssistToPurchase.ViewModel
             _request = new RestRequest($"CallSetupRequest/{RequestId}/{SalesRepresentativeId}", Method.DELETE);
             //_request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
             _response = _client.Execute(_request);
+            var message = _response.Content;
+            MessageBox.Show($"{message}");
             UpdatePendingRequestList();
         }
         //public void DeleteSaleRepresentative()

@@ -30,7 +30,7 @@ namespace PurchaseAssistantWebApp.Controllers
             try
             {
                 _repository.AddNewModelsSpecification(newModelSpecification);
-                return Ok();
+                return Ok("Model Added..");
             }
             catch (ArgumentException exception)
             {
@@ -45,7 +45,7 @@ namespace PurchaseAssistantWebApp.Controllers
             try
             {
                 _repository.UpdateModelsSpecification(updatedModelSpecification);
-                return Ok();
+                return Ok("Model Updated..");
             }
             catch (ArgumentException exception)
             {
@@ -64,7 +64,7 @@ namespace PurchaseAssistantWebApp.Controllers
             try
             {
                 _repository.DeleteModelsSpecification(id);
-                return Ok();
+                return Ok("Model Deleted");
             }
             catch (KeyNotFoundException exception)
             {

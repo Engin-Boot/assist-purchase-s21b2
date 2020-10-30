@@ -23,10 +23,10 @@
                 <TextBlock Margin="2" Foreground="DarkGray" Grid.Row="3" Grid.Column="0">Email</TextBlock>
 
 
-                <TextBox Text="{Binding Path=Id}" Margin="2" Width="100" Grid.Row="0" Grid.Column="1"></TextBox>
-                <TextBox Text="{Binding Path=Name}" Margin="2" Width="100" Grid.Row="1" Grid.Column="1"></TextBox>
-                <TextBox Text="{Binding Path=DepartmentRegion}" Margin="2" Width="100" Grid.Row="2" Grid.Column="1"></TextBox>
-                <TextBox Text="{Binding Path=Email}" Margin="2" Width="100" Grid.Row="3" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=Id}" x:Name="Id" Margin="2" Width="100" Grid.Row="0" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=Name}" x:Name="Name" Margin="2" Width="100" Grid.Row="1" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=DepartmentRegion}" x:Name="DepartmentRegion" Margin="2" Width="100" Grid.Row="2" Grid.Column="1"></TextBox>
+                <TextBox Text="{Binding Path=Email}" Margin="2" x:Name="Email" Width="100" Grid.Row="3" Grid.Column="1"></TextBox>
 
             </Grid.Children>
         </Grid>
