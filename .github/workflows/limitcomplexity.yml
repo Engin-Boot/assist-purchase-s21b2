@@ -24,4 +24,4 @@ jobs:
 
       
       - name: Limit complexity
-        run: $HOME/.local/bin/lizard -x"./PurchaseAssistantBackend.Test/coveragereport/*" --CCN 3
+        run: $HOME/.local/bin/lizard -x"./PurchaseAssistantBackend.Test/coveragereport/*" -x"*/obj/*" --CCN 3
