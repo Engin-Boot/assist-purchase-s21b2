@@ -23,6 +23,7 @@ namespace AssistToPurchase.ViewModel
 
         #region Fields
         readonly ModelsSpecification _modelsSpecification;
+        long _modelIdToDelete;
         string message;
 
         #endregion
@@ -35,10 +36,23 @@ namespace AssistToPurchase.ViewModel
             UpdateModelList();//list 
             AddModelCommand = new DelegateCommandClass(this.AddModelCommandWrapper, this.CommandCanExecuteWrapper);
             ClearModelCommand = new DelegateCommandClass(this.ClearModelCommandWrapper, this.CommandCanExecuteWrapper);
+            DeleteModelCommand = new DelegateCommandClass(this.DeleteModelCommandWrapper, this.CommandCanExecuteWrapper);
         }
         #endregion
 
         #region Property
+        public long ModelIdToDelete
+        {
+            get { return _modelIdToDelete; }
+            set
+            {
+                if (value != _modelIdToDelete)
+                {
+                    _modelIdToDelete = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         public long Id
         {
             get { return _modelsSpecification.Id; }
@@ -63,7 +77,6 @@ namespace AssistToPurchase.ViewModel
                 }
             }
         }
-
         public string ProductKey
         {
             get { return _modelsSpecification.ProductKey; }
@@ -184,10 +197,6 @@ namespace AssistToPurchase.ViewModel
                 }
             }
         }
-
-
-
-
         // clinical parameters
         public string BpCheck
         {
@@ -282,39 +291,47 @@ namespace AssistToPurchase.ViewModel
 
         public void AddNewModel()
         {
-            _client = new RestClient(_baseUrl);
-            _request = new RestRequest("ModelsSpecification", Method.POST);
-            _request.AddJsonBody(new ModelsSpecification
+            try
             {
-                Id = Id,
-                ProductName = ProductName,
-                ProductKey = ProductKey,
-                Description = Description,
-                Price = Price,
-                Weight = Weight,
-                Portable = Portable,
-                ScreenSize = ScreenSize,
-                TouchScreenSupport = TouchScreenSupport,
-                MonitorResolution = MonitorResolution,
-                BatterySupport = BatterySupport,
-                MultiPatientSupport = MultiPatientSupport,
+                _client = new RestClient(_baseUrl);
+                _request = new RestRequest("ModelsSpecification", Method.POST);
+                _request.AddJsonBody(new ModelsSpecification
+                {
+                    Id = Id,
+                    ProductName = ProductName,
+                    ProductKey = ProductKey,
+                    Description = Description,
+                    Price = Price,
+                    Weight = Weight,
+                    Portable = Portable,
+                    ScreenSize = ScreenSize,
+                    TouchScreenSupport = TouchScreenSupport,
+                    MonitorResolution = MonitorResolution,
+                    BatterySupport = BatterySupport,
+                    MultiPatientSupport = MultiPatientSupport,
 
-                BpCheck = BpCheck,
-                HeartRateCheck = HeartRateCheck,
-                EcgCheck = EcgCheck,
-                SpO2Check = SpO2Check,
-                TemperatureCheck = TemperatureCheck,
-                CardiacOutputCheck = CardiacOutputCheck
+                    BpCheck = BpCheck,
+                    HeartRateCheck = HeartRateCheck,
+                    EcgCheck = EcgCheck,
+                    SpO2Check = SpO2Check,
+                    TemperatureCheck = TemperatureCheck,
+                    CardiacOutputCheck = CardiacOutputCheck
 
 
 
-            });
+                });
 
-            _response = _client.Execute(_request);
-            var message = _response.Content;
-            MessageBox.Show($"{message}");
-            ClearModel();
-            UpdateModelList();
+                _response = _client.Execute(_request);
+                var message = _response.Content;
+                MessageBox.Show($"{message}");
+                ClearModel();
+                UpdateModelList();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show($"Server Down: Unable to connect to Server");
+            }
         }
 
         public void ClearModel()
@@ -342,19 +359,28 @@ namespace AssistToPurchase.ViewModel
 
         public void UpdateModelList()
         {
-            _client = new RestClient(_baseUrl);
-            _request = new RestRequest("ModelsSpecification", Method.GET);
-
-            _response = _client.Execute(_request);
-
-            var models = _deserializer.Deserialize<List<ModelsSpecification>>(_response);
-            ModelsSpecificationsList.Clear();
-            foreach (var model in models)
+            try
             {
-                if (!CheckWhetherModelExist(model.Id))
+                _client = new RestClient(_baseUrl);
+                _request = new RestRequest("ModelsSpecification", Method.GET);
+
+                _response = _client.Execute(_request);
+
+                var models = _deserializer.Deserialize<List<ModelsSpecification>>(_response);
+                ModelsSpecificationsList.Clear();
+                foreach (var model in models)
                 {
                     ModelsSpecificationsList.Add(model);
+                    //if (!CheckWhetherModelExist(model.Id))
+                    //{
+                    //    ModelsSpecificationsList.Add(model);
+                    //}
                 }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show($"Server Down: Unable to connect to Server");
             }
         }
 
@@ -367,11 +393,31 @@ namespace AssistToPurchase.ViewModel
             }
             return false;
         }
+
+        public void DeleteModel()
+        {
+            try
+            {
+                _client = new RestClient(_baseUrl);
+                _request = new RestRequest($"ModelsSpecification/{ModelIdToDelete}", Method.DELETE);
+                _response = _client.Execute(_request);
+                var message = _response.Content;
+                MessageBox.Show($"{message}");
+                UpdateModelList();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show($"Server Down: Unable to connect to Server");
+            }
+        }
         #endregion
 
         #region Commands
 
         public ICommand AddModelCommand { get; set; }
+
+        public ICommand DeleteModelCommand { get; set; }
 
         public ICommand ClearModelCommand { get; set; }
 
@@ -387,9 +433,10 @@ namespace AssistToPurchase.ViewModel
         {
             return true;
         }
-
-
-
+        void DeleteModelCommandWrapper(object parameter)
+        {
+            this.DeleteModel();
+        }
         void ClearModelCommandWrapper(object parameter)
         {
             this.ClearModel();

@@ -279,26 +279,34 @@ namespace AssistToPurchase.ViewModel
 
         public void UpdateModelsList()
         {
-            _client = new RestClient(_baseUrl);
-            string request = $"Id={searchQuery.Id}" +
-                $"&ProductName={searchQuery.ProductName}" +
-                $"&ProductKey={searchQuery.ProductKey}" +
-                $"&Portability={searchQuery.Portability}" +
-                $"&BatterySupport={searchQuery.BatterySupport}" +
-                $"&MultiPatientSupport={searchQuery.MultiPatientSupport}" +
-                $"&TouchScreenSupport={searchQuery.TouchScreenSupport}" +
-                $"&BpCheck={searchQuery.BpCheck}" +
-                $"&HeartRateCheck={searchQuery.HeartRateCheck}" +
-                $"&EcgCheck={searchQuery.EcgCheck}" +
-                $"&SpO2Check={searchQuery.SpO2Check}" +
-                $"&TemperatureCheck={searchQuery.TemperatureCheck}" +
-                $"&CardiacOutputCheck={searchQuery.CardiacOutputCheck}";
+            try
+            {
+                _client = new RestClient(_baseUrl);
+                string request = $"Id={searchQuery.Id}" +
+                    $"&ProductName={searchQuery.ProductName}" +
+                    $"&ProductKey={searchQuery.ProductKey}" +
+                    $"&Portability={searchQuery.Portability}" +
+                    $"&BatterySupport={searchQuery.BatterySupport}" +
+                    $"&MultiPatientSupport={searchQuery.MultiPatientSupport}" +
+                    $"&TouchScreenSupport={searchQuery.TouchScreenSupport}" +
+                    $"&BpCheck={searchQuery.BpCheck}" +
+                    $"&HeartRateCheck={searchQuery.HeartRateCheck}" +
+                    $"&EcgCheck={searchQuery.EcgCheck}" +
+                    $"&SpO2Check={searchQuery.SpO2Check}" +
+                    $"&TemperatureCheck={searchQuery.TemperatureCheck}" +
+                    $"&CardiacOutputCheck={searchQuery.CardiacOutputCheck}";
 
 
-            _request = new RestRequest($"?{request}", Method.GET);
-            _response = _client.Execute(_request);
-            var models = _deserializer.Deserialize<List<ModelsSpecification>>(_response);
-            Models = new ObservableCollection<ModelsSpecification>(models);
+                _request = new RestRequest($"?{request}", Method.GET);
+                _response = _client.Execute(_request);
+                var models = _deserializer.Deserialize<List<ModelsSpecification>>(_response);
+                Models = new ObservableCollection<ModelsSpecification>(models);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show($"Server Down: Unable to connect to Server");
+            }
         }
         public bool CheckWhetherModelExists(long id)
         {
@@ -314,21 +322,32 @@ namespace AssistToPurchase.ViewModel
         #region Logic
         private void PlaceOrder()
         {
-            _client = new RestClient("http://localhost:5000/api/");
-            _request = new RestRequest("CallSetupRequest", Method.POST);
-            var selectedModels = new List<string>();
-            selectedModels.Add(_model);
-            _request.AddJsonBody(new CallSetupRequest { CoustomerName = _name,
-                RequestId = GenerateRequestId(),
-                Email = _email,
-                Organisation = _organisation,
-                Region = _region,
-                SelectedModels = selectedModels }
-                );
-            _response = _client.Execute(_request);
-            var message = _response.Content;
-            MessageBox.Show($"{message}");
-            ClearCallRequestSertup();
+            try
+            {
+                _client = new RestClient("http://localhost:5000/api/");
+                _request = new RestRequest("CallSetupRequest", Method.POST);
+                var selectedModels = new List<string>();
+                selectedModels.Add(_model);
+                _request.AddJsonBody(new CallSetupRequest
+                {
+                    CoustomerName = _name,
+                    RequestId = GenerateRequestId(),
+                    Email = _email,
+                    Organisation = _organisation,
+                    Region = _region,
+                    SelectedModels = selectedModels
+                }
+                    );
+                _response = _client.Execute(_request);
+                var message = _response.Content;
+                MessageBox.Show($"{message}");
+                ClearCallRequestSertup();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show($"Server Down: Unable to connect to Server");
+            }
         }
 
         private string GenerateRequestId()

@@ -60,7 +60,6 @@ namespace AssistToPurchase.ViewModel
                 }
             }
         }
-
         public string Name
         {
             get { return _salesRepresentativeModel.Name; }
@@ -157,38 +156,62 @@ namespace AssistToPurchase.ViewModel
 
         public void AddNewSalesRepresentative()
         {
-            _client = new RestClient(_baseUrl);
-            _request = new RestRequest("SalesRepresentative", Method.POST);
-            _request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
-            _response = _client.Execute(_request);
-            var message = _response.Content;
-            MessageBox.Show($"{message}");
-            UpdateSalesRepresentativeList();
+            try
+            {
+                _client = new RestClient(_baseUrl);
+                _request = new RestRequest("SalesRepresentative", Method.POST);
+                _request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
+                _response = _client.Execute(_request);
+                var message = _response.Content;
+                MessageBox.Show($"{message}");
+                UpdateSalesRepresentativeList();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show($"Server Down: Unable to connect to Server");
+            }
 
 
         }
 
         public void UpdateSalesRepresentative()
         {
-            _client = new RestClient(_baseUrl);
-            _request = new RestRequest("SalesRepresentative", Method.PUT);
-            _request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
-            _response = _client.Execute(_request);
-            var message = _response.Content;
-            MessageBox.Show($"{message}");
-            UpdateSalesRepresentativeList();
+            try
+            {
+                _client = new RestClient(_baseUrl);
+                _request = new RestRequest("SalesRepresentative", Method.PUT);
+                _request.AddJsonBody(new SalesRepresentative { Id = Id, Name = Name, DepartmentRegion = DepartmentRegion, Email = Email });
+                _response = _client.Execute(_request);
+                var message = _response.Content;
+                MessageBox.Show($"{message}");
+                UpdateSalesRepresentativeList();
 
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show($"Server Down: Unable to connect to Server");
+            }
 
         }
 
         public void AcceptOrder()
         {
-            _client = new RestClient(_baseUrl);
-            _request = new RestRequest($"CallSetupRequest/{RequestId}/{SalesRepresentativeId}", Method.DELETE);
-            _response = _client.Execute(_request);
-            var message = _response.Content;
-            MessageBox.Show($"{message}");
-            UpdatePendingRequestList();
+            try
+            {
+                _client = new RestClient(_baseUrl);
+                _request = new RestRequest($"CallSetupRequest/{RequestId}/{SalesRepresentativeId}", Method.DELETE);
+                _response = _client.Execute(_request);
+                var message = _response.Content;
+                MessageBox.Show($"{message}");
+                UpdatePendingRequestList();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show($"Server Down: Unable to connect to Server");
+            }
         }
 
         public void ClearSaleRepresentative()
@@ -268,37 +291,55 @@ namespace AssistToPurchase.ViewModel
 
         public void UpdateSalesRepresentativeList()
         {
-            _client = new RestClient(_baseUrl);
-            _request = new RestRequest("SalesRepresentative", Method.GET);
-
-
-            _response = _client.Execute(_request);
-            var salesRepresentatives = _deserializer.Deserialize<List<SalesRepresentative>>(_response);
-            SalesRepresentativesList.Clear();
-            foreach(var salesRepresentative in salesRepresentatives)
+            try
             {
-                if (!CheckWhetherSalesRepresentativeExists(salesRepresentative.Id))  // can remove safely
+                _client = new RestClient(_baseUrl);
+                _request = new RestRequest("SalesRepresentative", Method.GET);
+
+
+                _response = _client.Execute(_request);
+                var salesRepresentatives = _deserializer.Deserialize<List<SalesRepresentative>>(_response);
+                SalesRepresentativesList.Clear();
+                foreach (var salesRepresentative in salesRepresentatives)
                 {
                     SalesRepresentativesList.Add(salesRepresentative);
+                    //if (!CheckWhetherSalesRepresentativeExists(salesRepresentative.Id))  // can remove safely
+                    //{
+                    //    SalesRepresentativesList.Add(salesRepresentative);
+                    //}
                 }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show($"Server Down: Unable to connect to Server");
             }
         }
 
         public void UpdatePendingRequestList()
         {
-            _client = new RestClient(_baseUrl);
-            _request = new RestRequest("CallSetupRequest", Method.GET);
-
-
-            _response = _client.Execute(_request);
-            var callSetupRequests = _deserializer.Deserialize<List<CallSetupRequest>>(_response);
-            PendingRequestsList.Clear();
-            foreach (var callSetupRequest in callSetupRequests)
+            try
             {
-                if (!CheckWhetherCallRequestExists(callSetupRequest.RequestId))  // can remove safely
+                _client = new RestClient(_baseUrl);
+                _request = new RestRequest("CallSetupRequest", Method.GET);
+
+
+                _response = _client.Execute(_request);
+                var callSetupRequests = _deserializer.Deserialize<List<CallSetupRequest>>(_response);
+                PendingRequestsList.Clear();
+                foreach (var callSetupRequest in callSetupRequests)
                 {
                     PendingRequestsList.Add(callSetupRequest);
+                    //if (!CheckWhetherCallRequestExists(callSetupRequest.RequestId))  // can remove safely
+                    //{
+                    //    PendingRequestsList.Add(callSetupRequest);
+                    //}
                 }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show($"Server Down: Unable to connect to Server");
             }
         }
 

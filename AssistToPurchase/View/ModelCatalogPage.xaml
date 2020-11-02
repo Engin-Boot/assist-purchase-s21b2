@@ -4,9 +4,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AssistToPurchase.View"
+      xmlns:converters="clr-namespace:AssistToPurchase.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ModelCatalogPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <converters:ModelsObjectToId x:Key="ModelObjToId"></converters:ModelsObjectToId>
+        </ResourceDictionary>
+    </Page.Resources>
 
 
     <DockPanel LastChildFill="True">
@@ -121,6 +127,24 @@
                     <TextBlock FontSize="14" FontWeight="Bold">Select Models</TextBlock>
                     <!--binding done to observable clloection-->
                     <ComboBox x:Name="ModelsListCombo" ItemsSource="{Binding Path=ModelsSpecificationsList}" DisplayMemberPath="ProductName"></ComboBox>
+                    <Border BorderBrush="Black" BorderThickness="5" Margin="10,100,10,10">
+                        <StackPanel Margin="10,10,10,10" Background="AliceBlue">
+                            <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold">Delete</TextBlock>
+                            <ComboBox x:Name="ModelsList" 
+                                      ItemsSource="{Binding Path=ModelsSpecificationsList}" 
+                                      DisplayMemberPath="ProductName"
+                                       SelectedItem="{Binding Path=ModelIdToDelete, Converter={StaticResource ModelObjToId}, Mode=OneWayToSource}">
+                            </ComboBox>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="10,20" FontSize="15" FontWeight="Medium"> ModelId:</TextBlock>
+                                <TextBlock Text="{Binding Path=ModelIdToDelete}" Width="75" Height="20" Margin="10,20" Foreground="Red"></TextBlock>
+
+                            </StackPanel>
+                            
+                            <Button Width="100" Margin="10" Command="{Binding Path=DeleteModelCommand}">Delete Model</Button>
+                        </StackPanel>
+                    </Border>
+
                 </StackPanel>
 
 

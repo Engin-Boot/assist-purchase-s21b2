@@ -4,10 +4,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AssistToPurchase.View"
+      xmlns:converters="clr-namespace:AssistToPurchase.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SaleRepresentativePage">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <converters:SalesRepresentativeObjectToIdConverter x:Key="SalesRepresentativeObjectToId"></converters:SalesRepresentativeObjectToIdConverter>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <DockPanel LastChildFill="True">
         <Grid  Margin="20" DockPanel.Dock="Left" Background="AliceBlue" >
@@ -44,7 +49,12 @@
                 <StackPanel DockPanel.Dock="Top" Margin="10" >
                     <TextBlock FontSize="14" FontWeight="Bold" HorizontalAlignment="Center">Select Representatives</TextBlock>
                     <!--binding done to observable clloection-->
-                    <ComboBox x:Name="userListCombo" ItemsSource="{Binding Path=SalesRepresentativesList}" DisplayMemberPath="Name" Text="{Binding Path=SalesRepName}"></ComboBox>
+                    <ComboBox x:Name="userListCombo" 
+                              ItemsSource="{Binding Path=SalesRepresentativesList}" 
+                              DisplayMemberPath="Name" 
+                              Text="{Binding Path=SalesRepName}" 
+                              SelectedItem="{Binding Path=SalesRepresentativeId, Converter={StaticResource SalesRepresentativeObjectToId}, Mode=OneWayToSource}">
+                    </ComboBox>
                 </StackPanel>
                 
                 <StackPanel DockPanel.Dock="Bottom" Margin="10">
@@ -69,7 +79,7 @@
 
                 <TextBlock FontSize="16" FontWeight="Bold" Margin="0,10,0,0" HorizontalAlignment="Center">Request Details</TextBlock>
                 <TextBlock Text="{Binding Path=SalesRepName}"   Margin="2" Width="100"></TextBlock>
-                <TextBox Text="{Binding Path=SalesRepresentativeId}" Margin="2" Width="100"></TextBox>
+                <TextBlock Text="{Binding ElementName=userListCombo, Path=SelectedItem, Converter={StaticResource SalesRepresentativeObjectToId}}" Margin="2" Width="100"></TextBlock>
                 <TextBlock Text="{Binding Path=RequestId}"  Margin="2" Width="100"></TextBlock>
                 <Button Width="100" Command="{Binding Path=AcceptOrderCommand}">Accept Order</Button>
 
